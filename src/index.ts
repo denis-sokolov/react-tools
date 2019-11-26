@@ -1,6 +1,7 @@
 export * from "./ActionArea";
 export * from "./ErrorBoundary";
 export * from "./forwardClick";
+export * from "./UnderConstruction";
 export * from "./useCallback";
 export * from "./useCheckStableIdentity";
 export * from "./useClickOutside";
