@@ -20,7 +20,7 @@
     "ava": "^2.4.0",
     "prettier": "^1.19.1",
     "ts-node": "^8.5.2",
-    "typescript": "^3.7.2"
+    "typescript": "3.7.2"
   },
   "browser": "dist/index.js",
   "engines": {
