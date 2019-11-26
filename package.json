@@ -17,7 +17,9 @@
     "typecheck": "tsc --noEmit",
     "verify": "npm run typecheck && npm run format-verify && npm run test"
   },
-  "dependencies": {},
+  "dependencies": {
+    "use-memo-one": "^1.1.1"
+  },
   "devDependencies": {
     "@types/react": "^16.9.13",
     "@types/react-test-renderer": "^16.9.1",
