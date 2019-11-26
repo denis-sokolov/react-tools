@@ -1,4 +1,5 @@
 export * from "./ActionArea";
+export * from "./ErrorBoundary";
 export * from "./forwardClick";
 export * from "./useCallback";
 export * from "./useClickOutside";
