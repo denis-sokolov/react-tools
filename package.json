@@ -8,8 +8,8 @@
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production tsc --project tsconfig.build.json",
     "ci": "npm run verify",
-    "format": "prettier --write '{src,typings}/**/*.{json,md,ts,tsx}' *.{json,md,ts,tsx}",
-    "format-verify": "prettier --check '{src,typings}/**/*.{json,md,ts,tsx}' *.{json,md,ts,tsx}",
+    "format": "prettier --write '{docs,src,typings}/**/*.{json,md,ts,tsx}' *.{json,md,ts,tsx}",
+    "format-verify": "prettier --check '{docs,src,typings}/**/*.{json,md,ts,tsx}' *.{json,md,ts,tsx}",
     "prepublishOnly": "npm run verify && npm run build",
     "start": "ava --watch",
     "start-building": "rm -rf dist && NODE_ENV=production tsc --watch",
