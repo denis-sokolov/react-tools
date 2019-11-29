@@ -34,7 +34,11 @@ function objectToString(selector: string, obj: StyleObject) {
   return `${selector}{${body}}${nested}`;
 }
 
-export function css(prefix: string, styles: StyleObject, win?: Window) {
+export function scopedStyles(
+  prefix: string,
+  styles: StyleObject,
+  win?: Window
+) {
   counter += 1;
   const name = `${prefix}-${counter}`;
   const w: Window | undefined =

@@ -1,4 +1,4 @@
-import { css } from ".";
+import { scopedStyles } from ".";
 import { StyleObject } from "./types";
 
 export function run(prefix: string, input: StyleObject) {
@@ -18,7 +18,7 @@ export function run(prefix: string, input: StyleObject) {
   };
   const window = w as Window;
 
-  css(prefix, input, window);
+  scopedStyles(prefix, input, window);
 
   return appendedChildren[0]?.innerText;
 }

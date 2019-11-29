@@ -1,5 +1,5 @@
 import React from "react";
-import { css } from "../lib";
+import { scopedStyles } from "../lib";
 
 export type Action =
   | "submit"
@@ -21,7 +21,7 @@ type Props = {
   currentPath?: string;
 };
 
-const baseStyles = css("ActionArea-base", {
+const baseStyles = scopedStyles("ActionArea-base", {
   background: "none",
   border: "none",
   cursor: "pointer",
@@ -37,7 +37,7 @@ const baseStyles = css("ActionArea-base", {
   textDecoration: "none"
 });
 
-const disabledStyles = css("ActionArea-disabled", {
+const disabledStyles = scopedStyles("ActionArea-disabled", {
   pointerEvents: "none" as const,
   // Must explicitly change the cursor to defualt. Otherwise, when "pointer-events: none"
   // is applied on click, the cursor will not return to default until the mouse is moved.

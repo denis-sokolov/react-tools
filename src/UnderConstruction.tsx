@@ -1,7 +1,7 @@
 import React from "react";
-import { css } from "./lib";
+import { scopedStyles } from "./lib";
 
-const className = css("UnderConstruction", {
+const className = scopedStyles("UnderConstruction", {
   cursor: "not-allowed",
   opacity: "0.3",
   pointerEvents: "none",
