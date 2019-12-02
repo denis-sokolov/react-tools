@@ -123,6 +123,27 @@ Instead, use `forwardClick`. Full support for propagation and the only place in 
 </tr>
 ```
 
+## smartOutline
+
+In most designs we do not want to mark a UI element the user has clicked on, thus `:focus { outline: 0 }` is common, even though it is poor for accessibility.
+
+While a custom design solution would be best, a simple solution to detect when an outline is needed and when it is not is a nice workaround:
+
+```js
+import { UnderConstruction } from "@theorem/react";
+
+function App() {
+  return (
+    <div>
+      <List />
+      <UnderConstruction>
+        <button>Admin area</button>
+      </UnderConstruction>
+    </div>
+  );
+}
+```
+
 ## useCallback
 
 React’s useCallback has no semantic guarantee to preserve the identity of the function, and that is [unclear in the documentation](https://github.com/reactjs/reactjs.org/issues/2334).
