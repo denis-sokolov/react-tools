@@ -34,6 +34,13 @@ function objectToString(selector: string, obj: StyleObject) {
   return `${selector}{${body}}${nested}`;
 }
 
+export function globalCss(window: Window, css: string) {
+  const doc = window.document;
+  const s = doc.createElement("style");
+  s.innerHTML = css;
+  doc.head.appendChild(s);
+}
+
 export function scopedStyles(
   prefix: string,
   styles: StyleObject,
