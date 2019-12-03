@@ -36,7 +36,9 @@
     "npm": ">=6.13.1"
   },
   "files": [
-    "dist/**/*"
+    "dist/**/*",
+    "!dist/**/*.test.*",
+    "!dist/lib/test"
   ],
   "license": "ISC",
   "main": "dist/index.js",
