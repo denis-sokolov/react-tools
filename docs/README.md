@@ -189,6 +189,14 @@ return (
 );
 ```
 
+## useRerender
+
+When subscribing to some events and rendering data directly from another source, without using useState or useReducer, one needs to notify React to rerender.
+
+```jsx
+const rerender = useRerender();
+```
+
 ## useUniqueId
 
 `useUniqueId` is most commonly useful for label/input pairs, but can be used for anything that needs an id that is unique and stable for a particular component instance.
