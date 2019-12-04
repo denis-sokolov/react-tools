@@ -6,7 +6,7 @@ Supports tree-shaking, so no bloating your bundle size.
 
 Comes with TypeScript types if you use TypeScript.
 
-```jsx
+```sh
 npm install --save @theorem/react
 ```
 
