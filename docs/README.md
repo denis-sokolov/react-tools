@@ -144,6 +144,21 @@ function App() {
 }
 ```
 
+## useCatchAsync
+
+When asynchronous effects in React components throw, by default they can not communicate with React to inform which component failed. This prevents us from rendering a proper partial or full crash screen, and instead leaves the application in a corrupt state.
+
+useCatchAsync creates this connection explicitly and an async error will be handled using the standard React error handling mechanism:
+
+```jsx
+const catchAsync = useCatchAsync();
+return <button onClick={catchAsync(async function() {
+  await something();
+}} />;
+```
+
+Also see useCrash.
+
 ## useCallback
 
 React’s useCallback has no semantic guarantee to preserve the identity of the function, and that is [unclear in the documentation](https://github.com/reactjs/reactjs.org/issues/2334).
@@ -188,6 +203,8 @@ return (
   ></div>
 );
 ```
+
+Also see useCatchAsync.
 
 ## useRerender
 
