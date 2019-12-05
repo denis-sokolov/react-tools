@@ -144,6 +144,27 @@ function App() {
 }
 ```
 
+## Spinner
+
+Spinner component ensures that the user is never stuck with an infinite spinner on the screen. By default, after a minute of being displayed, the spinner will crash. A proper crash screen with an apology is better than a stuck animation that does not represent any activity.
+
+The Spinner comes with a small, simple animation out of the box, but it can be customized.
+
+```jsx
+// Simplest use
+return <Spinner />;
+
+// Options
+return <Spinner fullScreen timeoutMs={90000} />;
+
+// Customized visuals
+const MySpinner = () => (
+  <Spinner>
+    <img src={myImage} />
+  </Spinner>
+);
+```
+
 ## useCatchAsync
 
 When asynchronous effects in React components throw, by default they can not communicate with React to inform which component failed. This prevents us from rendering a proper partial or full crash screen, and instead leaves the application in a corrupt state.
