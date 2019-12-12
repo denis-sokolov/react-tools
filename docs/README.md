@@ -123,6 +123,10 @@ Instead, use `forwardClick`. Full support for propagation and the only place in 
 </tr>
 ```
 
+## Routing
+
+[Routing tools documentation](./routing.md).
+
 ## smartOutline
 
 In most designs we do not want to mark a UI element the user has clicked on, thus `:focus { outline: 0 }` is common, even though it is poor for accessibility.
