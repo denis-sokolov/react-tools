@@ -49,7 +49,7 @@ export function ActionArea(props: Props) {
   const className = props.className || "";
   const currentPath =
     props.currentPath ||
-    (typeof window === "undefined" ? "" : window.document.location.pathname);
+    (typeof location !== "undefined" ? location.pathname : "");
 
   if (
     typeof action === "function" ||
