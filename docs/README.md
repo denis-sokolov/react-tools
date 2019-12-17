@@ -19,6 +19,7 @@ by using one foundation element under them all. Switch from one to another witho
 <PrimaryButton action="/">Back to dashboard</PrimaryButton>
 <ClickableText action={() => setOpen(true)}>More details</ClickableText>
 <ClickableText action={{ newWindow: "https://example.com/" }}>Visit our support channel</ClickableText>
+<ClickableText action={{ download: "archive.zip", url: "https://example.com/" }}>Download your data</ClickableText>
 <PrimaryButton action="submit">Send email</PrimaryButton>
 ```
 

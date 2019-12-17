@@ -20,6 +20,16 @@ test("ActionArea link in newWindow", t => {
   t.is(link.prop("target"), "_blank");
 });
 
+test("ActionArea download link", t => {
+  const link = render(
+    <ActionArea action={{ download: "name", url: "/" }}>Homepage</ActionArea>
+  );
+  t.is(link.text(), "Homepage");
+  t.true(link.is("a"));
+  t.is(link.prop("href"), "/");
+  t.is(link.prop("download"), "name");
+});
+
 test("ActionArea link has base styles", t => {
   const link = render(<ActionArea action="/">Homepage</ActionArea>);
   const className = link.prop("className");

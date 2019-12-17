@@ -7,6 +7,8 @@ export type Action =
   | string
   // URL in new window
   | { newWindow: string }
+  // URL downloaded
+  | { download: string; url: string }
   // JavaScript callback
   | (() => void)
   // Avoid using mousedown, regular click above is preferred
@@ -87,12 +89,17 @@ export function ActionArea(props: Props) {
 
   if (
     typeof action === "string" ||
-    (typeof action === "object" && "newWindow" in action)
+    (typeof action === "object" && "newWindow" in action) ||
+    (typeof action === "object" && "download" in action)
   ) {
-    const [url, newWindow] =
-      typeof action === "string" ? [action, false] : [action.newWindow, true];
+    const [url, newWindow, download] =
+      typeof action === "string"
+        ? [action, false, undefined]
+        : "download" in action
+        ? [action.url, false, action.download]
+        : [action.newWindow, true, undefined];
 
-    if (url === currentPath) {
+    if (url === currentPath && !download) {
       return (
         <span
           className={`${baseStyles} ${disabledStyles} ${className} current`}
@@ -105,6 +112,7 @@ export function ActionArea(props: Props) {
     return (
       <a
         className={`${baseStyles} ${className}`}
+        download={download}
         href={url}
         target={newWindow ? "_blank" : undefined}
       >
