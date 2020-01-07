@@ -49,65 +49,44 @@ const disabledStyles = scopedStyles("ActionArea-disabled", {
 export function ActionArea(props: Props) {
   const { action, children } = props;
   const className = props.className || "";
-  const currentPath =
-    props.currentPath ||
-    (typeof location !== "undefined" ? location.pathname : "");
 
-  if (
-    typeof action === "function" ||
-    (typeof action === "object" && "mousedown" in action)
-  ) {
-    const [onClick, onMouseDown] =
-      typeof action === "function"
-        ? [action, undefined]
-        : [undefined, action.mousedown];
+  const button = function(opts: {
+    onClick?: () => void;
+    onMouseDown?: () => void;
+    type?: "submit";
+  }) {
+    const { onClick, onMouseDown, type } = opts;
     return (
       <button
         className={`${baseStyles} ${className}`}
         onClick={onClick}
         onMouseDown={onMouseDown}
-        type="button"
+        type={type || "button"}
       >
         {children}
       </button>
     );
-  }
+  };
 
-  if (action === "submit")
-    return (
-      <button className={`${baseStyles} ${className}`} type="submit">
-        {children}
-      </button>
-    );
-
-  if (action === "disabled")
+  const span = function(className: string) {
     return (
       <span className={`${baseStyles} ${disabledStyles} ${className}`}>
         {children}
       </span>
     );
+  };
 
-  if (
-    typeof action === "string" ||
-    (typeof action === "object" && "newWindow" in action) ||
-    (typeof action === "object" && "download" in action)
+  const link = function(
+    url: string,
+    opts: { download?: string; newWindow?: boolean } = {}
   ) {
-    const [url, newWindow, download] =
-      typeof action === "string"
-        ? [action, false, undefined]
-        : "download" in action
-        ? [action.url, false, action.download]
-        : [action.newWindow, true, undefined];
+    const { className, children } = props;
+    const currentPath =
+      props.currentPath ||
+      (typeof location !== "undefined" ? location.pathname : "");
+    const { download, newWindow } = opts;
 
-    if (url === currentPath && !download) {
-      return (
-        <span
-          className={`${baseStyles} ${disabledStyles} ${className} current`}
-        >
-          {children}
-        </span>
-      );
-    }
+    if (url === currentPath && !download) return span(`${className} current`);
 
     return (
       <a
@@ -119,7 +98,18 @@ export function ActionArea(props: Props) {
         {children}
       </a>
     );
-  }
+  };
+
+  if (action === "disabled") return span(className);
+  if (action === "submit") return button({ type: "submit" });
+
+  if (typeof action === "function") return button({ onClick: action });
+  if (typeof action === "string") return link(action);
+
+  if ("download" in action)
+    return link(action.url, { download: action.download });
+  if ("mousedown" in action) return button({ onMouseDown: action.mousedown });
+  if ("newWindow" in action) return link(action.newWindow, { newWindow: true });
 
   throw new Error("Unexpected action");
 }
