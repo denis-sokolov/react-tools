@@ -1,6 +1,6 @@
 # Theorem React tools
 
-Commonly reused pieces of tooling for React projects. See [the reference](./docs/README.md).
+Commonly reused pieces of tooling for React projects. See [the documentation](./docs/README.md).
 
 Supports tree-shaking, so no bloating your bundle size.
 
