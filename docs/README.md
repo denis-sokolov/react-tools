@@ -135,18 +135,10 @@ In most designs we do not want to mark a UI element the user has clicked on, thu
 While a custom design solution would be best, a simple solution to detect when an outline is needed and when it is not is a nice workaround:
 
 ```js
-import { UnderConstruction } from "@theorem/react";
+import { smartOutline } from "@theorem/react";
 
-function App() {
-  return (
-    <div>
-      <List />
-      <UnderConstruction>
-        <button>Admin area</button>
-      </UnderConstruction>
-    </div>
-  );
-}
+// Top level of your application
+smartOutline();
 ```
 
 ## Spinner
