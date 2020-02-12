@@ -10,21 +10,24 @@
     "ci": "npm run verify",
     "format": "prettier --write '{docs,src,typings}/**/*.{json,md,ts,tsx}' *.{json,md,ts,tsx}",
     "format-verify": "prettier --check '{docs,src,typings}/**/*.{json,md,ts,tsx}' *.{json,md,ts,tsx}",
+    "lint": "eslint --ext js,jsx,ts,tsx src",
     "prepublishOnly": "npm run verify && npm run build",
     "start": "ava --watch",
     "start-building": "rm -rf dist && NODE_ENV=production tsc --watch",
     "test": "ava",
     "typecheck": "tsc --noEmit",
-    "verify": "npm run typecheck && npm run format-verify && npm run test"
+    "verify": "npm run typecheck && npm run lint && npm run format-verify && npm run test"
   },
   "dependencies": {
     "react-nano-spinner": "^1.3.0",
     "use-memo-one": "^1.1.1"
   },
   "devDependencies": {
+    "@theorem/eslint-plugin": "^1.1.0",
     "@types/react": "^16.9.13",
     "@types/react-test-renderer": "^16.9.1",
     "ava": "^2.4.0",
+    "eslint": "^6.8.0",
     "prettier": "^1.19.1",
     "react": "^16.12.0",
     "react-test-renderer": "^16.12.0",
