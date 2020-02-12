@@ -43,7 +43,7 @@
   ],
   "license": "ISC",
   "main": "dist/index.js",
-  "repository": "git@github.com:citrusbyte/react-tools.git",
+  "repository": "git@github.com:Theorem/react-tools.git",
   "sideEffects": false,
   "ava": {
     "babel": false,
