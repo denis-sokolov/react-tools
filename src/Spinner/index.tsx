@@ -18,7 +18,7 @@ export function Spinner(props: Props) {
   useEffect(() => {
     const i = setInterval(rerender, 1000);
     return () => clearInterval(i);
-  });
+  }, [rerender]);
 
   const timeout = timeoutMs ?? 60000;
   if (mountedAt + timeout < Date.now())
