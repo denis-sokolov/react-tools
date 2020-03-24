@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import NanoSpinner from "react-nano-spinner";
-import { useRerender } from "../useRerender";
+import { useRerenderEvery } from "../useRerender";
 
 type Props = {
   children?: React.ReactNode;
@@ -12,13 +12,9 @@ export function Spinner(props: Props) {
   const { children, fullScreen, timeoutMs } = props;
   const contents = children || <NanoSpinner />;
 
-  const rerender = useRerender();
-  const [mountedAt] = useState(Date.now());
+  useRerenderEvery(1000);
 
-  useEffect(() => {
-    const i = setInterval(rerender, 1000);
-    return () => clearInterval(i);
-  }, [rerender]);
+  const [mountedAt] = useState(Date.now());
 
   const timeout = timeoutMs ?? 60000;
   if (mountedAt + timeout < Date.now())

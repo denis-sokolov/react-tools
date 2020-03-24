@@ -232,6 +232,15 @@ When subscribing to some events and rendering data directly from another source,
 const rerender = useRerender();
 ```
 
+## useRerenderEvery
+
+When the rendering depends on the time, one needs to notify React to rerender periodically, as time changes do not trigger rerenders themselves.
+
+```jsx
+// Every second
+useRerenderEvery(1000);
+```
+
 ## useUniqueId
 
 `useUniqueId` is most commonly useful for label/input pairs, but can be used for anything that needs an id that is unique and stable for a particular component instance.
