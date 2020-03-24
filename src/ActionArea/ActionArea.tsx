@@ -68,9 +68,11 @@ export function ActionArea(props: Props) {
     );
   };
 
-  const span = function (className: string) {
+  const span = function (extraClassName = "") {
     return (
-      <span className={`${baseStyles} ${disabledStyles} ${className}`}>
+      <span
+        className={`${baseStyles} ${disabledStyles} ${className} ${extraClassName}`}
+      >
         {children}
       </span>
     );
@@ -85,7 +87,7 @@ export function ActionArea(props: Props) {
       (typeof location !== "undefined" ? location.pathname : "");
     const { download, newWindow } = opts;
 
-    if (url === currentPath && !download) return span(`${className} current`);
+    if (url === currentPath && !download) return span("current");
 
     return (
       <a
@@ -99,7 +101,7 @@ export function ActionArea(props: Props) {
     );
   };
 
-  if (action === "disabled") return span(className);
+  if (action === "disabled") return span();
   if (action === "submit") return button({ type: "submit" });
 
   if (typeof action === "function") return button({ onClick: action });
