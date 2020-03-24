@@ -9,7 +9,7 @@ type Props = {
 export class ErrorBoundary extends React.Component<Props> {
   state = { error: undefined as Error | undefined };
 
-  componentDidCatch(error: Error, _info: unknown) {
+  componentDidCatch(error: Error) {
     this.props.reportError(error);
     this.setState({ error });
   }
