@@ -18,6 +18,11 @@ test("ActionArea link in newWindow", (t) => {
   t.true(link.is("a"));
   t.is(link.prop("href"), "/");
   t.is(link.prop("target"), "_blank");
+  const rel = link.prop("rel") || "";
+  if (typeof rel !== "string")
+    throw new Error(`Unexpected rel type ${typeof rel}`);
+  const rels = rel.split(" ");
+  t.true(rels.includes("noopener"));
 });
 
 test("ActionArea download link", (t) => {

@@ -94,6 +94,7 @@ export function ActionArea(props: Props) {
         className={`${baseStyles} ${className}`}
         download={download}
         href={url}
+        rel={newWindow ? "noopener" : undefined}
         target={newWindow ? "_blank" : undefined}
       >
         {children}
