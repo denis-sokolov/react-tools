@@ -26,7 +26,7 @@
     "@theorem/eslint-plugin": "^1.1.0",
     "@types/react": "^16.9.25",
     "@types/react-test-renderer": "^16.9.2",
-    "ava": "^2.4.0",
+    "ava": "^3.5.1",
     "eslint": "^6.8.0",
     "prettier": "^2.0.0",
     "react": "^16.13.1",
@@ -47,23 +47,5 @@
   "license": "ISC",
   "main": "dist/index.js",
   "repository": "git@github.com:Theorem/react-tools.git",
-  "sideEffects": false,
-  "ava": {
-    "babel": false,
-    "compileEnhancements": false,
-    "extensions": [
-      "ts",
-      "tsx"
-    ],
-    "files": [
-      "src/**/*.test.{js,jsx,ts,tsx}"
-    ],
-    "require": [
-      "ts-node/register/transpile-only"
-    ],
-    "sources": [
-      "src/**/*.{js,jsx,ts,tsx}"
-    ],
-    "timeout": "3s"
-  }
+  "sideEffects": false
 }
