@@ -80,7 +80,6 @@ export function ActionArea(props: Props) {
     url: string,
     opts: { download?: string; newWindow?: boolean } = {}
   ) {
-    const { className, children } = props;
     const currentPath =
       props.currentPath ||
       (typeof location !== "undefined" ? location.pathname : "");
