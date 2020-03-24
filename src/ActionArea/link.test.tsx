@@ -3,14 +3,14 @@ import test from "ava";
 import { render } from "../lib/test";
 import { ActionArea } from "./ActionArea";
 
-test("ActionArea link", t => {
+test("ActionArea link", (t) => {
   const link = render(<ActionArea action="/">Homepage</ActionArea>);
   t.is(link.text(), "Homepage");
   t.true(link.is("a"));
   t.is(link.prop("href"), "/");
 });
 
-test("ActionArea link in newWindow", t => {
+test("ActionArea link in newWindow", (t) => {
   const link = render(
     <ActionArea action={{ newWindow: "/" }}>Homepage</ActionArea>
   );
@@ -20,7 +20,7 @@ test("ActionArea link in newWindow", t => {
   t.is(link.prop("target"), "_blank");
 });
 
-test("ActionArea download link", t => {
+test("ActionArea download link", (t) => {
   const link = render(
     <ActionArea action={{ download: "name", url: "/" }}>Homepage</ActionArea>
   );
@@ -30,14 +30,14 @@ test("ActionArea download link", t => {
   t.is(link.prop("download"), "name");
 });
 
-test("ActionArea link has base styles", t => {
+test("ActionArea link has base styles", (t) => {
   const link = render(<ActionArea action="/">Homepage</ActionArea>);
   const className = link.prop("className");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-base"));
 });
 
-test("ActionArea link is marked current", t => {
+test("ActionArea link is marked current", (t) => {
   const link = render(
     <ActionArea action="/" currentPath="/">
       Homepage
@@ -49,7 +49,7 @@ test("ActionArea link is marked current", t => {
   t.true(className.split(" ").includes("current"));
 });
 
-test("ActionArea link has custom styles", t => {
+test("ActionArea link has custom styles", (t) => {
   const link = render(
     <ActionArea action="/" className="Q">
       Homepage
@@ -60,7 +60,7 @@ test("ActionArea link has custom styles", t => {
   t.true(className.split(" ").includes("Q"));
 });
 
-test("ActionArea link takes custom className and works together with current", t => {
+test("ActionArea link takes custom className and works together with current", (t) => {
   const link = render(
     <ActionArea action="/" className="Q" currentPath="/">
       Homepage
@@ -72,7 +72,7 @@ test("ActionArea link takes custom className and works together with current", t
   t.true(className.split(" ").includes("current"));
 });
 
-test("ActionArea link current has disabled styles", t => {
+test("ActionArea link current has disabled styles", (t) => {
   const link = render(
     <ActionArea action="/" currentPath="/">
       Homepage

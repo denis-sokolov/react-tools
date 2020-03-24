@@ -36,7 +36,7 @@ export function Spinner(props: Props) {
           position: "absolute",
           right: 0,
           top: 0,
-          zIndex: 2
+          zIndex: 2,
         }}
       >
         <div>{contents}</div>

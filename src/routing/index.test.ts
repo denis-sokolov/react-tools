@@ -4,10 +4,10 @@ import {
   navigate,
   Redirect,
   useQueryParam,
-  useRerenderOnRouting
+  useRerenderOnRouting,
 } from ".";
 
-test("routing API", t => {
+test("routing API", (t) => {
   t.is(typeof initRouting, "function");
   t.is(typeof navigate, "function");
   t.is(typeof Redirect, "function");

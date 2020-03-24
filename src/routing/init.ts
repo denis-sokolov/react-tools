@@ -23,7 +23,7 @@ export function initRouting() {
 }
 
 function initScrolling() {
-  window.addEventListener("popstate", function() {
+  window.addEventListener("popstate", function () {
     const hash = location.hash;
     if (!hash) return;
     const el = document.querySelector(hash);

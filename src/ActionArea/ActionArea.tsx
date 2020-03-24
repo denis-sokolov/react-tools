@@ -36,21 +36,21 @@ const baseStyles = scopedStyles("ActionArea-base", {
   padding: 0,
   color: "inherit",
   fontWeight: "inherit",
-  textDecoration: "none"
+  textDecoration: "none",
 });
 
 const disabledStyles = scopedStyles("ActionArea-disabled", {
   pointerEvents: "none" as const,
   // Must explicitly change the cursor to defualt. Otherwise, when "pointer-events: none"
   // is applied on click, the cursor will not return to default until the mouse is moved.
-  cursor: "default"
+  cursor: "default",
 });
 
 export function ActionArea(props: Props) {
   const { action, children } = props;
   const className = props.className || "";
 
-  const button = function(opts: {
+  const button = function (opts: {
     onClick?: () => void;
     onMouseDown?: () => void;
     type?: "submit";
@@ -68,7 +68,7 @@ export function ActionArea(props: Props) {
     );
   };
 
-  const span = function(className: string) {
+  const span = function (className: string) {
     return (
       <span className={`${baseStyles} ${disabledStyles} ${className}`}>
         {children}
@@ -76,7 +76,7 @@ export function ActionArea(props: Props) {
     );
   };
 
-  const link = function(
+  const link = function (
     url: string,
     opts: { download?: string; newWindow?: boolean } = {}
   ) {

@@ -29,14 +29,14 @@ ActionArea starts with no styles, so create a few visual components that customi
 // For an example
 // .myClickableTextStyles { color: blue }
 // .myClickableTextStyles:hover { text-decoration: underline }
-const ClickableText = props => (
+const ClickableText = (props) => (
   <ActionArea className="myClickableTextStyles" {...props} />
 );
 
 // For an example
 // .myPrimaryButtonStyles { border: 1px solid blue }
 // .myPrimaryButtonStyles:hover { border-color: red }
-const PrimaryButton = props => (
+const PrimaryButton = (props) => (
   <ActionArea className="myPrimaryButtonStyles" {...props} />
 );
 ```
@@ -44,7 +44,7 @@ const PrimaryButton = props => (
 In TypeScript, you can pass-through all parameters or explicitly define props by re-using Action type:
 
 ```jsx
-const SecondaryButton: typeof ActionArea = props => <ActionArea {...props} />;
+const SecondaryButton: typeof ActionArea = (props) => <ActionArea {...props} />;
 
 import { ActionArea, Action } from "@theorem/react";
 const TertiaryButton = (props: { action: Action }) => (
@@ -75,7 +75,7 @@ function App() {
   return (
     <ErrorBoundary
       component={MyCrashScreen}
-      reportError={error => toSentry(error)}
+      reportError={(error) => toSentry(error)}
     >
       <Routes />
     </ErrorBoundary>
@@ -116,7 +116,7 @@ A common implementation uses a div with a click handler for a container, and `st
 Instead, use `forwardClick`. Full support for propagation and the only place in the code to edit is the container:
 
 ```jsx
-<tr onClick={e => forwardClick(e, "[data-email-title]")}>
+<tr onClick={(e) => forwardClick(e, "[data-email-title]")}>
   <button>Star</button>
   <a href={email.href} data-email-title>
     {email.title}

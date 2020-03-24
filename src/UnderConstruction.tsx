@@ -4,12 +4,12 @@ import { scopedStyles } from "./lib";
 const outer = scopedStyles("UnderConstruction", {
   cursor: "not-allowed",
   "&:active": {
-    outline: "2px solid red !important"
-  }
+    outline: "2px solid red !important",
+  },
 });
 
 const inner = scopedStyles("UnderConstruction", {
-  pointerEvents: "none"
+  pointerEvents: "none",
 });
 
 type Props = {

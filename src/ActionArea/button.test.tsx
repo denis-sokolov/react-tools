@@ -3,7 +3,7 @@ import test from "ava";
 import { render } from "../lib/test";
 import { ActionArea } from "./ActionArea";
 
-test("ActionArea button", t => {
+test("ActionArea button", (t) => {
   const f = () => {};
   const button = render(<ActionArea action={f}>Show</ActionArea>);
   t.is(button.text(), "Show");
@@ -12,14 +12,14 @@ test("ActionArea button", t => {
   t.is(button.prop("onClick"), f);
 });
 
-test("ActionArea button has base styles", t => {
+test("ActionArea button has base styles", (t) => {
   const button = render(<ActionArea action={() => {}}>Show</ActionArea>);
   const className = button.prop("className");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-base"));
 });
 
-test("ActionArea button has custom styles", t => {
+test("ActionArea button has custom styles", (t) => {
   const button = render(
     <ActionArea action={() => {}} className="Q">
       Show

@@ -12,12 +12,12 @@ function objectToString(selector: string, obj: StyleObject) {
       if (typeof value === "object") return "";
       const cssProperty = property.replace(
         /[A-Z]/g,
-        c => "-" + c.toLowerCase()
+        (c) => "-" + c.toLowerCase()
       );
       const cssValue = typeof value === "number" ? `${value}px` : value;
       return `${cssProperty}:${cssValue}`;
     })
-    .filter(row => row)
+    .filter((row) => row)
     .join(";");
   const nested: string = Object.entries(obj)
     .map(([property, value]) => {

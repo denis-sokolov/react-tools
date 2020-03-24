@@ -8,6 +8,6 @@ export function makeSampleUser(): User {
   return {
     email: "john@example.com",
     id: "id123",
-    isAdmin: true
+    isAdmin: true,
   };
 }

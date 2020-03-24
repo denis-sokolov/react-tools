@@ -12,9 +12,9 @@ import { clean } from "./clean";
   ["/foo?bar", "/foo?bar"],
   ["/foo?bar&", "/foo?bar"],
   ["/foo?bar=", "/foo?bar"],
-  ["/foo/bar//quux/?baz=", "/foo/bar/quux?baz"]
+  ["/foo/bar//quux/?baz=", "/foo/bar/quux?baz"],
 ].forEach(([input, expected]) => {
-  test(`routing cleans a href ${input}`, t => {
+  test(`routing cleans a href ${input}`, (t) => {
     t.is(clean(input), expected);
   });
 });

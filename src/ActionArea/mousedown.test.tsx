@@ -3,7 +3,7 @@ import test from "ava";
 import { render } from "../lib/test";
 import { ActionArea } from "./ActionArea";
 
-test("ActionArea mousedown", t => {
+test("ActionArea mousedown", (t) => {
   const f = () => {};
   const button = render(
     <ActionArea action={{ mousedown: f }}>Show</ActionArea>
@@ -14,7 +14,7 @@ test("ActionArea mousedown", t => {
   t.is(button.prop("onMouseDown"), f);
 });
 
-test("ActionArea mousedown has base styles", t => {
+test("ActionArea mousedown has base styles", (t) => {
   const button = render(
     <ActionArea action={{ mousedown: () => {} }}>Show</ActionArea>
   );
@@ -23,7 +23,7 @@ test("ActionArea mousedown has base styles", t => {
   t.true(className.includes("-base"));
 });
 
-test("ActionArea mousedown has custom styles", t => {
+test("ActionArea mousedown has custom styles", (t) => {
   const button = render(
     <ActionArea action={{ mousedown: () => {} }} className="Q">
       Show

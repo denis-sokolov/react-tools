@@ -12,7 +12,7 @@ type QueryParamSetter = {
 };
 
 export function useQueryParam(name: string): [string, QueryParamSetter] {
-  const link = function(value: string) {
+  const link = function (value: string) {
     const u = new URL(location.href);
     u.hash = "";
     u.searchParams.set(name, value);

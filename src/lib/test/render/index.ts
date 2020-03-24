@@ -8,10 +8,10 @@ function wrapper(node: ReactTestRenderer) {
     text: () =>
       node.root
         .findAll(() => true)
-        .map(el =>
-          el.children.filter(child => typeof child === "string").join("")
+        .map((el) =>
+          el.children.filter((child) => typeof child === "string").join("")
         )
-        .join("")
+        .join(""),
   };
 }
 

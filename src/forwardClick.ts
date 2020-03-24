@@ -44,7 +44,7 @@ export function forwardClick(e: React.MouseEvent, selector: string) {
 
   if (
     actualClickLocation === forwardTarget ||
-    isDescendantOf(actualClickLocation, el => el === forwardTarget)
+    isDescendantOf(actualClickLocation, (el) => el === forwardTarget)
   )
     return;
 
