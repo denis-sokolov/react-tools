@@ -1,3 +1,9 @@
+# 1.4.0
+
+- Add useRerenderEvery
+- Fix ActionArea new window links not using noopener
+- Fix Spinner sometimes having timing issues
+
 # 1.3.0
 
 - Add download feature to ActionArea
