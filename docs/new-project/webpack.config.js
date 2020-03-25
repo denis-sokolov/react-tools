@@ -10,11 +10,11 @@ const isDevelopment = process.env.NODE_ENV === "development";
 const isProduction = process.env.NODE_ENV === "production";
 if (!isDevelopment && !isProduction) throw new Error("Unexpected NODE_ENV");
 
-module.exports = async function() {
+module.exports = async function () {
   return {
     devtool: isDevelopment ? "eval" : "hidden-source-map",
     entry: {
-      main: ["react-hot-loader/patch", "./src/index.tsx"]
+      main: ["react-hot-loader/patch", "./src/index.tsx"],
     },
     mode: isDevelopment ? "development" : "production",
     module: {
@@ -25,17 +25,17 @@ module.exports = async function() {
             {
               loader: "babel-loader",
               options: {
-                plugins: ["react-hot-loader/babel"]
-              }
+                plugins: ["react-hot-loader/babel"],
+              },
             },
             {
               loader: "ts-loader",
               options: {
                 compilerOptions: { module: "es2015" },
-                transpileOnly: true
-              }
-            }
-          ]
+                transpileOnly: true,
+              },
+            },
+          ],
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
@@ -43,13 +43,13 @@ module.exports = async function() {
             loader: "url-loader",
             options: {
               limit: 8192,
-              name: "[name]-[hash].[ext]"
-            }
-          }
+              name: "[name]-[hash].[ext]",
+            },
+          },
         },
         {
           test: /\.css$/,
-          use: ["style-loader", "css-loader"]
+          use: ["style-loader", "css-loader"],
         },
         {
           test: /\.(ttf|eot|woff|woff2)$/,
@@ -57,29 +57,31 @@ module.exports = async function() {
             loader: "url-loader",
             options: {
               limit: 8192,
-              name: "[name]-[hash].[ext]"
-            }
-          }
-        }
-      ]
+              name: "[name]-[hash].[ext]",
+            },
+          },
+        },
+      ],
     },
     output: {
       filename: "[name].[hash].js",
       path: path.resolve(__dirname, "build"),
-      publicPath: "/"
+      publicPath: "/",
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: "src/index.html"
-      })
+        template: "src/index.html",
+      }),
       // new CopyWebpackPlugin(["./src/favicon.ico"])
     ],
     resolve: {
       alias: {
-        "react-dom": "@hot-loader/react-dom"
+        "react-dom": "@hot-loader/react-dom",
       },
       extensions: [".ts", ".tsx", ".js"],
-      plugins: [new TsconfigPathsPlugin({ extensions: [".ts", ".tsx", ".js"] })]
-    }
+      plugins: [
+        new TsconfigPathsPlugin({ extensions: [".ts", ".tsx", ".js"] }),
+      ],
+    },
   };
 };
