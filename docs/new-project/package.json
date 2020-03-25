@@ -2,8 +2,8 @@
   "scripts": {
     "build": "rm -rf build && NODE_ENV=production webpack",
     "ci": "npm run verify",
-    "format": "prettier --write 'src/**/*.{css,html,js,json,jsx,md,ts,tsx}' *.{css,html,js,json,jsx,md,ts,tsx}",
-    "format-verify": "prettier --check 'src/**/*.{css,html,js,json,jsx,md,ts,tsx}' *.{css,html,js,json,jsx,md,ts,tsx}",
+    "format": "prettier --write 'src/**/*.{css,html,js,json,jsx,md,ts,tsx}' '*.{css,html,js,json,jsx,md,ts,tsx}'",
+    "format-verify": "prettier --check 'src/**/*.{css,html,js,json,jsx,md,ts,tsx}' '*.{css,html,js,json,jsx,md,ts,tsx}'",
     "start": "NODE_ENV=development webpack-dev-server --history-api-fallback --hot --host 127.0.0.1 --port 3123",
     "typecheck": "tsc",
     "verify": "npm run typecheck && npm run format-verify"
