@@ -1,8 +1,8 @@
 module.exports = {
   env: {
     browser: true,
-    node: true
+    node: true,
   },
   extends: ["plugin:@theorem/opinionated"],
-  plugins: ["@theorem"]
+  plugins: ["@theorem"],
 };
