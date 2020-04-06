@@ -23,7 +23,7 @@
     "use-memo-one": "^1.1.1"
   },
   "devDependencies": {
-    "@theorem/eslint-plugin": "^2.0.1",
+    "@theorem/eslint-plugin": "^3.0.0",
     "@types/react": "^16.9.25",
     "@types/react-test-renderer": "^16.9.2",
     "ava": "^3.5.1",
