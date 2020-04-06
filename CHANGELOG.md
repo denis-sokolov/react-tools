@@ -1,3 +1,8 @@
+# 1.4.1
+
+- smartOutline: works with pseudo-elements
+- smartOutline: does not crash in non-window env
+
 # 1.4.0
 
 - Add useRerenderEvery
