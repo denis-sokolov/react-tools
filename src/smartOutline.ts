@@ -1,7 +1,10 @@
 import { globalCss } from "./lib";
 
+const globalWindow = typeof window === "undefined" ? undefined : window;
+
 export function smartOutline(win?: Window) {
-  const w = win || window;
+  const w = win || globalWindow;
+  if (!w) return;
   const doc = w.document;
   globalCss(w, `body.pointer-interaction * { outline: 0 !important }`);
   window.addEventListener("keydown", (e) => {
