@@ -6,7 +6,16 @@ export function smartOutline(win?: Window) {
   const w = win || globalWindow;
   if (!w) return;
   const doc = w.document;
-  globalCss(w, `body.pointer-interaction * { outline: 0 !important }`);
+  globalCss(
+    w,
+    `
+    body.pointer-interaction *,
+    body.pointer-interaction *::before,
+    body.pointer-interaction *::after {
+      outline: 0 !important
+    }
+  `
+  );
   window.addEventListener("keydown", (e) => {
     const body = doc.querySelector("body");
     if (!body) return;
