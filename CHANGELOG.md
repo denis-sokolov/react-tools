@@ -1,3 +1,7 @@
+# 1.5.0
+
+- routing: handleLinkClicks
+
 # 1.4.1
 
 - smartOutline: works with pseudo-elements
