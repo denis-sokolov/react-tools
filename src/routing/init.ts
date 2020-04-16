@@ -1,4 +1,4 @@
-import { makeClickHandler } from "./clicks";
+import { handleLinkClicks } from "./clicks";
 import { clean } from "./clean";
 import { navigate } from "./navigate";
 
@@ -13,7 +13,7 @@ function initClean() {
 }
 
 function initClicks() {
-  document.addEventListener("click", makeClickHandler());
+  handleLinkClicks(navigate);
 }
 
 export function initRouting() {

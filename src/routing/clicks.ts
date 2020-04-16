@@ -1,5 +1,3 @@
-import { navigate } from "./navigate";
-
 function findLink(
   el: EventTarget | HTMLElement | null
 ): HTMLLinkElement | undefined {
@@ -8,8 +6,8 @@ function findLink(
   return findLink(el.parentElement);
 }
 
-export function makeClickHandler() {
-  return function (e: MouseEvent) {
+export function handleLinkClicks(f: (url: URL) => void) {
+  const handler = function (e: MouseEvent) {
     if (e.button !== 0) return;
     if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
     if (e.defaultPrevented) return;
@@ -22,6 +20,8 @@ export function makeClickHandler() {
     if (url.origin !== location.origin) return;
 
     e.preventDefault();
-    navigate(url);
+    f(url);
   };
+  document.addEventListener("click", handler);
+  return () => document.removeEventListener("click", handler);
 }

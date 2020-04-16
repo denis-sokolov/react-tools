@@ -23,6 +23,19 @@ function Home() {
 
 In the above we call `initRouting` once to globally handle clicks on links and convert them into `pushState` events in the browser. We then call `useRerenderOnRouting` to register rerendering of the app when the url changes. This is all we need from the library.
 
+If you have another router in place already, but you’d like to provide user-friendly link behavior, use `handleLinkClicks`:
+
+```ts
+import { handleLinkClicks } from "@theorem/react";
+function App() {
+  useEffect(() =>
+    handleLinkClicks(function (url) {
+      console.log("Navigate to", url.pathname);
+    })
+  );
+}
+```
+
 ## Path
 
 In addition to `location.pathname`, `<a>`, there are other tools to work with the path.

@@ -1,3 +1,4 @@
+export { handleLinkClicks } from "./clicks";
 export { initRouting } from "./init";
 export { navigate } from "./navigate";
 export { useQueryParam } from "./queryParams";
