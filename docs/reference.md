@@ -204,6 +204,33 @@ const containerRef = useClickOutside(() => setOpen(false));
 return <div ref={containerRef}>Sidebar contents</div>;
 ```
 
+If you have a button outside that controls this container, you have undefined behavior with regards to which event will win. Instead, define multiple areas and the clickOutside will trigger only if the click does not fall into any of the specificied areas. Use _additionalArea_ method and provide a string key that’s unique to this instance of the _useClickOutside_.
+
+```jsx
+// Wrong
+const outside = useClickOutside(() => setOpen(false));
+return (
+  <div>
+    <button onClick={() => setOpen(true)}>Open sidebar</button>
+    <div ref={outside}>Sidebar contents</div>
+  </div>
+);
+
+// Correct
+const outside = useClickOutside(() => setOpen(false));
+return (
+  <div>
+    <button
+      ref={outside.additionalArea("myButton")}
+      onClick={() => setOpen(true)}
+    >
+      Open sidebar
+    </button>
+    <div ref={outside}>Sidebar contents</div>
+  </div>
+);
+```
+
 ## useCrash
 
 Errors thrown in async functions can not by default be traced to the originating source. So a click handler crashing does not crash the component, leaving the UI in a non-working or corrupt state.
