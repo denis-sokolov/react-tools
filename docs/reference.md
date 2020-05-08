@@ -204,6 +204,8 @@ const containerRef = useClickOutside(() => setOpen(false));
 return <div ref={containerRef}>Sidebar contents</div>;
 ```
 
+Note that this does not currently support React portals.
+
 If you have a button outside that controls this container, you have undefined behavior with regards to which event will win. Instead, define multiple areas and the clickOutside will trigger only if the click does not fall into any of the specificied areas. Use _additionalArea_ method and provide a string key that’s unique to this instance of the _useClickOutside_.
 
 ```jsx
