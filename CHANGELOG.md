@@ -1,3 +1,8 @@
+# 1.6.0
+
+- useClickOutside: switch from mousedown to click event
+- useClickOutside: allow multiple areas
+
 # 1.5.0
 
 - routing: handleLinkClicks
