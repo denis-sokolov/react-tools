@@ -10,8 +10,8 @@ export function useClickOutside(f: () => unknown) {
       if (ref.current && !ref.current.contains(el)) f();
     };
 
-    document.addEventListener("mousedown", handleExternalClick);
-    return () => document.removeEventListener("mousedown", handleExternalClick);
+    document.addEventListener("click", handleExternalClick);
+    return () => document.removeEventListener("click", handleExternalClick);
   }, [f, ref]);
 
   return useCallback(
