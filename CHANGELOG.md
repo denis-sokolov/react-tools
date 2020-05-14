@@ -1,3 +1,7 @@
+# 1.6.1
+
+- maintenance release
+
 # 1.6.0
 
 - useClickOutside: switch from mousedown to click event
