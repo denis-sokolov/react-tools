@@ -31,7 +31,7 @@ export function useClickOutside(f: () => unknown): ClickOutsideControls {
     [ref]
   );
 
-  const main: RefFunction = useCallback(additionalArea("main"), [
+  const main: RefFunction = useCallback((el) => additionalArea("main")(el), [
     additionalArea,
   ]);
 
