@@ -1,3 +1,7 @@
+# 1.7.0
+
+- Support IE11 syntactically
+
 # 1.6.1
 
 - maintenance release
