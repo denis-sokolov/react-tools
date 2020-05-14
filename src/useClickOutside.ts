@@ -24,8 +24,8 @@ export function useClickOutside(f: () => unknown): ClickOutsideControls {
     return () => document.removeEventListener("click", handleExternalClick);
   }, [f, ref]);
 
-  const additionalArea = useCallback(
-    (name: string) => (el: HTMLElement | null) => {
+  const additionalArea: (name: string) => RefFunction = useCallback(
+    (name) => (el) => {
       ref.current[name] = el;
     },
     [ref]
