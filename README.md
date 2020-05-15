@@ -2,8 +2,6 @@
 
 Commonly reused pieces of tooling for React projects. See [the documentation](./docs/README.md).
 
-Supports tree-shaking, so no bloating your bundle size.
-
 Comes with TypeScript types if you use TypeScript.
 
 ```sh

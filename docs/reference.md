@@ -1,10 +1,15 @@
 # Theorem React tools reference
 
 Import anything from below directly from the top level of the module.
-Tree-shaking in your builder should only include the items you actually use, everything else will be dropped.
 
 ```js
 import { Thing } from "@theorem/react";
+```
+
+Tree-shaking in the library is not implemented yet, so if you want to manually optimize a few kilobytes away, you can import from more specific paths. These paths are not guaranteed, but they should not change.
+
+```js
+import { useClickOutside } from "@theorem/react/dist/useClickOutside";
 ```
 
 ## ActionArea
