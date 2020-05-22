@@ -129,6 +129,20 @@ Instead, use `forwardClick`. Full support for propagation and the only place in 
 </tr>
 ```
 
+## OnlyClientSide
+
+Render something only client-side, avoiding a hydration mismatch warning if the value can’t be generated on the server.
+
+```jsx
+<OnlyClientSide>
+  <p>Current page: {location.href}</p>
+</OnlyClientSide>
+
+<OnlyClientSide butNotIf={iKnowValueIsStaticThisTime}>
+  <p>{value}</p>
+</OnlyClientSide>
+```
+
 ## Routing
 
 [Routing tools documentation](./routing.md).

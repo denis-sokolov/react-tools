@@ -1,6 +1,7 @@
 export * from "./ActionArea";
 export * from "./ErrorBoundary";
 export * from "./forwardClick";
+export * from "./OnlyClientSide";
 export * from "./routing";
 export * from "./smartOutline";
 export * from "./Spinner";
