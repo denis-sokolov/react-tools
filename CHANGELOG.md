@@ -1,3 +1,7 @@
+# 1.8.2
+
+- OnlyClientSide
+
 # 1.7.0
 
 - Support IE11 syntactically
