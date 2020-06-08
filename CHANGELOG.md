@@ -1,3 +1,7 @@
+# 1.8.3
+
+- useRerender: expose in the main export
+
 # 1.8.2
 
 - OnlyClientSide
