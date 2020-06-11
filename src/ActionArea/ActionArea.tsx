@@ -21,6 +21,7 @@ type Props = {
   children: React.ReactNode;
   className?: string;
   currentPath?: string;
+  title?: string;
 };
 
 const baseStyles = scopedStyles("ActionArea-base", {
@@ -47,7 +48,7 @@ const disabledStyles = scopedStyles("ActionArea-disabled", {
 });
 
 export function ActionArea(props: Props) {
-  const { action, children } = props;
+  const { action, children, title } = props;
   const className = props.className || "";
 
   const button = function (opts: {
@@ -62,6 +63,7 @@ export function ActionArea(props: Props) {
         onClick={onClick}
         onMouseDown={onMouseDown}
         type={type || "button"}
+        title={title}
       >
         {children}
       </button>
@@ -72,6 +74,7 @@ export function ActionArea(props: Props) {
     return (
       <span
         className={`${baseStyles} ${disabledStyles} ${className} ${extraClassName}`}
+        title={title}
       >
         {children}
       </span>
@@ -96,6 +99,7 @@ export function ActionArea(props: Props) {
         href={url}
         rel={newWindow ? "noopener" : undefined}
         target={newWindow ? "_blank" : undefined}
+        title={title}
       >
         {children}
       </a>
