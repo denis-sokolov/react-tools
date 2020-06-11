@@ -1,3 +1,7 @@
+# 1.9.0
+
+- ActionArea: title
+
 # 1.8.3
 
 - useRerender: expose in the main export
