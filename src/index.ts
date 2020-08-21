@@ -1,4 +1,5 @@
 export * from "./ActionArea";
+export * from "./color";
 export * from "./ErrorBoundary";
 export * from "./forwardClick";
 export * from "./OnlyClientSide";
