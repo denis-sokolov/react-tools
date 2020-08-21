@@ -7,8 +7,8 @@
     "importsNotUsedAsValues": "error",
     "jsx": "react",
     "lib": ["es2015", "es2016", "dom"],
-    "module": "CommonJS",
-    "moduleResolution": "node",
+    "module": "ES6",
+    "moduleResolution": "Node",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -17,7 +17,7 @@
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
-    "target": "es5"
+    "target": "ES5"
   },
   "include": ["src"]
 }
