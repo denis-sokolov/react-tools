@@ -2,6 +2,12 @@ import TestRenderer, { ReactTestRenderer } from "react-test-renderer";
 
 function wrapper(node: ReactTestRenderer) {
   const tree = node.toJSON();
+  if (Array.isArray(tree))
+    return {
+      is: () => false,
+      prop: (): unknown => undefined,
+      text: () => "",
+    };
   return {
     is: (element: string) => tree?.type === element,
     prop: (name: string): unknown => tree?.props[name],
