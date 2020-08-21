@@ -1,3 +1,8 @@
+# 2.0.0
+
+- Implement tree-shaking
+- Add color functions
+
 # 1.9.0
 
 - ActionArea: title
