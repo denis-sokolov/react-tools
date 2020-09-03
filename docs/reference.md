@@ -129,6 +129,8 @@ function App() {
 }
 ```
 
+For conditional display, use `<UnderConstruction onlyWhen={condition} />`
+
 ## forwardClick
 
 Consider a list of emails in Gmail. Every row has small buttons: check, star, arhive, and others, yet a click on the containing entire row should open an email.

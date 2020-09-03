@@ -14,10 +14,12 @@ const inner = scopedStyles("UnderConstruction", {
 
 type Props = {
   children: React.ReactNode;
+  onlyWhen?: boolean;
 };
 
 export function UnderConstruction(props: Props) {
-  const { children } = props;
+  const { children, onlyWhen } = props;
+  if (onlyWhen !== undefined && !onlyWhen) return <>{children}</>;
   return (
     <div className={outer}>
       <div className={inner}>{children}</div>
