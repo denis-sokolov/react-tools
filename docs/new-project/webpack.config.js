@@ -11,7 +11,7 @@ if (!isDevelopment && !isProduction) throw new Error("Unexpected NODE_ENV");
 
 module.exports = async function () {
   return {
-    devtool: isDevelopment ? "eval" : "hidden-source-map",
+    devtool: isDevelopment ? "eval" : false,
     entry: {
       main: ["react-hot-loader/patch", "./src/index.tsx"],
     },
