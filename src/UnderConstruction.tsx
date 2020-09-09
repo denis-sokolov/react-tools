@@ -14,14 +14,18 @@ const inner = scopedStyles("UnderConstruction", {
 
 type Props = {
   children: React.ReactNode;
+  inline?: boolean;
   onlyWhen?: boolean;
 };
 
 export function UnderConstruction(props: Props) {
-  const { children, onlyWhen } = props;
+  const { children, inline, onlyWhen } = props;
   if (onlyWhen !== undefined && !onlyWhen) return <>{children}</>;
   return (
-    <div className={outer}>
+    <div
+      className={outer}
+      style={{ display: inline ? "inline-block" : undefined }}
+    >
       <div className={inner}>{children}</div>
     </div>
   );
