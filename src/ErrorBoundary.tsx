@@ -2,9 +2,11 @@ import React from "react";
 
 type Props = {
   children: React.ReactNode;
-  component: React.ComponentType<{ reset: () => void }>;
   reportError: (error: Error) => void;
-};
+} & (
+  | { component: React.ComponentType<{ reset: () => void }> }
+  | { fallback: React.ReactNode }
+);
 
 export class ErrorBoundary extends React.Component<Props> {
   state = { error: undefined as Error | undefined };
@@ -20,8 +22,11 @@ export class ErrorBoundary extends React.Component<Props> {
 
   render() {
     if (this.state.error) {
-      const Component = this.props.component;
-      return <Component reset={this.reset} />;
+      if ("component" in this.props) {
+        const Component = this.props.component;
+        return <Component reset={this.reset} />;
+      }
+      return this.props.fallback;
     }
     return this.props.children;
   }

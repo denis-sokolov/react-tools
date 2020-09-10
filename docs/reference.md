@@ -104,6 +104,20 @@ function App() {
     </ErrorBoundary>
   );
 }
+
+function AboutScreen() {
+  return (
+    <Page>
+      About the company
+      <ErrorBoundary
+        fallback={<div>Calendar is not available at the moment</div>}
+        reportError={toSentry}
+      >
+        <Calendar />
+      </ErrorBoundary>
+    </Page>
+  );
+}
 ```
 
 ## UnderConstruction
