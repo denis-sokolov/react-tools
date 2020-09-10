@@ -1,3 +1,8 @@
+# 2.2.0
+
+- ErrorBoundary: fallback option
+- UnderConstruction: inline option
+
 # 2.1.0
 
 - UnderConstruction: onlyWhen
