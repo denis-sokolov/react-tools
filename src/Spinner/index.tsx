@@ -40,5 +40,5 @@ export function Spinner(props: Props) {
     );
   }
 
-  return <>contents</>;
+  return <>{contents}</>;
 }
