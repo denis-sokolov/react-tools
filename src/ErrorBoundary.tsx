@@ -16,6 +16,14 @@ export class ErrorBoundary extends React.Component<Props> {
     this.setState({ error });
   }
 
+  componentDidMount() {
+    window.addEventListener("popstate", this.reset);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("popstate", this.reset);
+  }
+
   reset = () => {
     this.setState({ error: undefined });
   };
