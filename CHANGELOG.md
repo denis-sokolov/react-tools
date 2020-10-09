@@ -1,3 +1,7 @@
+# 2.3.0
+
+- ErrorBoundary: reset on navigation
+
 # 2.2.0
 
 - ErrorBoundary: fallback option
