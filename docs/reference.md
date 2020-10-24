@@ -138,6 +138,27 @@ Instead, use `forwardClick`. Full support for propagation and the only place in 
 </tr>
 ```
 
+## is404OurFault
+
+An invalid path may be caused by the user making a typo, by following a 3rd-party incorrect link, or having incorrectly copied it. But sometimes the link they have followed may be from our own application. A screen “This page is not here” after performing an action in the app itself is embarassing. With this helper function we can detect internal broken links and correctly own up our mistake.
+
+```jsx
+import { is404OurFault } from "@theorem/react";
+
+export function NotFound() {
+  if (is404OurFault())
+    throw new Error(
+      `Detected a broken link to ${location.href} from ${document.referrer}`
+    );
+  return (
+    <div>
+      The page you are looking for may have moved or never was here in the first
+      place.
+    </div>
+  );
+}
+```
+
 ## OnlyClientSide
 
 Render something only client-side, avoiding a hydration mismatch warning if the value can’t be generated on the server.
