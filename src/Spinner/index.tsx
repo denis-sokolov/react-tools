@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import { ReactNode, useState } from "react";
 import NanoSpinner from "react-nano-spinner";
 import { useRerenderEvery } from "../useRerender";
 
 type Props = {
-  children?: React.ReactNode;
+  children?: ReactNode;
   fullScreen?: boolean;
   timeoutMs?: number;
 };

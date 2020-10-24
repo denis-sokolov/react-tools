@@ -1,4 +1,4 @@
-import React from "react";
+import type { ReactNode } from "react";
 import { scopedStyles } from "../lib";
 
 export type Action =
@@ -18,7 +18,7 @@ export type Action =
 
 type Props = {
   action: Action;
-  children: React.ReactNode;
+  children: ReactNode;
   className?: string;
   currentPath?: string;
   title?: string;

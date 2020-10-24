@@ -1,4 +1,4 @@
-import React from "react";
+import type { ReactNode } from "react";
 import { scopedStyles } from "./lib";
 
 const outer = scopedStyles("UnderConstruction", {
@@ -13,7 +13,7 @@ const inner = scopedStyles("UnderConstruction", {
 });
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   inline?: boolean;
   onlyWhen?: boolean;
 };

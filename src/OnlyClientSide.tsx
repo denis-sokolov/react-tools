@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
   butNotIf?: boolean;
 };
 
