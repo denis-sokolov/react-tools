@@ -120,31 +120,6 @@ function AboutScreen() {
 }
 ```
 
-## UnderConstruction
-
-During development, some areas of the screen might not be finished yet, but added to the UI nevertheless
-to provide some visual balance.
-
-UnderConstruction clearly communicates to the team members that an item is not yet clickable,
-by modifying a cursor, and blinking red if anyone tries to click on it.
-
-```jsx
-import { UnderConstruction } from "@theorem/react";
-
-function App() {
-  return (
-    <div>
-      <List />
-      <UnderConstruction>
-        <button>Admin area</button>
-      </UnderConstruction>
-    </div>
-  );
-}
-```
-
-For conditional display, use `<UnderConstruction onlyWhen={condition} />`
-
 ## forwardClick
 
 Consider a list of emails in Gmail. Every row has small buttons: check, star, arhive, and others, yet a click on the containing entire row should open an email.
@@ -214,6 +189,31 @@ const MySpinner = () => (
   </Spinner>
 );
 ```
+
+## UnderConstruction
+
+During development, some areas of the screen might not be finished yet, but added to the UI nevertheless
+to provide some visual balance.
+
+UnderConstruction clearly communicates to the team members that an item is not yet clickable,
+by modifying a cursor, and blinking red if anyone tries to click on it.
+
+```jsx
+import { UnderConstruction } from "@theorem/react";
+
+function App() {
+  return (
+    <div>
+      <List />
+      <UnderConstruction>
+        <button>Admin area</button>
+      </UnderConstruction>
+    </div>
+  );
+}
+```
+
+For conditional display, use `<UnderConstruction onlyWhen={condition} />`
 
 ## useCatchAsync
 
