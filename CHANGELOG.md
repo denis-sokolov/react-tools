@@ -1,3 +1,8 @@
+# 3.0.0
+
+- Support and require React 17
+- forwardClick: respect aria-role
+
 # 2.3.0
 
 - ErrorBoundary: reset on navigation
