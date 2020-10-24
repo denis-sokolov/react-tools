@@ -1,3 +1,5 @@
-export type StyleObject = React.CSSProperties & {
-  [k: string]: string | number | React.CSSProperties;
+import type { CSSProperties } from "react";
+
+export type StyleObject = CSSProperties & {
+  [k: string]: string | number | CSSProperties;
 };

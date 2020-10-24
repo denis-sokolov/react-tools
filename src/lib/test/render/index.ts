@@ -1,3 +1,4 @@
+import type { ReactElement } from "react";
 import TestRenderer, { ReactTestRenderer } from "react-test-renderer";
 
 function wrapper(node: ReactTestRenderer) {
@@ -21,6 +22,6 @@ function wrapper(node: ReactTestRenderer) {
   };
 }
 
-export function render(input: React.ReactElement) {
+export function render(input: ReactElement) {
   return wrapper(TestRenderer.create(input));
 }

@@ -1,9 +1,11 @@
+import type { CSSProperties } from "react";
+
 let counter = 0;
 
 type StyleObject =
-  | React.CSSProperties
-  | (React.CSSProperties & {
-      [k: string]: string | number | React.CSSProperties;
+  | CSSProperties
+  | (CSSProperties & {
+      [k: string]: string | number | CSSProperties;
     });
 
 function objectToString(selector: string, obj: StyleObject) {

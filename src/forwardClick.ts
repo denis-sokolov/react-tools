@@ -1,3 +1,5 @@
+import type { MouseEvent } from "react";
+
 function isDescendantOf(
   el: Element,
   predicate: (el: Element) => boolean
@@ -18,7 +20,7 @@ function isInteractive(el: Element) {
  * In particular, this does not click on the first nested interactive element, but on the chosen one.
  */
 
-export function forwardClick(e: React.MouseEvent, selector: string) {
+export function forwardClick(e: MouseEvent, selector: string) {
   const container = e.currentTarget;
 
   const forwardTarget = container.querySelector(selector);
