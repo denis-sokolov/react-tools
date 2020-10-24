@@ -1,6 +1,6 @@
 {
   "name": "@theorem/react",
-  "version": "2.3.0",
+  "version": "3.0.0",
   "description": "Theorem React tools",
   "peerDependencies": {
     "react": "^17.0.1"
