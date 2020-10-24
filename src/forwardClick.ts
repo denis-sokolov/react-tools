@@ -1,12 +1,12 @@
 import type { MouseEvent } from "react";
 
 function isDescendantOf(
-  el: Element,
+  element: Element,
   predicate: (el: Element) => boolean
 ): boolean {
-  if (!el.parentElement) return false;
-  if (predicate(el.parentElement)) return true;
-  return isDescendantOf(el.parentElement, predicate);
+  if (!element.parentElement) return false;
+  if (predicate(element.parentElement)) return true;
+  return isDescendantOf(element.parentElement, predicate);
 }
 
 function isInteractive(el: Element) {
