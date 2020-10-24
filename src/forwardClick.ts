@@ -10,9 +10,11 @@ function isDescendantOf(
 }
 
 function isInteractive(el: Element) {
-  return "a,audio,button,input,label,menu,menuitem,option,select,summary,textarea,video"
+  const isInteractiveTag = "a,audio,button,input,label,menu,menuitem,option,select,summary,textarea,video"
     .split(",")
     .includes(el.tagName.toLowerCase());
+  if (isInteractiveTag) return true;
+  return false;
 }
 
 /**
