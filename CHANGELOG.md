@@ -1,3 +1,8 @@
+# 3.1.0
+
+- is404OurFault
+- ActionArea style prop
+
 # 3.0.0
 
 - Support and require React 17
