@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { scopedStyles } from "../lib";
 
 export type Action =
@@ -22,6 +22,7 @@ type Props = {
   className?: string;
   currentPath?: string;
   title?: string;
+  style?: CSSProperties;
 };
 
 const baseStyles = scopedStyles("ActionArea-base", {
@@ -48,7 +49,7 @@ const disabledStyles = scopedStyles("ActionArea-disabled", {
 });
 
 export function ActionArea(props: Props) {
-  const { action, children, title } = props;
+  const { action, children, title, style } = props;
   const className = props.className || "";
 
   const button = function (opts: {
@@ -64,6 +65,7 @@ export function ActionArea(props: Props) {
         onMouseDown={onMouseDown}
         type={type || "button"}
         title={title}
+        style={style}
       >
         {children}
       </button>
@@ -75,6 +77,7 @@ export function ActionArea(props: Props) {
       <span
         className={`${baseStyles} ${disabledStyles} ${className} ${extraClassName}`}
         title={title}
+        style={style}
       >
         {children}
       </span>
@@ -100,6 +103,7 @@ export function ActionArea(props: Props) {
         rel={newWindow ? "noopener" : undefined}
         target={newWindow ? "_blank" : undefined}
         title={title}
+        style={style}
       >
         {children}
       </a>
