@@ -2,7 +2,7 @@ import { Component, ComponentType, ReactNode } from "react";
 
 type Props = {
   children: ReactNode;
-  reportError: (error: Error) => void;
+  reportError: (error: Error, details: { componentStack: string }) => void;
 } & (
   | { component: ComponentType<{ reset: () => void }> }
   | { fallback: ReactNode }
@@ -11,8 +11,8 @@ type Props = {
 export class ErrorBoundary extends Component<Props> {
   state = { error: undefined as Error | undefined };
 
-  componentDidCatch(error: Error) {
-    this.props.reportError(error);
+  componentDidCatch(error: Error, details: { componentStack: string }) {
+    this.props.reportError(error, details);
     this.setState({ error });
   }
 
