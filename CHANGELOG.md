@@ -1,3 +1,8 @@
+# 3.2.0
+
+- ErrorBoudary: now receives componentStack
+- routing: links with targets are allowed
+
 # 3.1.0
 
 - is404OurFault
