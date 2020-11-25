@@ -1,3 +1,7 @@
+# 3.2.1
+
+- routing: Redirect avoids a blink during rerender
+
 # 3.2.0
 
 - ErrorBoudary: now receives componentStack
