@@ -1,3 +1,7 @@
+# 3.3.0
+
+- Spinner: delayed prop
+
 # 3.2.1
 
 - routing: Redirect avoids a blink during rerender
