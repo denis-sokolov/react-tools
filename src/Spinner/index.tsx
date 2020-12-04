@@ -34,26 +34,28 @@ export function Spinner(props: Props) {
   const hiddenDueToDelay = delayed && Date.now() < mountedAt + delayedTimeout;
   const delayedStyles: CSSProperties = hiddenDueToDelay ? { opacity: 0 } : {};
 
-  if (fullScreen) {
-    return (
-      <div
-        style={{
-          alignItems: "center",
-          bottom: 0,
-          display: "flex",
-          justifyContent: "center",
-          left: 0,
-          position: "absolute",
-          right: 0,
-          top: 0,
-          zIndex: 2,
-          ...delayedStyles,
-        }}
-      >
-        <div>{contents}</div>
-      </div>
-    );
-  }
+  const fullScreenStyles: CSSProperties = fullScreen
+    ? {
+        alignItems: "center",
+        bottom: 0,
+        display: "flex",
+        justifyContent: "center",
+        left: 0,
+        position: "absolute",
+        right: 0,
+        top: 0,
+        zIndex: 2,
+      }
+    : {};
 
-  return <div style={delayedStyles}>{contents}</div>;
+  return (
+    <div
+      style={{
+        ...fullScreenStyles,
+        ...delayedStyles,
+      }}
+    >
+      {contents}
+    </div>
+  );
 }
