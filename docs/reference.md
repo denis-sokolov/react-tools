@@ -194,6 +194,8 @@ smartOutline();
 
 Spinner component ensures that the user is never stuck with an infinite spinner on the screen. By default, after a minute of being displayed, the spinner will crash. A proper crash screen with an apology is better than a stuck animation that does not represent any activity.
 
+You also have an option to delay the spinner from showing for a bit. This is preferred for most loading states, where there is a chance the content will show up soon. For user-initiated change operations, like dropping a file on an upload field, do not delay the indicator.
+
 The Spinner comes with a small, simple animation out of the box, but it can be customized.
 
 ```jsx
@@ -201,7 +203,7 @@ The Spinner comes with a small, simple animation out of the box, but it can be c
 return <Spinner />;
 
 // Options
-return <Spinner fullScreen timeoutMs={90000} />;
+return <Spinner delayed fullScreen timeoutMs={90000} />;
 
 // Customized visuals
 const MySpinner = () => (
