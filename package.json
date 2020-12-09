@@ -1,10 +1,4 @@
 {
-  "name": "@theorem/react",
-  "version": "3.3.0",
-  "description": "Theorem React tools",
-  "peerDependencies": {
-    "react": "^17.0.1"
-  },
   "scripts": {
     "build": "rm -rf dist && NODE_ENV=production tsc --project tsconfig.build.json",
     "format": "prettier --write '{docs,src,typings}/**/*.{js,json,md,ts,tsx}' '*.{js,json,md,ts,tsx}'",
@@ -17,6 +11,8 @@
     "typecheck": "tsc --noEmit",
     "verify": "npm run typecheck && npm run lint && npm run format-verify && npm run test"
   },
+  "browser": "dist/index.js",
+  "description": "Theorem React tools",
   "dependencies": {
     "@types/color-convert": "^2.0.0",
     "color-convert": "^2.0.1",
@@ -36,7 +32,6 @@
     "ts-node": "^9.1.0",
     "typescript": "^4.1.3"
   },
-  "browser": "dist/index.js",
   "engines": {
     "node": ">=14.14.0",
     "npm": ">=6.13.1"
@@ -48,7 +43,12 @@
   ],
   "license": "ISC",
   "module": "dist/index.js",
+  "name": "@theorem/react",
+  "peerDependencies": {
+    "react": "^17.0.1"
+  },
   "repository": "git@github.com:Theorem/react-tools.git",
   "sideEffects": false,
-  "types": "dist/index.js"
+  "types": "dist/index.js",
+  "version": "3.3.0"
 }
