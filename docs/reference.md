@@ -159,6 +159,20 @@ export function NotFound() {
 }
 ```
 
+## License tools
+
+Every public-facing app needs to validate 3rd-party package licenses and output their attribution. Projects that use Webpack can use [license-checker-webpack-plugin](https://github.com/microsoft/license-checker-webpack-plugin). Other projects, includeing Snowpack with Webpack plugin, can use the tool included with this package.
+
+```sh
+$ theorem-react-license-tool <project-directory> [...more-directories] > dist/ThirdPartyNotices.txt
+```
+
+The tool will error if any dependencies use a license that is not in the list of licenses. Change the default set of licenses with `--licenses '(Apache-2.0 OR BSD-2-Clause OR BSD-3-Clause OR MIT OR ISC OR CC0-1.0 OR 0BSD OR Unlicense)'`. The value is an SPDX expression.
+
+If some packages’ licenses are detected incorrectly, use `--override package:MIT,other-package:Unlicense` to override.
+
+If some packages are internal or are not used in the output, use `--skip @theorem/private-tools,snowpack,typescript`.
+
 ## OnlyClientSide
 
 Render something only client-side, avoiding a hydration mismatch warning if the value can’t be generated on the server.

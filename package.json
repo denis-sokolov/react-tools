@@ -1,26 +1,35 @@
 {
   "scripts": {
-    "build": "rm -rf dist && NODE_ENV=production tsc --project tsconfig.build.json",
-    "format": "prettier --write '{docs,src,typings}/**/*.{js,json,md,ts,tsx}' '*.{js,json,md,ts,tsx}'",
-    "format-verify": "prettier --check '{docs,src,typings}/**/*.{js,json,md,ts,tsx}' '*.{js,json,md,ts,tsx}'",
+    "bin-license": "ts-node -T --project bin/tsconfig.json bin/license",
+    "build": "rm -rf dist && NODE_ENV=production tsc --project tsconfig.build.json && NODE_ENV=production tsc --project bin/tsconfig.json",
+    "format": "prettier --write '{bin,docs,src,typings}/**/*.{js,json,md,ts,tsx}' '*.{js,json,md,ts,tsx}'",
+    "format-verify": "prettier --check '{bin,docs,src,typings}/**/*.{js,json,md,ts,tsx}' '*.{js,json,md,ts,tsx}'",
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "prepublishOnly": "npm run verify && npm run build",
     "start": "ava --watch",
     "start-building": "rm -rf dist && NODE_ENV=production tsc --watch",
     "test": "ava",
-    "typecheck": "tsc --noEmit",
+    "typecheck": "tsc --noEmit && tsc --noEmit --project bin/tsconfig.json",
     "verify": "npm run typecheck && npm run lint && npm run format-verify && npm run test"
+  },
+  "bin": {
+    "theorem-react-license-tool": "dist/bin/license/index.js"
   },
   "browser": "dist/index.js",
   "description": "Theorem React tools",
   "dependencies": {
     "@types/color-convert": "^2.0.0",
+    "@types/findup-sync": "^2.0.2",
     "color-convert": "^2.0.1",
+    "commander": "^2.20.3",
+    "findup-sync": "^4.0.0",
+    "license-checker-webpack-plugin": "=0.2.0",
     "parse-css-color": "^0.1.2",
     "use-memo-one": "^1.1.1"
   },
   "devDependencies": {
     "@theorem/eslint-plugin": "^6.2.1",
+    "@types/license-checker-webpack-plugin": "^0.0.2",
     "@types/react": "^17.0.0",
     "@types/react-test-renderer": "^17.0.0",
     "ava": "^3.13.0",
