@@ -1,11 +1,10 @@
 import { CSSProperties, ReactNode, useEffect, useState } from "react";
-import NanoSpinner from "react-nano-spinner";
 import { useRerender, useRerenderEvery } from "../useRerender";
 
 const delayedTimeout = 1000;
 
 type Props = {
-  children?: ReactNode;
+  children: ReactNode;
   delayed?: boolean;
   fullScreen?: boolean;
   timeoutMs?: number;
@@ -13,7 +12,7 @@ type Props = {
 
 export function Spinner(props: Props) {
   const { children, delayed, fullScreen, timeoutMs } = props;
-  const contents = children || <NanoSpinner />;
+  const contents = children;
 
   useRerenderEvery(1000);
   const rerender = useRerender();
