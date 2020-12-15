@@ -12,10 +12,6 @@ function initClean() {
   window.addEventListener("popstate", cleanIfNeeded);
 }
 
-function initClicks() {
-  handleLinkClicks(navigate);
-}
-
 export function initRouting(
   options: {
     handleCleaning?: boolean;
@@ -30,7 +26,11 @@ export function initRouting(
   } = options;
 
   if (handleCleaning) initClean();
-  if (handleClicks) initClicks();
+  if (handleClicks)
+    handleLinkClicks((params) => {
+      params.event.preventDefault();
+      params.navigate(params.url);
+    });
   if (handleScrolling) initScrolling();
 }
 

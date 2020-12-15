@@ -1,3 +1,12 @@
+import { navigate } from "./navigate";
+
+export type ClickCallback = (params: {
+  event: MouseEvent;
+  link: HTMLLinkElement;
+  navigate: typeof navigate;
+  url: URL;
+}) => void;
+
 function findLink(
   el: EventTarget | HTMLElement | null
 ): HTMLLinkElement | undefined {
@@ -6,7 +15,7 @@ function findLink(
   return findLink(el.parentElement);
 }
 
-export function handleLinkClicks(f: (url: URL) => void) {
+export function handleLinkClicks(f: ClickCallback) {
   const handler = function (e: MouseEvent) {
     if (e.button !== 0) return;
     if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
@@ -25,8 +34,12 @@ export function handleLinkClicks(f: (url: URL) => void) {
     // External links including other procols like mailto
     if (url.origin !== location.origin) return;
 
-    e.preventDefault();
-    f(url);
+    f({
+      event: e,
+      link,
+      navigate,
+      url,
+    });
   };
   document.addEventListener("click", handler);
   return () => document.removeEventListener("click", handler);
