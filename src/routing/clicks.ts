@@ -18,6 +18,8 @@ export function handleLinkClicks(f: (url: URL) => void) {
     const target = link.getAttribute("target");
     if (target && target !== "_self") return;
 
+    if (link.hasAttribute("download")) return;
+
     const url = new URL(link.href);
 
     // External links including other procols like mailto
