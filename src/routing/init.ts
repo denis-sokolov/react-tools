@@ -31,5 +31,6 @@ function initScrolling() {
   window.addEventListener("popstate", function () {
     const el = getTargetElement();
     if (el) el.scrollIntoView();
+    else window.scrollTo(0, 0);
   });
 }
