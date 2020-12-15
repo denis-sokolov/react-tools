@@ -1,4 +1,4 @@
-import { handleLinkClicks } from "./clicks";
+import { ClickCallback, handleLinkClicks } from "./clicks";
 import { clean } from "./clean";
 import { navigate } from "./navigate";
 
@@ -15,7 +15,7 @@ function initClean() {
 export function initRouting(
   options: {
     handleCleaning?: boolean;
-    handleClicks?: boolean;
+    handleClicks?: boolean | ClickCallback;
     handleScrolling?: boolean;
   } = {}
 ) {
@@ -27,10 +27,14 @@ export function initRouting(
 
   if (handleCleaning) initClean();
   if (handleClicks)
-    handleLinkClicks((params) => {
-      params.event.preventDefault();
-      params.navigate(params.url);
-    });
+    handleLinkClicks(
+      typeof handleClicks === "function"
+        ? handleClicks
+        : (params) => {
+            params.event.preventDefault();
+            params.navigate(params.url);
+          }
+    );
   if (handleScrolling) initScrolling();
 }
 
