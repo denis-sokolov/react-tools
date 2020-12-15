@@ -16,10 +16,22 @@ function initClicks() {
   handleLinkClicks(navigate);
 }
 
-export function initRouting() {
-  initClean();
-  initClicks();
-  initScrolling();
+export function initRouting(
+  options: {
+    handleCleaning?: boolean;
+    handleClicks?: boolean;
+    handleScrolling?: boolean;
+  } = {}
+) {
+  const {
+    handleCleaning = true,
+    handleClicks = true,
+    handleScrolling = true,
+  } = options;
+
+  if (handleCleaning) initClean();
+  if (handleClicks) initClicks();
+  if (handleScrolling) initScrolling();
 }
 
 function initScrolling() {
