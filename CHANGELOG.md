@@ -1,3 +1,10 @@
+# 4.0.0
+
+- Breaking: removed default Spinner looks
+- routing: initRouting takes a few options to customize
+- routing: handle download links correctly
+- routing: scroll to top on navigation
+
 # 3.3.0
 
 - Spinner: delayed prop
