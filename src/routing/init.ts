@@ -23,11 +23,13 @@ export function initRouting() {
 }
 
 function initScrolling() {
-  window.addEventListener("popstate", function () {
+  function getTargetElement() {
     const hash = location.hash;
     if (!hash) return;
-    const el = document.querySelector(hash);
-    if (!el) return;
-    el.scrollIntoView();
+    return document.querySelector(hash);
+  }
+  window.addEventListener("popstate", function () {
+    const el = getTargetElement();
+    if (el) el.scrollIntoView();
   });
 }
