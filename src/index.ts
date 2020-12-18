@@ -4,6 +4,7 @@ export * from "./ErrorBoundary";
 export * from "./forwardClick";
 export * from "./is404OurFault";
 export * from "./OnlyClientSide";
+export * from "./permanence";
 export * from "./routing";
 export * from "./smartOutline";
 export * from "./Spinner";
