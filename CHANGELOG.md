@@ -1,3 +1,7 @@
+# 4.1.0
+
+- makePermanence
+
 # 4.0.0
 
 - Breaking: removed default Spinner looks
