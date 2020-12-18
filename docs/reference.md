@@ -187,6 +187,35 @@ Render something only client-side, avoiding a hydration mismatch warning if the 
 </OnlyClientSide>
 ```
 
+## Permanence
+
+By default, when a component in the tree changes, React destroys the entire sub-tree and recreates it from scracth to avoid unexpectedly reusing some state. If you do want to reuse the state, whether for performance or UX reasons, use `makePermanence`. In the example below Intro component will not be destroyed and re-created, because it is moved to be rendered as a child of App.
+
+```tsx
+const [MyParent, MyChild] = makePermanence();
+function App() {
+  return <MyParent>{condition ? <Home /> : <Contact />}</MyParent>;
+}
+function Home() {
+  return (
+    <MyChild>
+      <Intro />
+      <p>Welcome</p>
+    </MyChild>
+  );
+}
+function Contact() {
+  return (
+    <MyChild>
+      <Intro />
+      <p>Contact us</p>
+    </MyChild>
+  );
+}
+```
+
+Further reading: [React reconciliation](https://reactjs.org/docs/reconciliation.html), [React issue](https://github.com/facebook/react/issues/3965).
+
 ## Routing
 
 [Routing tools documentation](./routing.md).
