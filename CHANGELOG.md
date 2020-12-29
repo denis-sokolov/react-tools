@@ -1,3 +1,8 @@
+# 5.0.0
+
+- color: remove color utilities. Consider [ui-colors instead](https://www.npmjs.com/package/ui-colors).
+- ActionArea: add noreferrer on external links.
+
 # 4.1.1
 
 - makePermanence
