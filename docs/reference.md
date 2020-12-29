@@ -62,21 +62,6 @@ If you use a custom router, including anything during server-side rendering, pro
 
 See also [react-abstract-button](https://www.npmjs.com/package/react-abstract-button).
 
-## Color functions
-
-```jsx
-import { color } from "@theorem/react";
-
-// Get a hue of a color
-color("#11aabc22").hue();
-
-// Get a new color with a different saturation
-color("hsl(270, 60%, 70%)").withSaturation(100).hsl();
-
-// Can also output hex
-color("hsl(270, 60%, 70%)").hex();
-```
-
 ## ErrorBoundary
 
 Every application needs a good crash screen. For historic reasons in React this needs a class component.
