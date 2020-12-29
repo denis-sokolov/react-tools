@@ -25,8 +25,13 @@ function isInteractive(el: Element) {
  * forwardClick allows to emulate a <label> with more control.
  * In particular, this does not click on the first nested interactive element, but on the chosen one.
  */
-
-export function forwardClick(e: MouseEvent, selector: string) {
+export function forwardClick(
+  e: MouseEvent,
+  /**
+   * CSS selector that starts from the current target of the event. Something like "h1 a" would work.
+   */
+  selector: string
+) {
   const container = e.currentTarget;
 
   const forwardTarget = container.querySelector(selector);

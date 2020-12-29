@@ -6,6 +6,9 @@ import {
   useState,
 } from "react";
 
+/**
+ * Allow deeply nested children to render at the custom location in the tree to preserve component state even if children components change
+ */
 export function makePermanence() {
   const context = createContext<(node: ReactNode) => void>(() => {});
   return [

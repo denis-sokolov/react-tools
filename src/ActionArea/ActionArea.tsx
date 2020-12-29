@@ -1,16 +1,6 @@
 import type { CSSProperties, ReactNode } from "react";
 import { scopedStyles } from "../lib";
 
-/**
- * Possible values for an Action:
- * - "submit"
- * - string with a URL to make a link
- * - { newWindow: string } to make a link that opens in a new window
- * - { download: string, url: string } to make a link that downloads a file with a given filename
- * - () => void to make a click handler
- * - { mousedown: () => void } to make a mousedown handler, but the click handler above is preferred for UX
- * - "disabled", but avoid it, as inactive UI elements are not preferred for UX
- */
 export type Action =
   | "submit"
   | string
@@ -21,9 +11,22 @@ export type Action =
   | "disabled";
 
 type Props = {
+  /**
+   * Possible values for an Action:
+   * - "submit"
+   * - string with a URL to make a link
+   * - { newWindow: string } to make a link that opens in a new window
+   * - { download: string, url: string } to make a link that downloads a file with a given filename
+   * - () => void to make a click handler
+   * - { mousedown: () => void } to make a mousedown handler, but the click handler above is preferred for UX
+   * - "disabled", but avoid it, as inactive UI elements are not preferred for UX
+   */
   action: Action;
   children: ReactNode;
   className?: string;
+  /**
+   * Override how the ActionArea detects which links are pointing to the current page
+   */
   currentPath?: string;
   title?: string;
   style?: CSSProperties;
@@ -52,6 +55,9 @@ const disabledStyles = scopedStyles("ActionArea-disabled", {
   cursor: "default",
 });
 
+/**
+ * An area that acts as a button or link, and is devoid of styling
+ */
 export function ActionArea(props: Props) {
   const { action, children, title, style } = props;
   const className = props.className || "";

@@ -6,6 +6,11 @@ type ClickOutsideControls = RefFunction & {
   additionalArea: (name: string) => (el: HTMLElement | null) => void;
 };
 
+/**
+ * Detect clicks outside of the element
+ * const ref = useClickOutside(() => console.log("Clicked outside"));
+ * return <div ref={ref} />;
+ */
 export function useClickOutside(f: () => unknown): ClickOutsideControls {
   const ref = useRef<{ [name: string]: HTMLElement | null }>({});
 

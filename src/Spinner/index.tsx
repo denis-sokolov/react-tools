@@ -5,6 +5,9 @@ const delayedTimeout = 1000;
 
 type Props = {
   children: ReactNode;
+  /**
+   * Hide the spinner briefly in case the loading state is very short
+   */
   delayed?: boolean;
   fullScreen?: boolean;
   timeoutMs?: number;
