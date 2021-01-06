@@ -105,7 +105,12 @@ export function ActionArea(props: Props) {
 
     if (url === currentPath && !download) return span("current");
 
-    const rels = [newWindow ? "noopener" : ""].filter((s) => s);
+    const external = url.startsWith("http://") || url.startsWith("https://");
+
+    const rels = [
+      newWindow ? "noopener" : "",
+      external ? "noreferrer" : "",
+    ].filter((s) => s);
 
     return (
       <a
