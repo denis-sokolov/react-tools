@@ -105,12 +105,14 @@ export function ActionArea(props: Props) {
 
     if (url === currentPath && !download) return span("current");
 
+    const rels = [newWindow ? "noopener" : ""].filter((s) => s);
+
     return (
       <a
         className={`${baseStyles} ${className}`}
         download={download}
         href={url}
-        rel={newWindow ? "noopener" : undefined}
+        rel={rels.join(" ")}
         target={newWindow ? "_blank" : undefined}
         title={title}
         style={style}
