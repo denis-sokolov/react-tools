@@ -10,7 +10,9 @@ import {
  * Allow deeply nested children to render at the custom location in the tree to preserve component state even if children components change
  */
 export function makePermanence() {
-  const context = createContext<(node: ReactNode) => void>(() => {});
+  const context = createContext<((node: ReactNode) => void) | "no-parent">(
+    "no-parent"
+  );
   return [
     function Parent(props: { children: ReactNode }) {
       const { children } = props;
@@ -26,9 +28,11 @@ export function makePermanence() {
       const { children } = props;
       const setDeepChildren = useContext(context);
       useLayoutEffect(function () {
+        if (setDeepChildren === "no-parent") return;
         setDeepChildren(children);
         return () => setDeepChildren(null);
       });
+      if (setDeepChildren === "no-parent") return children;
       return null;
     },
   ] as const;
