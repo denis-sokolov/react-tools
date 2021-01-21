@@ -144,5 +144,6 @@ export function ActionArea(props: Props) {
       return link(action.newWindow, { newWindow: true });
   }
 
-  throw new Error("Unexpected action");
+  console.error("Props for the last ActionArea:", props);
+  throw new Error("ActionArea received an invalid action: " + action);
 }
