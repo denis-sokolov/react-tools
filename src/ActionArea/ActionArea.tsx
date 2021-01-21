@@ -59,8 +59,11 @@ const disabledStyles = scopedStyles("ActionArea-disabled", {
  * An area that acts as a button or link, and is devoid of styling
  */
 export function ActionArea(props: Props) {
-  const { action, children, title, style } = props;
+  const { children, title, style } = props;
   const className = props.className || "";
+
+  // Make sure we handle a common error well
+  const action = props.action as typeof props.action | null | undefined;
 
   const button = function (opts: {
     onClick?: () => void;
@@ -133,10 +136,13 @@ export function ActionArea(props: Props) {
   if (typeof action === "function") return button({ onClick: action });
   if (typeof action === "string") return link(action);
 
-  if ("download" in action)
-    return link(action.url, { download: action.download });
-  if ("mousedown" in action) return button({ onMouseDown: action.mousedown });
-  if ("newWindow" in action) return link(action.newWindow, { newWindow: true });
+  if (action) {
+    if ("download" in action)
+      return link(action.url, { download: action.download });
+    if ("mousedown" in action) return button({ onMouseDown: action.mousedown });
+    if ("newWindow" in action)
+      return link(action.newWindow, { newWindow: true });
+  }
 
   throw new Error("Unexpected action");
 }
