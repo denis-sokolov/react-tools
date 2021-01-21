@@ -108,12 +108,7 @@ export function ActionArea(props: Props) {
 
     if (url === currentPath && !download) return span("current");
 
-    const external = url.startsWith("http://") || url.startsWith("https://");
-
-    const rels = [
-      newWindow ? "noopener" : "",
-      external ? "noreferrer" : "",
-    ].filter((s) => s);
+    const rels = [newWindow ? "noopener" : ""].filter((s) => s);
 
     return (
       <a
@@ -121,6 +116,7 @@ export function ActionArea(props: Props) {
         download={download}
         href={url}
         rel={rels.join(" ")}
+        referrerPolicy="strict-origin-when-cross-origin"
         target={newWindow ? "_blank" : undefined}
         title={title}
         style={style}
