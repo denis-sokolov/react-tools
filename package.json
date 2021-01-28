@@ -18,9 +18,7 @@
   "browser": "dist/index.js",
   "description": "Theorem React tools",
   "dependencies": {
-    "@types/color-convert": "^2.0.0",
     "@types/findup-sync": "^2.0.2",
-    "color-convert": "^2.0.1",
     "commander": "^2.20.3",
     "findup-sync": "^4.0.0",
     "license-checker-webpack-plugin": "=0.2.0",
