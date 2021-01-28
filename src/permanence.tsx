@@ -32,7 +32,7 @@ export function makePermanence() {
         setDeepChildren(children);
         return () => setDeepChildren(null);
       });
-      if (setDeepChildren === "no-parent") return children;
+      if (setDeepChildren === "no-parent") return <>{children}</>;
       return null;
     },
   ] as const;
