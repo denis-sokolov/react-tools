@@ -1,3 +1,9 @@
+# 6.0.0
+
+- ActionArea: improve rels and referrer
+- ActionArea: nicer error message when action is missing
+- permanence: renders children on the screen even without parent
+
 # 5.0.0
 
 - color: remove color utilities. Consider [ui-colors instead](https://www.npmjs.com/package/ui-colors).
