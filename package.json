@@ -19,7 +19,7 @@
   "description": "Theorem React tools",
   "dependencies": {
     "@types/findup-sync": "^2.0.2",
-    "commander": "^2.20.3",
+    "commander": "^7.0.0",
     "findup-sync": "^4.0.0",
     "license-checker-webpack-plugin": "=0.2.1",
     "parse-css-color": "^0.1.2",
