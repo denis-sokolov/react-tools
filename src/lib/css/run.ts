@@ -20,5 +20,5 @@ export function run(prefix: string, input: StyleObject) {
 
   scopedStyles(prefix, input, window);
 
-  return appendedChildren[0]?.innerText;
+  return appendedChildren[0]?.innerText || "";
 }
