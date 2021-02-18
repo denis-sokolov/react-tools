@@ -1,7 +1,7 @@
 import test from "ava";
 import { clean } from "./clean";
 
-[
+([
   ["/", "/"],
   ["//", "/"],
   ["/foo", "/foo"],
@@ -13,7 +13,7 @@ import { clean } from "./clean";
   ["/foo?bar&", "/foo?bar"],
   ["/foo?bar=", "/foo?bar"],
   ["/foo/bar//quux/?baz=", "/foo/bar/quux?baz"],
-].forEach(([input, expected]) => {
+] as const).forEach(([input, expected]) => {
   test(`routing cleans a href ${input}`, (t) => {
     t.is(clean(input), expected);
   });
