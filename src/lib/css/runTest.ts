@@ -1,7 +1,7 @@
 import { scopedStyles } from ".";
 import type { StyleObject } from "./types";
 
-export function run(prefix: string, input: StyleObject) {
+export function runTest(prefix: string, input: StyleObject) {
   const appendedChildren: HTMLElement[] = [];
   const head: Partial<Window["document"]["head"]> = {
     appendChild: (child) => {

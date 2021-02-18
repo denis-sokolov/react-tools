@@ -1,5 +1,5 @@
 import test from "ava";
-import { run } from "./run";
+import { runTest } from "./runTest";
 
 [
   [{ color: "red" }, /^\.prefix[^{]+\{color:red\}$/] as const,
@@ -15,7 +15,7 @@ import { run } from "./run";
   ] as const,
 ].forEach(function (c, i) {
   test(`css case ${i}`, (t) => {
-    const output = run("prefix", c[0]);
+    const output = runTest("prefix", c[0]);
     t.truthy(output.match(c[1]));
   });
 });
