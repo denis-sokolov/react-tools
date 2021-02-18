@@ -1,14 +1,14 @@
 {
-  "compileOnSave": false,
   "compilerOptions": {
+    "assumeChangesOnlyAffectDirectDependencies": true,
     "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "importsNotUsedAsValues": "error",
     "jsx": "react-jsxdev",
     "lib": ["es2015", "es2016", "es2017", "dom"],
-    "module": "ES6",
-    "moduleResolution": "Node",
+    "module": "es6",
+    "moduleResolution": "node",
     "noImplicitReturns": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
@@ -16,7 +16,7 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,
-    "target": "ES5"
+    "target": "es5"
   },
   "include": ["src"]
 }
