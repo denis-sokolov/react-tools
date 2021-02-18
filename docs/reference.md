@@ -357,6 +357,61 @@ return (
 
 Also see useCatchAsync.
 
+## useInputWithDraftState
+
+Use useInputWithDraftState to build input elements with thoroughly thought out user and developer experience. In the simplest form, useInputWithDraftState allows the user to edit a value, and triggers onChange when the user finishes (leaves the field).
+
+```jsx
+import { useInputWithDraftState } from "@theorem/react";
+function Input(props) {
+  const { onChange, value } = props;
+  const { inputProps } = useInputWithDraftState({ onChange, value });
+  return <input {...inputProps}>
+}
+```
+
+useInputWithDraftState can also be used with a `<textarea>` the same way. For custom text-like widgets, use useCustomInputWithDraftState hook, see useInputWithDraftState source code for an example of use.
+
+To validate the draft states, use the `validate` option. Before triggering onChange, the hook will validate the value, and invalid values will not trigger onChange, and will instead flip showInvalidDraftError flag. This will not happen if the field is empty, as good UX expects the user to be able to leave the field empty, if only because they have not yet edited it.
+
+```jsx
+function EmailInput() {
+  const { inputProps, showInvalidDraftError } = useInputWithDraftState({
+    onChange,
+    validate: str => str.includes("@")
+    value,
+  });
+  return <div>
+    <input {...inputProps}>
+    {showInvalidDraftError && "Please check this field"}
+  </div>;
+}
+```
+
+To forcefully validate the empty value, use a validateEmptyField option.
+
+The hook also allows parsing the text value as a richer value instead of validating. This can be used for number inputs, or a custom data type:
+
+```jsx
+function EmailInput() {
+  const { inputProps } = useInputWithDraftState({
+    onChange,
+    convert: {
+      fromString: (s) => {
+        const num = parseInt(s, 10);
+        if (Number.isNaN(num)) return "unparsable";
+        return num;
+      };
+      toString: (num) => num.toString();
+    },
+    value,
+  });
+  return <div>
+    <input {...inputProps}>
+  </div>;
+}
+```
+
 ## useRerender
 
 When subscribing to some events and rendering data directly from another source, without using useState or useReducer, one needs to notify React to rerender.

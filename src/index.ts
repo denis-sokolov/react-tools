@@ -13,5 +13,6 @@ export * from "./useCatchAsync";
 export * from "./useCheckStableIdentity";
 export * from "./useClickOutside";
 export * from "./useCrash";
+export * from "./useInputWithDraftState";
 export * from "./useRerender";
 export * from "./useUniqueId";
