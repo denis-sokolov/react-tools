@@ -1,3 +1,7 @@
+# 6.1.0
+
+- Add useInputWithDraftState
+
 # 6.0.0
 
 - ActionArea: improve rels and referrer
