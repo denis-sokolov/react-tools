@@ -2,8 +2,8 @@
   "scripts": {
     "bin-license": "ts-node -T --project bin/tsconfig.json bin/license",
     "build": "rm -rf dist && NODE_ENV=production tsc --project tsconfig.build.json && NODE_ENV=production tsc --project bin/tsconfig.json",
-    "format": "prettier --write '{bin,docs,src,typings}/**/*.{js,json,md,ts,tsx}' '*.{js,json,md,ts,tsx}'",
-    "format-verify": "prettier --check '{bin,docs,src,typings}/**/*.{js,json,md,ts,tsx}' '*.{js,json,md,ts,tsx}'",
+    "format": "prettier --write .",
+    "format-verify": "prettier --check .",
     "lint": "eslint --ext js,jsx,ts,tsx src",
     "prepublishOnly": "npm run verify && npm run build",
     "start": "ava --watch",
