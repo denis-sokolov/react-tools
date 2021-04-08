@@ -1,3 +1,7 @@
+# 6.2.0
+
+- Add useDismissElement
+
 # 6.1.0
 
 - Add useInputWithDraftState
