@@ -300,13 +300,7 @@ useCheckStableIdentity({ user, data, loading });
 
 ## useClickOutside
 
-A sidebar, dropdown, information panel need to close when the user clicks outside of it. This little helper is the simplest way to implement that:
-
-```jsx
-const [open, setOpen] = useState(true);
-const containerRef = useClickOutside(() => setOpen(false));
-return <div ref={containerRef}>Sidebar contents</div>;
-```
+This is a low-level hook to specifically detect mouse clicks. **You probably need useDismissElement instead**.
 
 Note that this does not currently support React portals.
 
@@ -356,6 +350,18 @@ return (
 ```
 
 Also see useCatchAsync.
+
+## useDismissElement
+
+A sidebar, dropdown, information panel need to close when the user clicks outside of it or hits Escape. This helper is for that:
+
+```jsx
+const [open, setOpen] = useState(true);
+const containerRef = useDismissElement(() => setOpen(false));
+return <div ref={containerRef}>Sidebar contents</div>;
+```
+
+If you have a button outside that controls the container, you can call .additionalArea the same as for useClickOutside, see the doc for that above.
 
 ## useInputWithDraftState
 
