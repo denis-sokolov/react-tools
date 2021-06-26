@@ -1,3 +1,7 @@
+# 6.2.1
+
+- Fixup in useDismissElement
+
 # 6.2.0
 
 - Add useDismissElement
