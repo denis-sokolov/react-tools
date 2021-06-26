@@ -10,7 +10,7 @@ export function useDismissElement(f: () => unknown) {
   useEffect(
     function () {
       const handleKeyUp = function (e: KeyboardEvent) {
-        if (e.key === "Escape") console.log("escape");
+        if (e.key === "Escape") f();
       };
       document.addEventListener("keyup", handleKeyUp);
       return () => document.removeEventListener("keyup", handleKeyUp);
