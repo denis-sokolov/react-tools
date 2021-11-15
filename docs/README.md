@@ -1,3 +1,3 @@
-# Theorem React tools
+# React tools
 
 - [Reference of code tools](./reference.md)

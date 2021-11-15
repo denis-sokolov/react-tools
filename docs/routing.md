@@ -3,7 +3,7 @@
 The browser API for routing is reasonable already, we only need the tiniest of help from the library. In particular, you can use `location.pathname` to conditionally display content and `<a>` to create links. Here’s the simplest example:
 
 ```jsx
-import { initRouting, useRerenderOnRouting } from "@theorem/react";
+import { initRouting, useRerenderOnRouting } from "@denis-sokolov/react";
 initRouting();
 function App() {
   useRerenderOnRouting();
@@ -26,7 +26,7 @@ In the above we call `initRouting` once to globally handle clicks on links and c
 If you have another router in place already, but you’d like to provide user-friendly link behavior, use `handleLinkClicks`:
 
 ```ts
-import { handleLinkClicks } from "@theorem/react";
+import { handleLinkClicks } from "@denis-sokolov/react";
 function App() {
   useEffect(() =>
     handleLinkClicks(function (url) {
@@ -43,7 +43,7 @@ In addition to `location.pathname`, `<a>`, there are other tools to work with th
 To perform an imperative navigation, say, in response of the user submitting a form, import `navigate`, a small wrapper around the browser’s `history.pushState`:
 
 ```jsx
-import { navigate } from "@theorem/react";
+import { navigate } from "@denis-sokolov/react";
 <form
   onSubmit={() => {
     sendData();
@@ -55,7 +55,7 @@ import { navigate } from "@theorem/react";
 To perform a declarative navigation in response to some state, import `<Redirect />`, a small wrapper around `navigate` and `useEffect`:
 
 ```jsx
-import { Redirect } from "@theorem/react";
+import { Redirect } from "@denis-sokolov/react";
 if (!item) return <Redirect to="/" />;
 ```
 

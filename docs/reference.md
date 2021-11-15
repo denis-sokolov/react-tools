@@ -1,10 +1,10 @@
-# Theorem React tools reference
+# React tools reference
 
 Import anything from below directly from the top level of the module.
 Tree-shaking in your builder should only include the items you actually use, everything else will be dropped.
 
 ```js
-import { Thing } from "@theorem/react";
+import { Thing } from "@denis-sokolov/react";
 ```
 
 ## ActionArea
@@ -46,7 +46,7 @@ In TypeScript, you can pass-through all parameters or explicitly define props by
 ```jsx
 const SecondaryButton: typeof ActionArea = (props) => <ActionArea {...props} />;
 
-import { ActionArea, Action } from "@theorem/react";
+import { ActionArea, Action } from "@denis-sokolov/react";
 const TertiaryButton = (props: { action: Action }) => (
   <ActionArea action={props.action} />
 );
@@ -68,7 +68,7 @@ Every application needs a good crash screen. For historic reasons in React this 
 With this helper you can simplify the code a tiny bit:
 
 ```jsx
-import { ErrorBoundary } from "@theorem/react";
+import { ErrorBoundary } from "@denis-sokolov/react";
 
 function MyCrashScreen(props) {
   return (
@@ -128,7 +128,7 @@ Instead, use `forwardClick`. Full support for propagation and the only place in 
 An invalid path may be caused by the user making a typo, by following a 3rd-party incorrect link, or having incorrectly copied it. But sometimes the link they have followed may be from our own application. A screen “This page is not here” after performing an action in the app itself is embarassing. With this helper function we can detect internal broken links and correctly own up our mistake.
 
 ```jsx
-import { is404OurFault } from "@theorem/react";
+import { is404OurFault } from "@denis-sokolov/react";
 
 export function NotFound() {
   if (is404OurFault())
@@ -149,14 +149,14 @@ export function NotFound() {
 Every public-facing app needs to validate 3rd-party package licenses and output their attribution. Projects that use Webpack can use [license-checker-webpack-plugin](https://github.com/microsoft/license-checker-webpack-plugin). Other projects, includeing Snowpack with Webpack plugin, can use the tool included with this package.
 
 ```sh
-$ theorem-react-license-tool <project-directory> [...more-directories] > dist/ThirdPartyNotices.txt
+$ denis-react-license-tool <project-directory> [...more-directories] > dist/ThirdPartyNotices.txt
 ```
 
 The tool will error if any dependencies use a license that is not in the list of licenses. Change the default set of licenses with `--licenses '(Apache-2.0 OR BSD-2-Clause OR BSD-3-Clause OR MIT OR ISC OR CC0-1.0 OR 0BSD OR Unlicense)'`. The value is an SPDX expression.
 
 If some packages’ licenses are detected incorrectly, use `--override package:MIT,other-package:Unlicense` to override.
 
-If some packages are internal or are not used in the output, use `--skip @theorem/private-tools,snowpack,typescript`.
+If some packages are internal or are not used in the output, use `--skip @our/private-tools,snowpack,typescript`.
 
 ## OnlyClientSide
 
@@ -212,7 +212,7 @@ In most designs we do not want to mark a UI element the user has clicked on, thu
 While a custom design solution would be best, a simple solution to detect when an outline is needed and when it is not is a nice workaround:
 
 ```js
-import { smartOutline } from "@theorem/react";
+import { smartOutline } from "@denis-sokolov/react";
 
 // Top level of your application
 smartOutline();
@@ -250,7 +250,7 @@ UnderConstruction clearly communicates to the team members that an item is not y
 by modifying a cursor, and blinking red if anyone tries to click on it.
 
 ```jsx
-import { UnderConstruction } from "@theorem/react";
+import { UnderConstruction } from "@denis-sokolov/react";
 
 function App() {
   return (
@@ -368,7 +368,7 @@ If you have a button outside that controls the container, you can call .addition
 Use useInputWithDraftState to build input elements with thoroughly thought out user and developer experience. In the simplest form, useInputWithDraftState allows the user to edit a value, and triggers onChange when the user finishes (leaves the field).
 
 ```jsx
-import { useInputWithDraftState } from "@theorem/react";
+import { useInputWithDraftState } from "@denis-sokolov/react";
 function Input(props) {
   const { onChange, value } = props;
   const { inputProps } = useInputWithDraftState({ onChange, value });

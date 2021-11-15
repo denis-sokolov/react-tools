@@ -13,10 +13,10 @@
     "verify": "npm run typecheck && npm run lint && npm run format-verify && npm run test"
   },
   "bin": {
-    "theorem-react-license-tool": "dist/bin/license/index.js"
+    "denis-react-license-tool": "dist/bin/license/index.js"
   },
   "browser": "dist/index.js",
-  "description": "Theorem React tools",
+  "description": "React tools",
   "dependencies": {
     "@types/findup-sync": "^2.0.2",
     "commander": "^7.0.0",
@@ -49,11 +49,11 @@
   ],
   "license": "ISC",
   "module": "dist/index.js",
-  "name": "@theorem/react",
+  "name": "@denis-sokolov/react",
   "peerDependencies": {
     "react": "^17.0.1"
   },
-  "repository": "git@github.com:Theorem/react-tools.git",
+  "repository": "git@github.com:denis-sokolov/react-tools.git",
   "sideEffects": false,
   "types": "dist/index.js",
   "version": "6.2.1"
