@@ -19,7 +19,7 @@
   "description": "React tools",
   "dependencies": {
     "@types/findup-sync": "^4.0.1",
-    "commander": "^7.0.0",
+    "commander": "^8.3.0",
     "findup-sync": "^5.0.0",
     "license-checker-webpack-plugin": "=0.2.1",
     "parse-css-color": "^0.1.2",
