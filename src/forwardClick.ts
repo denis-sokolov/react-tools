@@ -10,9 +10,10 @@ function isDescendantOf(
 }
 
 function isInteractive(el: Element) {
-  const isInteractiveTag = "a,audio,button,input,label,menu,menuitem,option,select,summary,textarea,video"
-    .split(",")
-    .includes(el.tagName.toLowerCase());
+  const isInteractiveTag =
+    "a,audio,button,input,label,menu,menuitem,option,select,summary,textarea,video"
+      .split(",")
+      .includes(el.tagName.toLowerCase());
   if (isInteractiveTag) return true;
   const isInteractiveAriaRole = "button,checkbox,listbox,switch,tab"
     .split(",")

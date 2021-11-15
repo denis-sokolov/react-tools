@@ -48,9 +48,9 @@ export function useInputWithDraftState<Value>(params: Params<Value>): Result {
             //
           ].join(" ")
         );
-      return isValid ? { value: (s as any) as Value } : "unparsable";
+      return isValid ? { value: s as any as Value } : "unparsable";
     },
-    toString: (s) => (s as any) as string,
+    toString: (s) => s as any as string,
   };
 
   const {
