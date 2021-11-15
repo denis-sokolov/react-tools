@@ -1,6 +1,6 @@
 // Hack
 // https://github.com/microsoft/license-checker-webpack-plugin/issues/30
-// eslint-disable-next-line @theorem/no-imports-down
+// eslint-disable-next-line @denis-sokolov/no-imports-down
 import { getLicenseViolations } from "license-checker-webpack-plugin/src/licenseUtils.js";
 
 export { getLicenseName } from "license-checker-webpack-plugin/src/licenseUtils.js";

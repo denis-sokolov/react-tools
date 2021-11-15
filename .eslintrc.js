@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  extends: ["plugin:@theorem/opinionated"],
+  extends: ["plugin:@denis-sokolov/opinionated"],
   ignorePatterns: ["dist"],
-  plugins: ["@theorem"],
+  plugins: ["@denis-sokolov"],
 };

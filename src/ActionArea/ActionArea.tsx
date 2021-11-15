@@ -109,6 +109,8 @@ export function ActionArea(props: Props) {
     if (url === currentPath && !download) return span("current");
 
     return (
+      /* Rule does not detect our dynamic values */
+      /* eslint-disable-next-line react/jsx-no-target-blank */
       <a
         className={`${baseStyles} ${className}`}
         download={download}
