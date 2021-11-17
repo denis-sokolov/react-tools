@@ -1,3 +1,7 @@
+# 6.3.0
+
+- ActionArea: renderLink option to customize link rendering
+
 # 6.2.1
 
 - Fixup in useDismissElement
