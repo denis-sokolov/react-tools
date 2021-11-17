@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from "react";
+import type { AnchorHTMLAttributes, CSSProperties, ReactNode } from "react";
 import { scopedStyles } from "../lib";
 
 export type Action =
@@ -28,6 +28,10 @@ type Props = {
    * Override how the ActionArea detects which links are pointing to the current page
    */
   currentPath?: string;
+  /**
+   * Override how the ActionArea renders links
+   */
+  renderLink?: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => ReactNode;
   title?: string;
   style?: CSSProperties;
 };
@@ -105,24 +109,24 @@ export function ActionArea(props: Props) {
       props.currentPath ||
       (typeof location !== "undefined" ? location.pathname : "");
     const { download, newWindow } = opts;
+    const renderLink = props.renderLink || ((p) => <a {...p}>{p.children}</a>);
 
     if (url === currentPath && !download) return span("current");
 
     return (
-      /* Rule does not detect our dynamic values */
-      /* eslint-disable-next-line react/jsx-no-target-blank */
-      <a
-        className={`${baseStyles} ${className}`}
-        download={download}
-        href={url}
-        rel={newWindow ? "noopener" : undefined}
-        referrerPolicy="strict-origin-when-cross-origin"
-        target={newWindow ? "_blank" : undefined}
-        title={title}
-        style={style}
-      >
-        {children}
-      </a>
+      <>
+        {renderLink({
+          className: `${baseStyles} ${className}`,
+          children: children,
+          download: download,
+          href: url,
+          rel: newWindow ? "noopener" : undefined,
+          referrerPolicy: "strict-origin-when-cross-origin",
+          target: newWindow ? "_blank" : undefined,
+          title: title,
+          style: style,
+        })}
+      </>
     );
   };
 

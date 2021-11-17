@@ -60,6 +60,14 @@ If you use a custom router, including anything during server-side rendering, pro
 </ActionArea>
 ```
 
+If you need to render links in a particular way, say, because of next.js Link component, provide a customizing function:
+
+```jsx
+<ActionArea action="/about" renderLink={(props) => <a {...props} />}>
+  About
+</ActionArea>
+```
+
 See also [react-abstract-button](https://www.npmjs.com/package/react-abstract-button).
 
 ## ErrorBoundary
