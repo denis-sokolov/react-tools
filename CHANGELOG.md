@@ -1,3 +1,7 @@
+# 6.3.1
+
+- license-tool: fix working on projects without Webpack
+
 # 6.3.0
 
 - ActionArea: renderLink option to customize link rendering
