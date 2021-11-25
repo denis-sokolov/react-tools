@@ -31,7 +31,9 @@ type Props = {
   /**
    * Override how the ActionArea renders links
    */
-  renderLink?: (props: AnchorHTMLAttributes<HTMLAnchorElement>) => ReactNode;
+  renderLink?: (
+    props: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }
+  ) => ReactNode;
   title?: string;
   style?: CSSProperties;
 };
