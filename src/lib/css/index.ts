@@ -36,11 +36,15 @@ function objectToString(selector: string, obj: StyleObject) {
   return `${selector}{${body}}${nested}`;
 }
 
+function prependTo(parent: Element, child: Element) {
+  parent.insertBefore(child, parent.firstChild);
+}
+
 export function globalCss(window: Window, css: string) {
   const doc = window.document;
   const s = doc.createElement("style");
   s.innerHTML = css;
-  doc.head.appendChild(s);
+  prependTo(doc.head, s);
 }
 
 export function scopedStyles(
@@ -55,7 +59,7 @@ export function scopedStyles(
   if (typeof w !== "undefined") {
     const style = w.document.createElement("style");
     style.innerText = objectToString("." + name, styles);
-    w.document.head.appendChild(style);
+    prependTo(w.document.head, style);
   }
   return name;
 }

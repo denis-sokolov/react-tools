@@ -8,6 +8,21 @@ export function runTest(prefix: string, input: StyleObject) {
       appendedChildren.push(child as any);
       return child;
     },
+    get firstChild() {
+      return appendedChildren[0] || null;
+    },
+    insertBefore: (newChild, targetChild) => {
+      const index =
+        targetChild === null
+          ? appendedChildren.length
+          : appendedChildren.findIndex((c) => c === targetChild);
+      if (index === -1)
+        throw new Error(
+          "The node before which the new node is to be inserted is not a child of this node"
+        );
+      appendedChildren.splice(index, 0, newChild as any);
+      return newChild;
+    },
   };
   const document: Partial<Window["document"]> = {
     createElement: (tagName: string) => ({ tagName } as any),
