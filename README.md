@@ -10,6 +10,10 @@ Comes with TypeScript types if you use TypeScript.
 npm install --save @denis-sokolov/react
 ```
 
+## Browser support
+
+For the most part the library is not using any newer APIs. That said, if you support browsers with less than 2% of the market (Internet Explorer, Safari before 14, Chrome before 88), take a second look whether everything works well.
+
 ## About Theorem
 
 ![Theorem](docs/images/theorem.jpg)
