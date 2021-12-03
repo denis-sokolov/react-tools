@@ -43,7 +43,7 @@ function prependTo(parent: Element, child: Element) {
 export function globalCss(window: Window, css: string) {
   const doc = window.document;
   const s = doc.createElement("style");
-  s.innerHTML = css;
+  s.innerText = css;
   prependTo(doc.head, s);
 }
 
