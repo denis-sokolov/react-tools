@@ -1,3 +1,7 @@
+# 7.0.0
+
+- ActionArea: changed the way styles are injected into the document, can affect some specificity overrides
+
 # 6.3.1
 
 - license-tool: fix working on projects without Webpack
