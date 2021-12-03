@@ -57,10 +57,8 @@ export function scopedStyles(
   const w: Window | undefined =
     win || (typeof window === "undefined" ? undefined : window);
   if (typeof w !== "undefined") {
-    const style = w.document.createElement("style");
     // :where for 0 specificity
-    style.innerText = objectToString(`:where(.${name})`, styles);
-    prependTo(w.document.head, style);
+    globalCss(w, objectToString(`:where(.${name})`, styles));
   }
   return name;
 }
