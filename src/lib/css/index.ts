@@ -53,7 +53,7 @@ export function scopedStyles(
   win?: Window
 ) {
   counter += 1;
-  const name = `${prefix}-${counter}`;
+  const name = `${prefix}-${counter}uVdOIRB`;
   const w: Window | undefined =
     win || (typeof window === "undefined" ? undefined : window);
   if (typeof w !== "undefined") {
