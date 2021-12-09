@@ -29,6 +29,7 @@ ActionArea starts with no styles, so create a few visual components that customi
 // For an example
 // .myClickableTextStyles { color: blue }
 // .myClickableTextStyles:hover { text-decoration: underline }
+// .myClickableTextStyles.current { color: inherit; text-decoration: inherit; }
 const ClickableText = (props) => (
   <ActionArea className="myClickableTextStyles" {...props} />
 );
@@ -36,6 +37,7 @@ const ClickableText = (props) => (
 // For an example
 // .myPrimaryButtonStyles { border: 1px solid blue }
 // .myPrimaryButtonStyles:hover { border-color: red }
+// .myPrimaryButtonStyles.current { border-color: gray }
 const PrimaryButton = (props) => (
   <ActionArea className="myPrimaryButtonStyles" {...props} />
 );
