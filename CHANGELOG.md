@@ -1,3 +1,7 @@
+# 7.1.0
+
+- ActionArea: renderButton option to customize button rendering
+
 # 7.0.0
 
 - ActionArea: changed the way styles are injected into the document, can affect some specificity overrides
