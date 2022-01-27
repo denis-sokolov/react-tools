@@ -57,5 +57,5 @@
   "repository": "git@github.com:denis-sokolov/react-tools.git",
   "sideEffects": false,
   "types": "dist/index.js",
-  "version": "7.1.0"
+  "version": "7.2.0"
 }
