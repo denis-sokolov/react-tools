@@ -1,4 +1,9 @@
-import type { AnchorHTMLAttributes, CSSProperties, ReactNode } from "react";
+import type {
+  AnchorHTMLAttributes,
+  ButtonHTMLAttributes,
+  CSSProperties,
+  ReactNode,
+} from "react";
 import { scopedStyles } from "../lib";
 
 export type Action =
@@ -28,6 +33,10 @@ type Props = {
    * Override how the ActionArea detects which links are pointing to the current page
    */
   currentPath?: string;
+  /**
+   * Override how the ActionArea renders buttons
+   */
+  renderButton?: (props: ButtonHTMLAttributes<HTMLButtonElement>) => ReactNode;
   /**
    * Override how the ActionArea renders links
    */
@@ -77,17 +86,20 @@ export function ActionArea(props: Props) {
     type?: "submit";
   }) {
     const { onClick, onMouseDown, type } = opts;
+    const renderButton =
+      props.renderButton || ((p) => <button {...p}>{p.children}</button>);
     return (
-      <button
-        className={`${baseStyles} ${className}`}
-        onClick={onClick}
-        onMouseDown={onMouseDown}
-        type={type || "button"}
-        title={title}
-        style={style}
-      >
-        {children}
-      </button>
+      <>
+        {renderButton({
+          children,
+          className: `${baseStyles} ${className}`,
+          onClick,
+          onMouseDown,
+          type: type || "button",
+          title,
+          style,
+        })}
+      </>
     );
   };
 
