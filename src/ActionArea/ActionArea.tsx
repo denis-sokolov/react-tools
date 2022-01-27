@@ -1,6 +1,7 @@
 import type {
   AnchorHTMLAttributes,
   ButtonHTMLAttributes,
+  HTMLAttributes,
   CSSProperties,
   ReactNode,
 } from "react";
@@ -43,6 +44,10 @@ export type ActionAreaProps = {
   renderLink?: (
     props: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }
   ) => ReactNode;
+  /**
+   * Override how the ActionArea renders inactive areas
+   */
+  renderSpan?: (props: HTMLAttributes<HTMLSpanElement>) => ReactNode;
   title?: string;
   style?: CSSProperties;
 };
@@ -104,14 +109,17 @@ export function ActionArea(props: ActionAreaProps) {
   };
 
   const span = function (extraClassName = "") {
+    const renderSpan =
+      props.renderSpan || ((p) => <span {...p}>{p.children}</span>);
     return (
-      <span
-        className={`${baseStyles} ${disabledStyles} ${className} ${extraClassName}`}
-        title={title}
-        style={style}
-      >
-        {children}
-      </span>
+      <>
+        {renderSpan({
+          children,
+          className: `${baseStyles} ${disabledStyles} ${className} ${extraClassName}`,
+          title,
+          style,
+        })}
+      </>
     );
   };
 
