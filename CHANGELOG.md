@@ -1,3 +1,7 @@
+# 7.2.0
+
+- ActionArea: renderSpan option to customize span rendering
+
 # 7.1.0
 
 - ActionArea: renderButton option to customize button rendering
