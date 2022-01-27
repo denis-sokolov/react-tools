@@ -15,7 +15,7 @@ export type Action =
   | { mousedown: () => void }
   | "disabled";
 
-type Props = {
+export type ActionAreaProps = {
   /**
    * Possible values for an Action:
    * - "submit"
@@ -73,7 +73,7 @@ const disabledStyles = scopedStyles("ActionArea-disabled", {
 /**
  * An area that acts as a button or link, and is devoid of styling
  */
-export function ActionArea(props: Props) {
+export function ActionArea(props: ActionAreaProps) {
   const { children, title, style } = props;
   const className = props.className || "";
 
