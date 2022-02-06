@@ -1,3 +1,7 @@
+# 8.0.0.
+
+- ActionArea: use disabledReason instead of “disabled”
+
 # 7.2.0
 
 - ActionArea: renderSpan option to customize span rendering
