@@ -108,7 +108,8 @@ export function ActionArea(props: ActionAreaProps) {
     );
   };
 
-  const span = function (extraClassName = "") {
+  const span = function (opts: { extraClassName?: string } = {}) {
+    const { extraClassName = "" } = opts;
     const renderSpan =
       props.renderSpan || ((p) => <span {...p}>{p.children}</span>);
     return (
@@ -133,7 +134,8 @@ export function ActionArea(props: ActionAreaProps) {
     const { download, newWindow } = opts;
     const renderLink = props.renderLink || ((p) => <a {...p}>{p.children}</a>);
 
-    if (url === currentPath && !download) return span("current");
+    if (url === currentPath && !download)
+      return span({ extraClassName: "current" });
 
     return (
       <>
