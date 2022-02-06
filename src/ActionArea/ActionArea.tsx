@@ -14,7 +14,7 @@ export type Action =
   | { download: string; url: string }
   | (() => void)
   | { mousedown: () => void }
-  | "disabled";
+  | { disabledReason: string };
 
 export type ActionAreaProps = {
   /**
@@ -25,7 +25,7 @@ export type ActionAreaProps = {
    * - { download: string, url: string } to make a link that downloads a file with a given filename
    * - () => void to make a click handler
    * - { mousedown: () => void } to make a mousedown handler, but the click handler above is preferred for UX
-   * - "disabled", but avoid it, as inactive UI elements are not preferred for UX
+   * - { disabledReason: "To continue, please fill in all the fields above" } to disable a button and provide an explanation to the user
    */
   action: Action;
   children: ReactNode;
@@ -108,7 +108,9 @@ export function ActionArea(props: ActionAreaProps) {
     );
   };
 
-  const span = function (opts: { extraClassName?: string } = {}) {
+  const span = function (
+    opts: { extraClassName?: string; title?: string } = {}
+  ) {
     const { extraClassName = "" } = opts;
     const renderSpan =
       props.renderSpan || ((p) => <span {...p}>{p.children}</span>);
@@ -117,7 +119,7 @@ export function ActionArea(props: ActionAreaProps) {
         {renderSpan({
           children,
           className: `${baseStyles} ${disabledStyles} ${className} ${extraClassName}`,
-          title,
+          title: opts.title || title,
           style,
         })}
       </>
@@ -154,7 +156,12 @@ export function ActionArea(props: ActionAreaProps) {
     );
   };
 
-  if (action === "disabled") return span();
+  if (action === "disabled") {
+    console.log(
+      'action="disabled" is deprecated, please use action={ disabled: "Explanation to the user" }'
+    );
+    return span();
+  }
   if (action === "submit") return button({ type: "submit" });
 
   if (typeof action === "function") return button({ onClick: action });
@@ -166,6 +173,8 @@ export function ActionArea(props: ActionAreaProps) {
     if ("mousedown" in action) return button({ onMouseDown: action.mousedown });
     if ("newWindow" in action)
       return link(action.newWindow, { newWindow: true });
+    if ("disabledReason" in action)
+      return span({ title: action.disabledReason });
   }
 
   console.error("Props for the last ActionArea:", props);
