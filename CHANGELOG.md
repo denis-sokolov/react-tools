@@ -1,3 +1,8 @@
+# 9.0.0
+
+- Breaking: useInputWithDraftState onChange renamed to onChangesDone
+- Spinner: delayedMs option
+
 # 8.0.0.
 
 - ActionArea: use disabledReason instead of “disabled”
