@@ -246,7 +246,7 @@ The Spinner comes with a small, simple animation out of the box, but it can be c
 return <Spinner />;
 
 // Options
-return <Spinner delayed fullScreen timeoutMs={90000} />;
+return <Spinner delayedMs={500} fullScreen timeoutMs={90000} />;
 
 // Customized visuals
 const MySpinner = () => (

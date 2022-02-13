@@ -1,21 +1,26 @@
 import { CSSProperties, ReactNode, useEffect, useState } from "react";
 import { useRerender, useRerenderEvery } from "../useRerender";
 
-const delayedTimeout = 1000;
-
 type Props = {
   children: ReactNode;
-  /**
-   * Hide the spinner briefly in case the loading state is very short
-   */
-  delayed?: boolean;
   fullScreen?: boolean;
   timeoutMs?: number;
-};
+} & (
+  | {
+      /**
+       * Hide the spinner briefly in case the loading state is very short
+       */
+      delayed?: boolean;
+      delayedMs?: never;
+    }
+  | { delayed?: never; delayedMs?: number }
+);
 
 export function Spinner(props: Props) {
-  const { children, delayed, fullScreen, timeoutMs } = props;
+  const { children, fullScreen, timeoutMs } = props;
   const contents = children;
+  const delayed = Boolean(props.delayedMs) || (props.delayed ?? false);
+  const delayedTimeout = props.delayedMs ?? 1000;
 
   useRerenderEvery(1000);
   const rerender = useRerender();
@@ -26,7 +31,7 @@ export function Spinner(props: Props) {
       const timer = setTimeout(rerender, delayedTimeout + 1);
       return () => clearTimeout(timer);
     },
-    [rerender]
+    [delayedTimeout, rerender]
   );
 
   const timeout = timeoutMs ?? 60000;
