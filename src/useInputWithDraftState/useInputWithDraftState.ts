@@ -4,8 +4,8 @@ import { useCustomInputWithDraftState } from "./useCustomInputWithDraftState";
 type Params<Value> = {
   value: Value;
 } & (
-  | { onChange: (value: Value) => void; onInput?: (value: Value) => void }
-  | { onChange?: (value: Value) => void; onInput: (value: Value) => void }
+  | { onChange: (value: Value) => void; onChangesDone?: (value: Value) => void }
+  | { onChange?: (value: Value) => void; onChangesDone: (value: Value) => void }
 ) &
   (Value extends string
     ? {
@@ -66,7 +66,7 @@ export function useInputWithDraftState<Value>(params: Params<Value>): Result {
   } = useCustomInputWithDraftState<Value, string>({
     fromDraft: convert.fromString,
     onChange: params.onChange ?? (() => {}),
-    onInput: params.onInput ?? (() => {}),
+    onChangesDone: params.onChangesDone ?? (() => {}),
     toDraft: convert.toString,
     value: params.value,
   });

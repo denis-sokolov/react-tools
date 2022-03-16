@@ -3,8 +3,8 @@ import { useState } from "react";
 type Params<Value, Draft> = {
   fromDraft: (draft: Draft) => { value: Value } | "unparsable";
   toDraft: (value: Value) => Draft;
-  onChange: (value: Value) => void;
-  onInput?: (value: Value) => void;
+  onChange?: (value: Value) => void;
+  onChangesDone: (value: Value) => void;
   value: Value;
 };
 
@@ -20,7 +20,7 @@ type Result<_Value, Draft> = {
 export function useCustomInputWithDraftState<Value, Draft>(
   params: Params<Value, Draft>
 ): Result<Value, Draft> {
-  const { fromDraft, onChange, onInput, toDraft, value } = params;
+  const { fromDraft, onChange, onChangesDone, toDraft, value } = params;
 
   const [state, setState] = useState<
     | { editing: true; draft: Draft }
@@ -38,9 +38,9 @@ export function useCustomInputWithDraftState<Value, Draft>(
     isEditing: state.editing,
     onChange: (draft) => {
       setState({ editing: true, draft });
-      if (onInput) {
+      if (onChange) {
         const v = fromDraft(draft);
-        if (v !== "unparsable") onInput(v.value);
+        if (v !== "unparsable") onChange(v.value);
       }
     },
     onDoneEditing: () => {
@@ -50,7 +50,7 @@ export function useCustomInputWithDraftState<Value, Draft>(
       if (v === "unparsable") {
         setState({ editing: false, invalidDraft: { draft: state.draft } });
       } else {
-        onChange(v.value);
+        onChangesDone(v.value);
         setState({ editing: false });
       }
     },

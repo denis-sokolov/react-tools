@@ -380,25 +380,25 @@ If you have a button outside that controls the container, you can call .addition
 
 ## useInputWithDraftState
 
-Use useInputWithDraftState to build input elements with thoroughly thought out user and developer experience. In the simplest form, useInputWithDraftState allows the user to edit a value, and triggers onInput when the user has a valid value in the field.
+Use useInputWithDraftState to build input elements with thoroughly thought out user and developer experience. In the simplest form, useInputWithDraftState allows the user to edit a value, and triggers onChange when the user has a valid value in the field.
 
 ```jsx
 import { useInputWithDraftState } from "@denis-sokolov/react";
 function Input(props) {
-  const { onInput, value } = props;
-  const { inputProps } = useInputWithDraftState({ onInput, value });
+  const { onChange, value } = props;
+  const { inputProps } = useInputWithDraftState({ onChange, value });
   return <input {...inputProps}>
 }
 ```
 
 useInputWithDraftState can also be used with a `<textarea>` the same way. For custom text-like widgets, use useCustomInputWithDraftState hook, see useInputWithDraftState source code for an example of use.
 
-To validate the draft states, use the `validate` option. Before triggering onInput, the hook will validate the value, and invalid values will not trigger onInput, and will instead flip showInvalidDraftError flag. This will not happen if the field is empty, as good UX expects the user to be able to leave the field empty, if only because they have not yet edited it.
+To validate the draft states, use the `validate` option. Before triggering onChange, the hook will validate the value, and invalid values will not trigger onChange, and will instead flip showInvalidDraftError flag. This will not happen if the field is empty, as good UX expects the user to be able to leave the field empty, if only because they have not yet edited it.
 
 ```jsx
 function EmailInput() {
   const { inputProps, showInvalidDraftError } = useInputWithDraftState({
-    onInput,
+    onChange,
     validate: str => str.includes("@")
     value,
   });
@@ -411,14 +411,14 @@ function EmailInput() {
 
 To forcefully validate the empty value, use a validateEmptyField option.
 
-To observe changes only after the user is done editing, use onChange instead. Notice the inconsistency with [React’s onChange](https://github.com/facebook/react/issues/9657).
+To observe changes only after the user is done editing, use onChangesDone instead. ([React’s onChange/onInput confusion](https://github.com/facebook/react/issues/9657)).
 
 The hook also allows parsing the text value as a richer value instead of validating. This can be used for number inputs, or a custom data type:
 
 ```jsx
 function EmailInput() {
   const { inputProps } = useInputWithDraftState({
-    onInput,
+    onChange,
     convert: {
       fromString: (s) => {
         const num = parseInt(s, 10);
