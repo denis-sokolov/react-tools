@@ -422,8 +422,8 @@ function EmailInput() {
         const num = parseInt(s, 10);
         if (Number.isNaN(num)) return "unparsable";
         return num;
-      };
-      toString: (num) => num.toString();
+      },
+      toString: (num) => num.toString(),
     },
     value,
   });
