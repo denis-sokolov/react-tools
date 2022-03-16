@@ -2,24 +2,27 @@ import type { ChangeEvent, FocusEvent } from "react";
 import { useCustomInputWithDraftState } from "./useCustomInputWithDraftState";
 
 type Params<Value> = {
-  onChange: (value: Value) => void;
   value: Value;
-} & (Value extends string
-  ? {
-      clean?: (value: string) => string;
-      convert?: never;
-      validate?: (value: string) => boolean;
-    } & (Value | "" extends Value // If Value can only be some string literals, then we’re not allowed to return an empty string and must enforce validateEmptyField feature // If Value is allowed to be an empty string, validating empty field is optional and not recommended
-      ? { validateEmptyField?: boolean }
-      : { validateEmptyField: true })
-  : {
-      clean?: never;
-      convert?: {
-        fromString: (s: string) => { value: Value } | "unparsable";
-        toString: (v: Value) => string;
-      };
-      validate?: never;
-    });
+} & (
+  | { onChange: (value: Value) => void; onInput?: (value: Value) => void }
+  | { onChange?: (value: Value) => void; onInput: (value: Value) => void }
+) &
+  (Value extends string
+    ? {
+        clean?: (value: string) => string;
+        convert?: never;
+        validate?: (value: string) => boolean;
+      } & (Value | "" extends Value // If Value can only be some string literals, then we’re not allowed to return an empty string and must enforce validateEmptyField feature // If Value is allowed to be an empty string, validating empty field is optional and not recommended
+        ? { validateEmptyField?: boolean }
+        : { validateEmptyField: true })
+    : {
+        clean?: never;
+        convert?: {
+          fromString: (s: string) => { value: Value } | "unparsable";
+          toString: (v: Value) => string;
+        };
+        validate?: never;
+      });
 
 type El = HTMLInputElement | HTMLTextAreaElement;
 
@@ -62,7 +65,8 @@ export function useInputWithDraftState<Value>(params: Params<Value>): Result {
     onStartEditing,
   } = useCustomInputWithDraftState<Value, string>({
     fromDraft: convert.fromString,
-    onChange: params.onChange,
+    onChange: params.onChange ?? (() => {}),
+    onInput: params.onInput ?? (() => {}),
     toDraft: convert.toString,
     value: params.value,
   });

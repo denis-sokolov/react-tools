@@ -411,6 +411,8 @@ function EmailInput() {
 
 To forcefully validate the empty value, use a validateEmptyField option.
 
+To observe changes immediately as the user is editing as opposed to on blur, use onInput instead.
+
 The hook also allows parsing the text value as a richer value instead of validating. This can be used for number inputs, or a custom data type:
 
 ```jsx
