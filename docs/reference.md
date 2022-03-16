@@ -421,7 +421,7 @@ function EmailInput() {
       fromString: (s) => {
         const num = parseInt(s, 10);
         if (Number.isNaN(num)) return "unparsable";
-        return num;
+        return { value: num };
       },
       toString: (num) => num.toString(),
     },
