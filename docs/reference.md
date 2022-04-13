@@ -118,6 +118,8 @@ function AboutScreen() {
     </Page>
   );
 }
+
+On rare occassions when you need to inspect the error itself, it’s available in props.error.
 ```
 
 ## forwardClick

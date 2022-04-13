@@ -4,7 +4,7 @@ type Props = {
   children: ReactNode;
   reportError: (error: Error, details: { componentStack: string }) => void;
 } & (
-  | { component: ComponentType<{ reset: () => void }> }
+  | { component: ComponentType<{ error: Error; reset: () => void }> }
   | { fallback: ReactNode }
 );
 
@@ -32,7 +32,7 @@ export class ErrorBoundary extends Component<Props> {
     if (this.state.error) {
       if ("component" in this.props) {
         const CurrentComponent = this.props.component;
-        return <CurrentComponent reset={this.reset} />;
+        return <CurrentComponent error={this.state.error} reset={this.reset} />;
       }
       return this.props.fallback;
     }
