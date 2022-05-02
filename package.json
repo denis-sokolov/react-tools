@@ -57,5 +57,5 @@
   "repository": "git@github.com:denis-sokolov/react-tools.git",
   "sideEffects": false,
   "types": "dist/index.js",
-  "version": "9.0.0"
+  "version": "9.1.0"
 }
