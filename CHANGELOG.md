@@ -1,3 +1,8 @@
+# 9.1.0
+
+- ActionArea: does not show disabled, when pointing to a new window
+- ErrorBoundary: component gets the Error details
+
 # 9.0.0
 
 - Breaking: useInputWithDraftState onChange renamed to onChangesDone
