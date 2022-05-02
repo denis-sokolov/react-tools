@@ -136,7 +136,7 @@ export function ActionArea(props: ActionAreaProps) {
     const { download, newWindow } = opts;
     const renderLink = props.renderLink || ((p) => <a {...p}>{p.children}</a>);
 
-    if (url === currentPath && !download)
+    if (url === currentPath && !download && !newWindow)
       return span({ extraClassName: "current" });
 
     return (
