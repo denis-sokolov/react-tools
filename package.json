@@ -10,7 +10,8 @@
     "start-building": "rm -rf dist && NODE_ENV=production tsc --watch",
     "test": "ava",
     "typecheck": "tsc --noEmit && tsc --noEmit --project bin/tsconfig.json",
-    "verify": "npm run typecheck && npm run lint && npm run format-verify && npm run test"
+    "verify": "npm run typecheck && npm run lint && npm run format-verify && npm run test && npm run verify-enter-points",
+    "verify-enter-points": "npm run build && node --experimental-specifier-resolution=node -e 'import(\"./dist/index.js\")' && node dist/bin/license/index.js --version >/dev/null"
   },
   "bin": {
     "denis-react-license-tool": "dist/bin/license/index.js"
