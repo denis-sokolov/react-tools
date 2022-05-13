@@ -3,6 +3,7 @@
 // eslint-disable-next-line @denis-sokolov/no-imports-down
 import { getLicenseViolations } from "license-checker-webpack-plugin/src/licenseUtils.js";
 
+// eslint-disable-next-line @denis-sokolov/no-imports-down
 export { getLicenseName } from "license-checker-webpack-plugin/src/licenseUtils.js";
 
 import type { Dependency } from "../types";
