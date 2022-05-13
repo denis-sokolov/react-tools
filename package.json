@@ -30,7 +30,7 @@
     "@types/license-checker-webpack-plugin": "^0.2.1",
     "@types/react": "^17.0.35",
     "@types/react-test-renderer": "^17.0.1",
-    "ava": "^3.15.0",
+    "ava": "^4.2.0",
     "eslint": "^8.15.0",
     "prettier": "^2.6.2",
     "react": "^17.0.2",

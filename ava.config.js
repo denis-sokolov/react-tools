@@ -1,4 +1,4 @@
-export default {
+module.exports = {
   environmentVariables: {
     TS_NODE_PROJECT: "tsconfig.ava.json",
   },
