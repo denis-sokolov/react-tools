@@ -1,7 +1,7 @@
 {
   "extends": "./tsconfig.json",
   "compilerOptions": {
-    "module": "CommonJS"
+    "jsx": "react-jsx"
   },
   "include": ["bin", "src"]
 }

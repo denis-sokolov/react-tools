@@ -1,8 +1,15 @@
-module.exports = {
+export default {
   environmentVariables: {
     TS_NODE_PROJECT: "tsconfig.ava.json",
   },
-  extensions: ["ts", "tsx"],
+  extensions: {
+    ts: "module",
+    tsx: "module",
+  },
   files: ["{bin,src}/**/*.test.{js,jsx,ts,tsx}"],
-  require: ["ts-node/register/transpile-only"],
+  nodeArguments: [
+    "--experimental-specifier-resolution=node",
+    "--loader=ts-node/esm",
+    "--no-warnings",
+  ],
 };

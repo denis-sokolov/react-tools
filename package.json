@@ -1,7 +1,7 @@
 {
   "scripts": {
     "bin-license": "ts-node -T --project bin/tsconfig.json bin/license",
-    "build": "rm -rf dist && NODE_ENV=production tsc --project tsconfig.build.json && NODE_ENV=production tsc --project bin/tsconfig.json",
+    "build": "rm -rf dist && NODE_ENV=production tsc --project tsconfig.build.json && NODE_ENV=production tsc --project bin/tsconfig.json && cp bin/package.json dist/bin/",
     "format": "prettier --write .",
     "format-verify": "prettier --check .",
     "lint": "eslint .",
@@ -49,12 +49,14 @@
   ],
   "license": "ISC",
   "module": "dist/index.js",
+  "exports": "./dist/index.js",
   "name": "@denis-sokolov/react",
   "peerDependencies": {
     "react": "^17.0.1"
   },
   "repository": "git@github.com:denis-sokolov/react-tools.git",
   "sideEffects": false,
+  "type": "module",
   "types": "dist/index.js",
   "version": "9.1.0"
 }
