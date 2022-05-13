@@ -1,3 +1,7 @@
+# 9.2.0
+
+- node: now can import as an esm module
+
 # 9.1.0
 
 - ActionArea: does not show disabled, when pointing to a new window
