@@ -1,3 +1,8 @@
+# 9.2.1
+
+- node: esm now does not require experimental-specifier-resolution=node
+- node: include CommonJS for compatibility with some dev servers
+
 # 9.2.0
 
 - node: now can import as an esm module
