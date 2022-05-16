@@ -63,6 +63,6 @@
   "repository": "git@github.com:denis-sokolov/react-tools.git",
   "sideEffects": false,
   "type": "module",
-  "types": "dist/index.js",
+  "types": "dist/esm/index.js",
   "version": "9.2.1"
 }
