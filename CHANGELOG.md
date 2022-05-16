@@ -1,3 +1,7 @@
+# 9.2.2
+
+- fixup 9.2.1 type location
+
 # 9.2.1
 
 - node: esm now does not require experimental-specifier-resolution=node
