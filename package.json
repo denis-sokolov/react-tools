@@ -64,5 +64,5 @@
   "sideEffects": false,
   "type": "module",
   "types": "dist/esm/index.js",
-  "version": "9.2.1"
+  "version": "9.2.2"
 }
