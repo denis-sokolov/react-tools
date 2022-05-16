@@ -47,7 +47,7 @@
   "files": [
     "dist/**/*",
     "!dist/**/*.test.*",
-    "!dist/lib/test"
+    "!dist/**/lib-test/*"
   ],
   "license": "ISC",
   "main": "dist/cjs/index.js",
