@@ -60,6 +60,7 @@
   "peerDependencies": {
     "react": "^17.0.1"
   },
+  "prettier": {},
   "repository": "git@github.com:denis-sokolov/react-tools.git",
   "sideEffects": false,
   "type": "module",
