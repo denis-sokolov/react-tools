@@ -1,3 +1,7 @@
+# 9.3.0
+
+- ErrorBoundary: renderError form
+
 # 9.2.2
 
 - fixup 9.2.1 type location
