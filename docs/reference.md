@@ -120,6 +120,8 @@ function AboutScreen() {
 }
 
 On rare occassions when you need to inspect the error itself, it’s available in props.error.
+
+The third form is <ErrorBoundary renderError={({ error, reset }) => <div />}>.
 ```
 
 ## forwardClick

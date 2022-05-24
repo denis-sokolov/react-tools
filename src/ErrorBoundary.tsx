@@ -6,6 +6,7 @@ type Props = {
 } & (
   | { component: ComponentType<{ error: Error; reset: () => void }> }
   | { fallback: ReactNode }
+  | { renderError: (props: { error: Error; reset: () => void }) => ReactNode }
 );
 
 export class ErrorBoundary extends Component<Props> {
@@ -33,6 +34,12 @@ export class ErrorBoundary extends Component<Props> {
       if ("component" in this.props) {
         const CurrentComponent = this.props.component;
         return <CurrentComponent error={this.state.error} reset={this.reset} />;
+      }
+      if ("renderError" in this.props) {
+        return this.props.renderError({
+          error: this.state.error,
+          reset: this.reset,
+        });
       }
       return this.props.fallback;
     }
