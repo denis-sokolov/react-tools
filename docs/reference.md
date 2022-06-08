@@ -456,6 +456,14 @@ When the rendering depends on the time, one needs to notify React to rerender pe
 useRerenderEvery(1000);
 ```
 
+## useShowRenders
+
+`useShowRenders` shows every time your component re-renders and helps distinguish different instances of your component.
+
+```jsx
+useShowRenders("Foo");
+```
+
 ## useUniqueId
 
 `useUniqueId` is most commonly useful for label/input pairs, but can be used for anything that needs an id that is unique and stable for a particular component instance.

@@ -16,4 +16,5 @@ export * from "./useCrash";
 export * from "./useDismissElement";
 export * from "./useInputWithDraftState";
 export * from "./useRerender";
+export * from "./useShowRenders";
 export * from "./useUniqueId";
