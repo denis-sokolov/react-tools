@@ -34,6 +34,7 @@ type Result = {
     value: string;
   };
   isFocused: boolean;
+  setInputValue: (text: string) => void;
   showInvalidDraftError: boolean;
 };
 
@@ -79,6 +80,7 @@ export function useInputWithDraftState<Value>(params: Params<Value>): Result {
       value: draftToDisplay,
     },
     isFocused: isEditing,
+    setInputValue: onChange,
     showInvalidDraftError: showInvalidDraftError,
   };
 }
