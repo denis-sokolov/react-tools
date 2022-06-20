@@ -1,3 +1,8 @@
+# 9.4.0
+
+- useShowRenders
+- useInputWithDraftState: setInputValue
+
 # 9.3.0
 
 - ErrorBoundary: renderError form
