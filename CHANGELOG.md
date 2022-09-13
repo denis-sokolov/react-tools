@@ -1,3 +1,7 @@
+# 9.5.0
+
+- Export more specific Action\* types for ActionArea
+
 # 9.4.0
 
 - useShowRenders
