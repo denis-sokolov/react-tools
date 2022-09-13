@@ -7,14 +7,18 @@ import type {
 } from "react";
 import { scopedStyles } from "../lib";
 
+export type ActionDisabled = { disabledReason: string };
+export type ActionDownload = { download: string; url: string };
+export type ActionHandler = (() => void) | { mousedown: () => void };
+export type ActionSubmit = "submit";
+export type ActionUrl = string | { newWindow: string };
+
 export type Action =
-  | "submit"
-  | string
-  | { newWindow: string }
-  | { download: string; url: string }
-  | (() => void)
-  | { mousedown: () => void }
-  | { disabledReason: string };
+  | ActionDisabled
+  | ActionDownload
+  | ActionHandler
+  | ActionSubmit
+  | ActionUrl;
 
 export type ActionAreaProps = {
   /**
