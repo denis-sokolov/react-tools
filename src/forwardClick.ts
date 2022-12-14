@@ -1,6 +1,6 @@
 import type { MouseEvent } from "react";
 import { isClickInInteractiveDescendant } from "./isClickInInteractiveDescendant";
-import { isDescendantOf, isInteractive } from "./lib";
+import { findClosestParent, isInteractive } from "./lib";
 
 /**
  * forwardClick allows to emulate a <label> with more control.
@@ -24,13 +24,23 @@ export function forwardClick(
     console.log("Unexpected element", forwardTarget);
     throw new Error(`Found an unexpected element, what do I do with it?`);
   }
-  if (
-    !isInteractive(forwardTarget) &&
-    !isDescendantOf(forwardTarget, isInteractive)
-  )
-    throw new Error(
-      `Found a non-interactive element ${forwardTarget.tagName}, I can’t click on it, nor any of the ancestors.`
+  if (!isInteractive(forwardTarget)) {
+    const interactiveForwardTarget = findClosestParent(
+      forwardTarget,
+      isInteractive
     );
+    if (!interactiveForwardTarget)
+      throw new Error(
+        `Found a non-interactive element ${forwardTarget.tagName}, I can’t click on it, nor any of the ancestors.`
+      );
+    if (
+      container === interactiveForwardTarget ||
+      !container.contains(interactiveForwardTarget)
+    )
+      throw new Error(
+        "Forward target is only interactive, because the container is interactive. It seems forwarding clicks is thus not needed."
+      );
+  }
 
   if (isClickInInteractiveDescendant(e)) return;
 
