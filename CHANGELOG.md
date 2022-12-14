@@ -1,3 +1,9 @@
+# 10
+
+- Require React 18, Node 18, npm 8
+- sort
+- forwardClick: recognizes role attribute
+
 # 9.5.0
 
 - Export more specific Action\* types for ActionArea
