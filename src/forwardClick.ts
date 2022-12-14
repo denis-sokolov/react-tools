@@ -1,4 +1,5 @@
 import type { MouseEvent } from "react";
+import { isClickInInteractiveDescendant } from "./isClickInInteractiveDescendant";
 import { isDescendantOf, isInteractive } from "./lib";
 
 /**
@@ -31,21 +32,7 @@ export function forwardClick(
       `Found a non-interactive element ${forwardTarget.tagName}, I can’t click on it, nor any of the ancestors.`
     );
 
-  const actualClickLocation = e.target;
-
-  if (!(actualClickLocation instanceof Element)) return;
-
-  if (
-    actualClickLocation === forwardTarget ||
-    isDescendantOf(actualClickLocation, (el) => el === forwardTarget)
-  )
-    return;
-
-  if (
-    isInteractive(actualClickLocation) ||
-    isDescendantOf(actualClickLocation, isInteractive)
-  )
-    return;
+  if (isClickInInteractiveDescendant(e)) return;
 
   // Simulated click does not bring focus
   forwardTarget.focus();
