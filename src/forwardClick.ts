@@ -15,9 +15,12 @@ function isInteractive(el: Element) {
       .split(",")
       .includes(el.tagName.toLowerCase());
   if (isInteractiveTag) return true;
-  const isInteractiveAriaRole = "button,checkbox,listbox,switch,tab"
-    .split(",")
-    .includes(el.getAttribute("aria-role")?.toLowerCase() || "");
+  const interactiveAriaRoles = "button,checkbox,listbox,switch,tab".split(",");
+  const isInteractiveAriaRole =
+    interactiveAriaRoles.includes(
+      el.getAttribute("aria-role")?.toLowerCase() || ""
+    ) ||
+    interactiveAriaRoles.includes(el.getAttribute("role")?.toLowerCase() || "");
   if (isInteractiveAriaRole) return true;
   return false;
 }
