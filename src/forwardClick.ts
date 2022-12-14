@@ -41,7 +41,7 @@ export function forwardClick(
   const forwardTarget = container.querySelector(selector);
   if (!forwardTarget)
     throw new Error(
-      `The selector ${selector} failed to find an element, this is not supposed to happen, make sure your selector always find an element to forward clicks to.`
+      `The selector ${selector} failed to find an element, this is not supposed to happen, make sure your selector always finds an element to forward clicks to.`
     );
   if (!(forwardTarget instanceof HTMLElement)) {
     console.log("Unexpected element", forwardTarget);
