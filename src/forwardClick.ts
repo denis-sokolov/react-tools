@@ -1,29 +1,5 @@
 import type { MouseEvent } from "react";
-
-function isDescendantOf(
-  element: Element,
-  predicate: (el: Element) => boolean
-): boolean {
-  if (!element.parentElement) return false;
-  if (predicate(element.parentElement)) return true;
-  return isDescendantOf(element.parentElement, predicate);
-}
-
-function isInteractive(el: Element) {
-  const isInteractiveTag =
-    "a,audio,button,input,label,menu,menuitem,option,select,summary,textarea,video"
-      .split(",")
-      .includes(el.tagName.toLowerCase());
-  if (isInteractiveTag) return true;
-  const interactiveAriaRoles = "button,checkbox,listbox,switch,tab".split(",");
-  const isInteractiveAriaRole =
-    interactiveAriaRoles.includes(
-      el.getAttribute("aria-role")?.toLowerCase() || ""
-    ) ||
-    interactiveAriaRoles.includes(el.getAttribute("role")?.toLowerCase() || "");
-  if (isInteractiveAriaRole) return true;
-  return false;
-}
+import { isDescendantOf, isInteractive } from "./lib";
 
 /**
  * forwardClick allows to emulate a <label> with more control.
