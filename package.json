@@ -29,14 +29,14 @@
   "devDependencies": {
     "@denis-sokolov/eslint-plugin": "^15.0.0",
     "@types/license-checker-webpack-plugin": "^0.2.1",
-    "@types/react": "^17.0.35",
-    "@types/react-test-renderer": "^17.0.1",
+    "@types/react": "^18.0.26",
+    "@types/react-test-renderer": "^18.0.0",
     "ava": "^5.1.0",
     "eslint": "^8.29.0",
     "fix-es-imports": "^0.1.4",
     "prettier": "^2.8.1",
-    "react": "^17.0.2",
-    "react-test-renderer": "^17.0.2",
+    "react": "^18.2.0",
+    "react-test-renderer": "^18.2.0",
     "ts-node": "^10.9.1",
     "typescript": "^4.9.4"
   },
@@ -58,7 +58,7 @@
   },
   "name": "@denis-sokolov/react",
   "peerDependencies": {
-    "react": "^17.0.1"
+    "react": "^18"
   },
   "prettier": {},
   "repository": "git@github.com:denis-sokolov/react-tools.git",
