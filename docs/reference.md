@@ -163,6 +163,25 @@ export function NotFound() {
 }
 ```
 
+## isClickInInteractiveDescendant
+
+Another way to approach nested interactive elements. You probably want forwardClick instead.
+
+```jsx
+import { isClickInInteractiveDescendant } from "@denis-sokolov/react";
+<div
+  onClick={(e) => {
+    if (isClickInInteractiveDescendant(e)) return;
+    openEmail(email.id);
+  }}
+  role="button"
+  tabIndex="0"
+>
+  <button>Star</button>
+  {email.title}
+</div>;
+```
+
 ## License tools
 
 Every public-facing app needs to validate 3rd-party package licenses and output their attribution. Projects that use Webpack can use [license-checker-webpack-plugin](https://github.com/microsoft/license-checker-webpack-plugin). Other projects, includeing Snowpack with Webpack plugin, can use the tool included with this package.
