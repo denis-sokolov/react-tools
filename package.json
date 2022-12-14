@@ -31,7 +31,7 @@
     "@types/license-checker-webpack-plugin": "^0.2.1",
     "@types/react": "^17.0.35",
     "@types/react-test-renderer": "^17.0.1",
-    "ava": "^4.2.0",
+    "ava": "^5.1.0",
     "eslint": "^8.29.0",
     "fix-es-imports": "^0.1.4",
     "prettier": "^2.8.1",
