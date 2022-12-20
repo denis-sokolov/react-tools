@@ -256,6 +256,53 @@ import { smartOutline } from "@denis-sokolov/react";
 smartOutline();
 ```
 
+## sort
+
+sort function allows to conveniently sort values for display to the user. The benefits over Array.prototype.sort are shorter syntax, advanced features, and collation defaults tweaked for UI.
+
+Do not use to sort millions of values, the performance of the function is meant for sorting smaller sets of rich data.
+
+```js
+import { sort } from "@denis-sokolov/react";
+
+// Simplest use
+// Does not mutate the parameter
+// Will apply smart logic out of the box (e.g. Item 9 will be sorted before Item 10).
+const sortedNames = sort(names);
+
+// Sort rich values by providing a key function
+const sortedThings = sort(thing, (thing) => thing.name);
+const sortedThings = sort(thing, {
+  key: (thing) => thing.name,
+});
+
+// Sort some items at the beginning, or at the end
+const sortedThings = sort(thing, {
+  firstKeys: ["Flash sale", "Sale"],
+  key: (thing) => thing.name,
+  lastKeys: ["Free"],
+});
+
+// For more control what items show at the beginning and the end return a special value from the key function:
+const sortedThings = sort(thing, {
+  key: (thing) => {
+    if (thing.isUrgent) return { first: 1 };
+    if (thing.isPinned) return { first: 2 };
+    if (thing.isPostponed) return { last: 1 };
+    return thing.name;
+  },
+});
+
+// Customize the locale instead of the default guessing
+sort(names, { locale: "en-gb" });
+sort(names, { locale: ["en-gb", "en-au"] });
+
+// Customize collation options
+// Anything you do not explicitly pass is up to the library, and might change between versions
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/Collator/Collator#options
+sort(names, { collator: { sensitivity: "base" } });
+```
+
 ## Spinner
 
 Spinner component ensures that the user is never stuck with an infinite spinner on the screen. By default, after a minute of being displayed, the spinner will crash. A proper crash screen with an apology is better than a stuck animation that does not represent any activity.
