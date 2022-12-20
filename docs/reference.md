@@ -534,6 +534,8 @@ useShowRenders("Foo");
 
 `useUniqueId` is most commonly useful for label/input pairs, but can be used for anything that needs an id that is unique and stable for a particular component instance.
 
+Does not support server-side rendering, you will receive mismatch warnings from React in the console.
+
 ```jsx
 const id = useUniqueId();
 return (
