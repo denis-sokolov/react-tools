@@ -1,10 +1,14 @@
 export type Simple = string | number;
 
-export type Key =
+export type IndividualKey =
   | Simple
   | { first: number; last?: never }
   | { first?: never; last: number };
-export type KeyFunction<Item> = (item: Item) => Key;
+export type ListOfIndividualKeys = IndividualKey[];
+export type Key = IndividualKey | ListOfIndividualKeys;
+export type KeyFunction<Item> =
+  | ((item: Item) => IndividualKey)
+  | ((item: Item) => ListOfIndividualKeys);
 
 export type Options = {
   collator?: Intl.CollatorOptions;

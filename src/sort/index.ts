@@ -1,5 +1,4 @@
 import type {
-  Key,
   KeyFunction,
   OptionsWithKey,
   OptionsWithRequiredKey,
@@ -31,7 +30,7 @@ export function sort<Item>(
     typeof options === "function" ? { key: options } : options ?? {};
   const fullOptions = {
     ...optionsObj,
-    key: optionsObj.key ?? ((item: Item) => item as Key),
+    key: optionsObj.key ?? (((item: Item) => item) as KeyFunction<Item>),
   };
   return sortInternal(input, fullOptions);
 }

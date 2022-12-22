@@ -293,6 +293,11 @@ const sortedThings = sort(thing, {
   },
 });
 
+// Sort by multiple keys:
+const sortedThings = sort(things, {
+  key: (thing) => [thing.relevance, thing.name],
+});
+
 // Customize the locale instead of the default guessing
 sort(names, { locale: "en-gb" });
 sort(names, { locale: ["en-gb", "en-au"] });

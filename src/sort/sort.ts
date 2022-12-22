@@ -1,8 +1,14 @@
-import type { Key, Options, OptionsWithRequiredKey, Simple } from "./types";
+import type {
+  IndividualKey,
+  Key,
+  Options,
+  OptionsWithRequiredKey,
+  Simple,
+} from "./types";
 
 import { compareSimpleValues } from "./compareSimple";
 
-function getKeyFirstIndex(key: Key, options: Options): number | "no" {
+function getKeyFirstIndex(key: IndividualKey, options: Options): number | "no" {
   const { firstKeys } = options;
   if (typeof key === "object") return key.first ?? "no";
   if (!firstKeys) return "no";
@@ -11,7 +17,7 @@ function getKeyFirstIndex(key: Key, options: Options): number | "no" {
   return val;
 }
 
-function getKeyLastIndex(key: Key, options: Options): number | "no" {
+function getKeyLastIndex(key: IndividualKey, options: Options): number | "no" {
   const { lastKeys } = options;
   if (typeof key === "object") return key.last ?? "no";
   if (!lastKeys) return "no";
@@ -20,7 +26,25 @@ function getKeyLastIndex(key: Key, options: Options): number | "no" {
   return lastKeys.length - val;
 }
 
-function compareKeys(a: Key, b: Key, options: Options) {
+function compareKeys(a: Key, b: Key, options: Options): number {
+  if (Array.isArray(a) || Array.isArray(b)) {
+    if (!Array.isArray(a) || !Array.isArray(b))
+      throw new Error("Unexpected comparison of an array key with a non-array");
+    if (a.length !== b.length)
+      throw new Error(
+        "Unexpected comparison of array keys of different lengths"
+      );
+    for (let i = 0; i < a.length; i++) {
+      const left = a[i];
+      const right = b[i];
+      if (left === undefined || right === undefined)
+        throw new Error("Unexpected undefined in key arrays");
+      const result = compareKeys(left, right, options);
+      if (result !== 0) return result;
+    }
+    return 0;
+  }
+
   const aInFirst = getKeyFirstIndex(a, options);
   const bInFirst = getKeyFirstIndex(b, options);
   if (aInFirst !== "no" && bInFirst !== "no") return aInFirst - bInFirst;
