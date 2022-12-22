@@ -1,3 +1,7 @@
+# 10.1
+
+- sort allows the key function to return a list of keys
+
 # 10
 
 - Require React 18, Node 18, npm 8
