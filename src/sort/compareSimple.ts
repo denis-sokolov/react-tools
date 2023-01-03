@@ -3,13 +3,13 @@ import type { Options, Simple } from "./types";
 export function compareSimpleValues(
   a: Simple,
   b: Simple,
-  options: Pick<Options, "collator" | "locale">
+  options: Pick<Options, "collator" | "locale" | "numbersBehindStrings">
 ) {
-  const { collator, locale } = options;
+  const { collator, locale, numbersBehindStrings = false } = options;
 
   if (typeof a !== typeof b) {
-    if (typeof a === "number") return -1;
-    if (typeof b === "number") return 1;
+    if (typeof a === "number") return numbersBehindStrings ? 1 : -1;
+    if (typeof b === "number") return numbersBehindStrings ? -1 : 1;
     throw new Error(
       `Unexpected combination of types for sorting: ${typeof a} and ${typeof b}`
     );

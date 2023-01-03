@@ -298,6 +298,11 @@ const sortedThings = sort(things, {
   key: (thing) => [thing.relevance, thing.name],
 });
 
+// If you have string and number keys, reverse their order:
+const sortedThings = sort(things, {
+  numbersBehindStrings: true,
+});
+
 // Customize the locale instead of the default guessing
 sort(names, { locale: "en-gb" });
 sort(names, { locale: ["en-gb", "en-au"] });

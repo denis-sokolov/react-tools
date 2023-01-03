@@ -15,6 +15,7 @@ export type KeyFunction<Item> =
 export type Options = {
   collator?: Intl.CollatorOptions;
   locale?: string | string[];
+  numbersBehindStrings?: boolean;
   firstKeys?: Simple[];
   lastKeys?: Simple[];
 };

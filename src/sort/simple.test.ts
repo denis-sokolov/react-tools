@@ -31,3 +31,9 @@ test(
   ["foo", "bar"]
 );
 test("key function optional", () => sort(["foo", "bar"], {}), ["bar", "foo"]);
+
+test(
+  "numbers behind strings 1",
+  () => sort(["zz", 1], { numbersBehindStrings: true }),
+  ["zz", 1]
+);
