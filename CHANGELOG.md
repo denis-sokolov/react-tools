@@ -1,3 +1,8 @@
+# 10.2
+
+- sort: numbersBehindStrings
+- sort: allow the key function to return a tuple of keys
+
 # 10.1
 
 - sort allows the key function to return a list of keys
