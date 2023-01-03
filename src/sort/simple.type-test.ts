@@ -27,3 +27,5 @@ sort([[], "foo"], {});
 sort([() => {}, "foo"]);
 // @ts-expect-error
 sort([() => {}, "foo"], {});
+// Allow tuples as key arrays
+sort([], () => [1, 2] as const);

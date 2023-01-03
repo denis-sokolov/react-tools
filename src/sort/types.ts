@@ -4,7 +4,9 @@ export type IndividualKey =
   | Simple
   | { first: number; last?: never }
   | { first?: never; last: number };
-export type ListOfIndividualKeys = IndividualKey[];
+export type ListOfIndividualKeys =
+  | IndividualKey[]
+  | readonly [...IndividualKey[]];
 export type Key = IndividualKey | ListOfIndividualKeys;
 export type KeyFunction<Item> =
   | ((item: Item) => IndividualKey)

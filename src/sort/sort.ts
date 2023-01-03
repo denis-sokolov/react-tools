@@ -26,8 +26,12 @@ function getKeyLastIndex(key: IndividualKey, options: Options): number | "no" {
   return lastKeys.length - val;
 }
 
+function isArrayOrTuple(x: unknown): x is readonly [...unknown[]] {
+  return Array.isArray(x);
+}
+
 function compareKeys(a: Key, b: Key, options: Options): number {
-  if (Array.isArray(a) || Array.isArray(b)) {
+  if (isArrayOrTuple(a) || isArrayOrTuple(b)) {
     if (!Array.isArray(a) || !Array.isArray(b))
       throw new Error("Unexpected comparison of an array key with a non-array");
     if (a.length !== b.length)
