@@ -1,8 +1,8 @@
-import { useRef } from "react";
+import { useId } from "react";
 
-let idCounter = 0;
-
+/**
+ * @deprecated Use `useId` from 'react' instead.
+ */
 export function useUniqueId() {
-  idCounter += 1;
-  return useRef("unique-id-" + idCounter).current;
+  return useId();
 }
