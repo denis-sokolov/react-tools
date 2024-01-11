@@ -1,6 +1,6 @@
 import type { MouseEvent } from "react";
 import { isClickInInteractiveDescendant } from "./isClickInInteractiveDescendant";
-import { findClosestParent, isInteractive } from "./lib";
+import { findClosestParentIgnoringPortals, isInteractive } from "./lib";
 
 /**
  * forwardClick allows to emulate a <label> with more control.
@@ -25,7 +25,7 @@ export function forwardClick(
     throw new Error(`Found an unexpected element, what do I do with it?`);
   }
   if (!isInteractive(forwardTarget)) {
-    const interactiveForwardTarget = findClosestParent(
+    const interactiveForwardTarget = findClosestParentIgnoringPortals(
       forwardTarget,
       isInteractive
     );

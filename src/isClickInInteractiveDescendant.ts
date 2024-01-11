@@ -1,5 +1,5 @@
 import type { MouseEvent } from "react";
-import { findClosestParent, isInteractive } from "./lib";
+import { findClosestParentIgnoringPortals, isInteractive } from "./lib";
 
 /**
  * When managing custom combinations of nested interactive elements
@@ -13,7 +13,7 @@ export function isClickInInteractiveDescendant(e: MouseEvent) {
 
   const interactiveClickLocation = isInteractive(actualClickLocation)
     ? actualClickLocation
-    : findClosestParent(actualClickLocation, isInteractive);
+    : findClosestParentIgnoringPortals(actualClickLocation, isInteractive);
   if (!interactiveClickLocation) return false;
 
   return (
