@@ -1,3 +1,7 @@
+# 10.3
+
+- forwardClick: e.handled = true feature to prevent false positives through portals
+
 # 10.2
 
 - sort: numbersBehindStrings
