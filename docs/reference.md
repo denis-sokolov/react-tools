@@ -167,6 +167,8 @@ export function NotFound() {
 
 Another way to approach nested interactive elements. You probably want forwardClick instead.
 
+This function has some false negatives and some very rare false positives if portals are involved.
+
 ```jsx
 import { isClickInInteractiveDescendant } from "@denis-sokolov/react";
 <div
