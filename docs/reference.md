@@ -142,6 +142,19 @@ Instead, use `forwardClick`. Full support for propagation and the only place in 
 </tr>
 ```
 
+There are some rare cases where forwardClick will incorrectly forward the click, if you have portals nested below your container. If you encounter these cases, please add `e.handled = true` to the element that causes double clicks. It works like a better stopPropagation:
+
+```jsx
+<tr onClick={(e) => forwardClick(e, "[data-email-title]")}>
+  <a href={email.href} data-email-title>
+    {email.title}
+  </a>
+  <OptionsMenu onClick={(e) => (e.handled = true)}>
+    <button>Delete</button>
+  </OptionsMenu>
+</tr>
+```
+
 ## is404OurFault
 
 An invalid path may be caused by the user making a typo, by following a 3rd-party incorrect link, or having incorrectly copied it. But sometimes the link they have followed may be from our own application. A screen “This page is not here” after performing an action in the app itself is embarassing. With this helper function we can detect internal broken links and correctly own up our mistake.

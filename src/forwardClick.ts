@@ -13,6 +13,8 @@ export function forwardClick(
    */
   selector: string
 ) {
+  if ("handled" in e && e.handled) return;
+
   const container = e.currentTarget;
 
   const forwardTarget = container.querySelector(selector);
