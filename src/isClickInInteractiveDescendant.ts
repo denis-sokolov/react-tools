@@ -11,12 +11,14 @@ export function isClickInInteractiveDescendant(e: MouseEvent) {
   const actualClickLocation = e.target;
   if (!(actualClickLocation instanceof Element)) return false;
 
-  const interactiveClickLocation = isInteractive(actualClickLocation)
+  const interactiveClickLocationIgnoringPortals = isInteractive(
+    actualClickLocation
+  )
     ? actualClickLocation
     : findClosestParentIgnoringPortals(actualClickLocation, isInteractive);
-  if (!interactiveClickLocation) return false;
+  if (!interactiveClickLocationIgnoringPortals) return false;
 
-  if (interactiveClickLocation === container) return false;
+  if (interactiveClickLocationIgnoringPortals === container) return false;
 
-  return container.contains(interactiveClickLocation);
+  return container.contains(interactiveClickLocationIgnoringPortals);
 }
