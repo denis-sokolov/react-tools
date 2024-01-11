@@ -16,8 +16,7 @@ export function isClickInInteractiveDescendant(e: MouseEvent) {
     : findClosestParentIgnoringPortals(actualClickLocation, isInteractive);
   if (!interactiveClickLocation) return false;
 
-  return (
-    interactiveClickLocation !== container &&
-    container.contains(interactiveClickLocation)
-  );
+  if (interactiveClickLocation === container) return false;
+
+  return container.contains(interactiveClickLocation);
 }
