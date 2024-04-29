@@ -511,7 +511,7 @@ To observe changes only after the user is done editing, use onChangesDone instea
 The hook also allows parsing the text value as a richer value instead of validating. This can be used for number inputs, or a custom data type:
 
 ```jsx
-function EmailInput() {
+function NumberInput() {
   const { inputProps } = useInputWithDraftState({
     onChange,
     convert: {
