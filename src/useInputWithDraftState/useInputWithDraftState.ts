@@ -7,7 +7,8 @@ type Params<Value> = {
   | { onChange: (value: Value) => void; onChangesDone?: (value: Value) => void }
   | { onChange?: (value: Value) => void; onChangesDone: (value: Value) => void }
 ) &
-  (Value extends string
+  // Wrapped in array to prevent union distribution
+  ([Value] extends [string]
     ? {
         clean?: (value: string) => string;
         convert?: never;
