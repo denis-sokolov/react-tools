@@ -18,7 +18,7 @@ type Params<Value> = {
         : { validateEmptyField: true })
     : {
         clean?: never;
-        convert?: {
+        convert: {
           fromString: (s: string) => { value: Value } | "unparsable";
           toString: (v: Value) => string;
         };
