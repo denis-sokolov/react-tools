@@ -14,7 +14,7 @@ export function smartOutline(win?: Window) {
     body.pointer-interaction *::after {
       outline: 0 !important
     }
-  `
+  `,
   );
   window.addEventListener("keydown", (e) => {
     const body = doc.querySelector("body");

@@ -10,14 +10,14 @@ import type { Dependency } from "../types";
 
 export function getDependenciesWithLicenseViolations(
   allowedLicenses: string,
-  dependencies: Dependency[]
+  dependencies: Dependency[],
 ): Dependency[] {
   return dependencies.filter((d) => {
     const errors = getLicenseViolations(
       {
         [d.name]: { version: "", ...d },
       },
-      allowedLicenses
+      allowedLicenses,
     );
     return errors.length > 0;
   });

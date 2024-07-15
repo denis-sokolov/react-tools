@@ -21,7 +21,7 @@ test("ActionArea submit has custom styles", (t) => {
   const button = render(
     <ActionArea action="submit" className="Q">
       Show
-    </ActionArea>
+    </ActionArea>,
   );
   const className = button.prop("className");
   if (typeof className !== "string") throw new Error();

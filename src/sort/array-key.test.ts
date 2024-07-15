@@ -16,5 +16,5 @@ test(
       "prefix",
       val === "bar" ? { first: 1 } : val,
     ]),
-  ["bar", "foo"]
+  ["bar", "foo"],
 );

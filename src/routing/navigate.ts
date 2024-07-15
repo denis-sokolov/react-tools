@@ -6,7 +6,7 @@ function detectReplace(url: URL) {
 
 export function navigate(
   pathOrUrl: string | URL,
-  options: { replace?: boolean } = {}
+  options: { replace?: boolean } = {},
 ) {
   const url = computeUrl(pathOrUrl);
 

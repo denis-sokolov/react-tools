@@ -13,27 +13,27 @@ test("numbers ahead of strings 2", () => sort(["  ", 99]), [99, "  "]);
 test(
   "simple key function 1",
   () => sort(["foo", "bar"], (val) => (val === "bar" ? 0 : 1)),
-  ["bar", "foo"]
+  ["bar", "foo"],
 );
 test(
   "simple key function 2",
   () => sort(["foo", "bar"], (val) => (val === "foo" ? 0 : 1)),
-  ["foo", "bar"]
+  ["foo", "bar"],
 );
 test(
   "key function keeps the original objects",
   () => sort([{ name: "foo" }, { name: "bar" }], (val) => val.name),
-  [{ name: "bar" }, { name: "foo" }]
+  [{ name: "bar" }, { name: "foo" }],
 );
 test(
   "key function option",
   () => sort(["foo", "bar"], { key: (val) => (val === "foo" ? 0 : 1) }),
-  ["foo", "bar"]
+  ["foo", "bar"],
 );
 test("key function optional", () => sort(["foo", "bar"], {}), ["bar", "foo"]);
 
 test(
   "numbers behind strings 1",
   () => sort(["zz", 1], { numbersBehindStrings: true }),
-  ["zz", 1]
+  ["zz", 1],
 );

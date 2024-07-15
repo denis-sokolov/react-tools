@@ -38,11 +38,11 @@ export function getDependencies(directory: string): Dependency[] {
   const names = Object.keys(
     typeof client.devDependencies === "object"
       ? client.devDependencies || {}
-      : {}
+      : {},
   ).concat(
     Object.keys(
-      typeof client.dependencies === "object" ? client.dependencies || {} : {}
-    )
+      typeof client.dependencies === "object" ? client.dependencies || {} : {},
+    ),
   );
 
   return names.map(function (name) {
@@ -51,7 +51,7 @@ export function getDependencies(directory: string): Dependency[] {
     });
     if (!depPkgPath)
       throw new Error(
-        `Could not find ${name} dependency installed for ${directory}. Try to run npm install in ${directory}.`
+        `Could not find ${name} dependency installed for ${directory}. Try to run npm install in ${directory}.`,
       );
     const depDir = depPkgPath.replace(/\/package\.json$/, "");
     const depPkg = getPackageJson(depDir);

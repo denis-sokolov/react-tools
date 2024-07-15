@@ -1,6 +1,6 @@
 export function findClosestParentIgnoringPortals(
   element: Element,
-  predicate: (el: Element) => boolean
+  predicate: (el: Element) => boolean,
 ): Element | undefined {
   if (!element.parentElement) return undefined;
   const parent = element.parentElement;

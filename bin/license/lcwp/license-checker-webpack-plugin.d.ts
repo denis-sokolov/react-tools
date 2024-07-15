@@ -4,6 +4,6 @@ declare module "license-checker-webpack-plugin/src/licenseUtils.js" {
     licenseInformation: {
       [name: string]: { licenseName: string; version: string };
     },
-    allow: string
+    allow: string,
   ): Error[];
 }

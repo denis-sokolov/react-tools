@@ -15,7 +15,7 @@ export function useDismissElement(f: () => unknown) {
       document.addEventListener("keyup", handleKeyUp);
       return () => document.removeEventListener("keyup", handleKeyUp);
     },
-    [f]
+    [f],
   );
 
   return useClickOutside(f);

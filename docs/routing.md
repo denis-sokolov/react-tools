@@ -31,7 +31,7 @@ function App() {
   useEffect(() =>
     handleLinkClicks(function (url) {
       console.log("Navigate to", url.pathname);
-    })
+    }),
   );
 }
 ```

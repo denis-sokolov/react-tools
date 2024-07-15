@@ -7,7 +7,7 @@ export function isInteractive(el: Element) {
   const interactiveAriaRoles = "button,checkbox,listbox,switch,tab".split(",");
   const isInteractiveAriaRole =
     interactiveAriaRoles.includes(
-      el.getAttribute("aria-role")?.toLowerCase() || ""
+      el.getAttribute("aria-role")?.toLowerCase() || "",
     ) ||
     interactiveAriaRoles.includes(el.getAttribute("role")?.toLowerCase() || "");
   if (isInteractiveAriaRole) return true;

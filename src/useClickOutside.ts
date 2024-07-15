@@ -35,12 +35,12 @@ export function useClickOutside(f: () => unknown): ClickOutsideControls {
     (name) => (el) => {
       ref.current[name] = el;
     },
-    [ref]
+    [ref],
   );
 
   const main: RefFunction = useCallback(
     (el) => additionalArea("main")(el),
-    [additionalArea]
+    [additionalArea],
   );
 
   const res = main as ClickOutsideControls;

@@ -11,7 +11,7 @@ test("ActionArea link", (t) => {
 
 test("ActionArea link in newWindow", (t) => {
   const link = render(
-    <ActionArea action={{ newWindow: "/" }}>Homepage</ActionArea>
+    <ActionArea action={{ newWindow: "/" }}>Homepage</ActionArea>,
   );
   t.is(link.text(), "Homepage");
   t.true(link.is("a"));
@@ -26,7 +26,7 @@ test("ActionArea link in newWindow", (t) => {
 
 test("ActionArea download link", (t) => {
   const link = render(
-    <ActionArea action={{ download: "name", url: "/" }}>Homepage</ActionArea>
+    <ActionArea action={{ download: "name", url: "/" }}>Homepage</ActionArea>,
   );
   t.is(link.text(), "Homepage");
   t.true(link.is("a"));
@@ -45,7 +45,7 @@ test("ActionArea link is marked current", (t) => {
   const link = render(
     <ActionArea action="/" currentPath="/">
       Homepage
-    </ActionArea>
+    </ActionArea>,
   );
   t.true(link.is("span"));
   const className = link.prop("className");
@@ -57,7 +57,7 @@ test("ActionArea link has custom styles", (t) => {
   const link = render(
     <ActionArea action="/" className="Q">
       Homepage
-    </ActionArea>
+    </ActionArea>,
   );
   const className = link.prop("className");
   if (typeof className !== "string") throw new Error();
@@ -68,7 +68,7 @@ test("ActionArea link takes custom className and works together with current", (
   const link = render(
     <ActionArea action="/" className="Q" currentPath="/">
       Homepage
-    </ActionArea>
+    </ActionArea>,
   );
   const className = link.prop("className");
   if (typeof className !== "string") throw new Error();
@@ -80,7 +80,7 @@ test("ActionArea link current has disabled styles", (t) => {
   const link = render(
     <ActionArea action="/" currentPath="/">
       Homepage
-    </ActionArea>
+    </ActionArea>,
   );
   const className = link.prop("className");
   if (typeof className !== "string") throw new Error();

@@ -34,7 +34,7 @@
     "ava": "^5.1.0",
     "eslint": "^8.29.0",
     "fix-es-imports": "^0.1.4",
-    "prettier": "^2.8.1",
+    "prettier": "^3.3.3",
     "react": "^18.2.0",
     "react-test-renderer": "^18.2.0",
     "ts-node": "^10.9.1",

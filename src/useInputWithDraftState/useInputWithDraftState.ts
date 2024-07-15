@@ -51,7 +51,7 @@ export function useInputWithDraftState<Value>(params: Params<Value>): Result {
           [
             "Custom validation function returned false when string is empty.",
             //
-          ].join(" ")
+          ].join(" "),
         );
       return isValid ? { value: s as any as Value } : "unparsable";
     },

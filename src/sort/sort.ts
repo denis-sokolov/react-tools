@@ -36,7 +36,7 @@ function compareKeys(a: Key, b: Key, options: Options): number {
       throw new Error("Unexpected comparison of an array key with a non-array");
     if (a.length !== b.length)
       throw new Error(
-        "Unexpected comparison of array keys of different lengths"
+        "Unexpected comparison of array keys of different lengths",
       );
     for (let i = 0; i < a.length; i++) {
       const left = a[i];
@@ -74,14 +74,14 @@ function hasSharedValues(a: Simple[], b: Simple[]) {
 
 export function sortInternal<Item>(
   input: readonly Item[],
-  options: OptionsWithRequiredKey<Item>
+  options: OptionsWithRequiredKey<Item>,
 ): Item[] {
   const result = input.slice(0);
   const { key } = options;
 
   if (hasSharedValues(options.firstKeys ?? [], options.lastKeys ?? []))
     throw new Error(
-      "firstKeys and lastKeys has some shared values. I don’t know how to make them both first and last at the same time"
+      "firstKeys and lastKeys has some shared values. I don’t know how to make them both first and last at the same time",
     );
 
   result.sort((leftData, rightData) => {

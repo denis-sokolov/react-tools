@@ -8,7 +8,7 @@ export type ClickCallback = (params: {
 }) => void;
 
 function findLink(
-  el: EventTarget | HTMLElement | null
+  el: EventTarget | HTMLElement | null,
 ): HTMLLinkElement | undefined {
   if (!el || !("tagName" in el)) return undefined;
   if (el.tagName === "A") return el as HTMLLinkElement;

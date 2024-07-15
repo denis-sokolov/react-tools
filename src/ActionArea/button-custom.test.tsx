@@ -6,7 +6,7 @@ test("ActionArea custom button rendering", (t) => {
   const button = render(
     <ActionArea action={() => {}} renderButton={() => <div>Foo</div>}>
       Do X
-    </ActionArea>
+    </ActionArea>,
   );
 
   t.not(button.text(), "Do X");
@@ -20,7 +20,7 @@ test("ActionArea custom button rendering with props", (t) => {
       renderButton={(props) => <div>{props.type}</div>}
     >
       Do X
-    </ActionArea>
+    </ActionArea>,
   );
 
   t.is(button.text(), "button");

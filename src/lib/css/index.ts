@@ -14,7 +14,7 @@ function objectToString(selector: string, obj: StyleObject) {
       if (typeof value === "object") return "";
       const cssProperty = property.replace(
         /[A-Z]/g,
-        (c) => "-" + c.toLowerCase()
+        (c) => "-" + c.toLowerCase(),
       );
       const cssValue = typeof value === "number" ? `${value}px` : value;
       return `${cssProperty}:${cssValue}`;
@@ -28,7 +28,7 @@ function objectToString(selector: string, obj: StyleObject) {
         property.includes("&")
           ? property.replace(/&/g, selector)
           : `selector ${property}`,
-        value
+        value,
       );
     })
     .join("");
@@ -50,7 +50,7 @@ export function globalCss(window: Window, css: string) {
 export function scopedStyles(
   prefix: string,
   styles: StyleObject,
-  win?: Window
+  win?: Window,
 ) {
   counter += 1;
   const name = `${prefix}-${counter}uVdOIRB`;

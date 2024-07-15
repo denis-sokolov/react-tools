@@ -4,7 +4,9 @@ import { ActionArea } from "./ActionArea";
 
 test("ActionArea disabled", (t) => {
   const area = render(
-    <ActionArea action={{ disabledReason: "Not allowed" }}>Homepage</ActionArea>
+    <ActionArea action={{ disabledReason: "Not allowed" }}>
+      Homepage
+    </ActionArea>,
   );
   t.is(area.text(), "Homepage");
   t.true(area.is("span"));
@@ -12,7 +14,9 @@ test("ActionArea disabled", (t) => {
 
 test("ActionArea disabled has base styles", (t) => {
   const area = render(
-    <ActionArea action={{ disabledReason: "Not allowed" }}>Homepage</ActionArea>
+    <ActionArea action={{ disabledReason: "Not allowed" }}>
+      Homepage
+    </ActionArea>,
   );
   const className = area.prop("className");
   if (typeof className !== "string") throw new Error();
@@ -21,7 +25,9 @@ test("ActionArea disabled has base styles", (t) => {
 
 test("ActionArea disabled has disabled styles", (t) => {
   const area = render(
-    <ActionArea action={{ disabledReason: "Not allowed" }}>Homepage</ActionArea>
+    <ActionArea action={{ disabledReason: "Not allowed" }}>
+      Homepage
+    </ActionArea>,
   );
   const className = area.prop("className");
   if (typeof className !== "string") throw new Error();
@@ -32,7 +38,7 @@ test("ActionArea disabled has custom styles", (t) => {
   const area = render(
     <ActionArea action={{ disabledReason: "Not allowed" }} className="Q">
       Show
-    </ActionArea>
+    </ActionArea>,
   );
   const className = area.prop("className");
   if (typeof className !== "string") throw new Error();
@@ -41,7 +47,7 @@ test("ActionArea disabled has custom styles", (t) => {
 
 test("ActionArea disabled sets the title", (t) => {
   const area = render(
-    <ActionArea action={{ disabledReason: "Foo" }}>Homepage</ActionArea>
+    <ActionArea action={{ disabledReason: "Foo" }}>Homepage</ActionArea>,
   );
   t.is(area.prop("title"), "Foo");
 });

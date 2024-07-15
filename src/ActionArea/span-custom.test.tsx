@@ -6,7 +6,7 @@ test("ActionArea custom span rendering", (t) => {
   const span = render(
     <ActionArea action="disabled" renderSpan={() => <div>Foo</div>}>
       Do X
-    </ActionArea>
+    </ActionArea>,
   );
 
   t.not(span.text(), "Do X");

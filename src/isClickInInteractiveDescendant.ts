@@ -13,7 +13,7 @@ export function isClickInInteractiveDescendant(e: MouseEvent) {
   if (!(actualClickLocation instanceof Element)) return false;
 
   const interactiveClickLocationIgnoringPortals = isInteractive(
-    actualClickLocation
+    actualClickLocation,
   )
     ? actualClickLocation
     : findClosestParentIgnoringPortals(actualClickLocation, isInteractive);

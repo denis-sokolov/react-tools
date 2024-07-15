@@ -18,14 +18,14 @@ export function runTest(prefix: string, input: StyleObject) {
           : appendedChildren.findIndex((c) => c === targetChild);
       if (index === -1)
         throw new Error(
-          "The node before which the new node is to be inserted is not a child of this node"
+          "The node before which the new node is to be inserted is not a child of this node",
         );
       appendedChildren.splice(index, 0, newChild as any);
       return newChild;
     },
   };
   const document: Partial<Window["document"]> = {
-    createElement: (tagName: string) => ({ tagName } as any),
+    createElement: (tagName: string) => ({ tagName }) as any,
     head: head as any,
   };
   const w: Partial<Window> = {

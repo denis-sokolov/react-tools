@@ -11,7 +11,7 @@ import {
  */
 export function makePermanence() {
   const context = createContext<((node: ReactNode) => void) | "no-parent">(
-    "no-parent"
+    "no-parent",
   );
   return [
     function Parent(props: { children: ReactNode }) {

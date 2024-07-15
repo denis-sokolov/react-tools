@@ -31,7 +31,7 @@ export function Spinner(props: Props) {
       const timer = setTimeout(rerender, delayedTimeout + 1);
       return () => clearTimeout(timer);
     },
-    [delayedTimeout, rerender]
+    [delayedTimeout, rerender],
   );
 
   const timeout = timeoutMs ?? 60000;

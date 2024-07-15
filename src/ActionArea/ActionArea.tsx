@@ -49,7 +49,7 @@ export type ActionAreaProps = {
    * Override how the ActionArea renders links
    */
   renderLink?: (
-    props: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string }
+    props: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string },
   ) => ReactNode;
   /**
    * Override how the ActionArea renders inactive areas
@@ -116,7 +116,7 @@ export function ActionArea(props: ActionAreaProps) {
   };
 
   const span = function (
-    opts: { extraClassName?: string; title?: string } = {}
+    opts: { extraClassName?: string; title?: string } = {},
   ) {
     const { extraClassName = "" } = opts;
     const renderSpan =
@@ -135,7 +135,7 @@ export function ActionArea(props: ActionAreaProps) {
 
   const link = function (
     url: string,
-    opts: { download?: string; newWindow?: boolean } = {}
+    opts: { download?: string; newWindow?: boolean } = {},
   ) {
     const currentPath =
       props.currentPath ||
@@ -165,7 +165,7 @@ export function ActionArea(props: ActionAreaProps) {
 
   if (action === "disabled") {
     console.log(
-      'action="disabled" is deprecated, please use action={ disabled: "Explanation to the user" }'
+      'action="disabled" is deprecated, please use action={ disabled: "Explanation to the user" }',
     );
     return span();
   }

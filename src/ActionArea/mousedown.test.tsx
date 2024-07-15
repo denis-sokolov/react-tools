@@ -5,7 +5,7 @@ import { ActionArea } from "./ActionArea";
 test("ActionArea mousedown", (t) => {
   const f = () => {};
   const button = render(
-    <ActionArea action={{ mousedown: f }}>Show</ActionArea>
+    <ActionArea action={{ mousedown: f }}>Show</ActionArea>,
   );
   t.is(button.text(), "Show");
   t.true(button.is("button"));
@@ -15,7 +15,7 @@ test("ActionArea mousedown", (t) => {
 
 test("ActionArea mousedown has base styles", (t) => {
   const button = render(
-    <ActionArea action={{ mousedown: () => {} }}>Show</ActionArea>
+    <ActionArea action={{ mousedown: () => {} }}>Show</ActionArea>,
   );
   const className = button.prop("className");
   if (typeof className !== "string") throw new Error();
@@ -26,7 +26,7 @@ test("ActionArea mousedown has custom styles", (t) => {
   const button = render(
     <ActionArea action={{ mousedown: () => {} }} className="Q">
       Show
-    </ActionArea>
+    </ActionArea>,
   );
   const className = button.prop("className");
   if (typeof className !== "string") throw new Error();

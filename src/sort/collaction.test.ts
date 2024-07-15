@@ -12,15 +12,15 @@ test(
       locale: "lt",
       key: (val) => val,
     }),
-  ["iii", "yyy", "kkk"]
+  ["iii", "yyy", "kkk"],
 );
 test(
   "respect human-like numbers in strings by default",
   () => sort(["foo 1", "foo 2", "foo 11"]),
-  ["foo 1", "foo 2", "foo 11"]
+  ["foo 1", "foo 2", "foo 11"],
 );
 test(
   "allows custom collation options",
   () => sort(["foo 1", "foo 2", "foo 11"], { collator: { numeric: false } }),
-  ["foo 1", "foo 11", "foo 2"]
+  ["foo 1", "foo 11", "foo 2"],
 );

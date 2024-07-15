@@ -16,7 +16,7 @@ function wrapper(node: ReactTestRenderer) {
       node.root
         .findAll(() => true)
         .map((el) =>
-          el.children.filter((child) => typeof child === "string").join("")
+          el.children.filter((child) => typeof child === "string").join(""),
         )
         .join(""),
   };

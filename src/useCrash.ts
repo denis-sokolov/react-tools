@@ -13,6 +13,6 @@ export function useCrash() {
       setState(() => {
         throw err instanceof Error ? err : Error(err.message);
       }),
-    [setState]
+    [setState],
   );
 }

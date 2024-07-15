@@ -17,7 +17,7 @@ export function initRouting(
     handleCleaning?: boolean;
     handleClicks?: boolean | ClickCallback;
     handleScrolling?: boolean;
-  } = {}
+  } = {},
 ) {
   const {
     handleCleaning = true,
@@ -33,7 +33,7 @@ export function initRouting(
         : (params) => {
             params.event.preventDefault();
             params.navigate(params.url);
-          }
+          },
     );
   if (handleScrolling) initScrolling();
 }

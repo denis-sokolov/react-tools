@@ -18,7 +18,7 @@ type Result<_Value, Draft> = {
 };
 
 export function useCustomInputWithDraftState<Value, Draft>(
-  params: Params<Value, Draft>
+  params: Params<Value, Draft>,
 ): Result<Value, Draft> {
   const { fromDraft, onChange, onChangesDone, toDraft, value } = params;
 
@@ -33,8 +33,8 @@ export function useCustomInputWithDraftState<Value, Draft>(
     draftToDisplay: state.editing
       ? state.draft
       : state.invalidDraft
-      ? state.invalidDraft.draft
-      : toDraft(value),
+        ? state.invalidDraft.draft
+        : toDraft(value),
     isEditing: state.editing,
     onChange: (draft) => {
       setState({ editing: true, draft });
@@ -63,7 +63,7 @@ export function useCustomInputWithDraftState<Value, Draft>(
       });
     },
     showInvalidDraftError: Boolean(
-      state.editing === false && state.invalidDraft
+      state.editing === false && state.invalidDraft,
     ),
   };
 }

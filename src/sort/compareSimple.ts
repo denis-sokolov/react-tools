@@ -3,7 +3,7 @@ import type { Options, Simple } from "./types";
 export function compareSimpleValues(
   a: Simple,
   b: Simple,
-  options: Pick<Options, "collator" | "locale" | "numbersBehindStrings">
+  options: Pick<Options, "collator" | "locale" | "numbersBehindStrings">,
 ) {
   const { collator, locale, numbersBehindStrings = false } = options;
 
@@ -11,7 +11,7 @@ export function compareSimpleValues(
     if (typeof a === "number") return numbersBehindStrings ? 1 : -1;
     if (typeof b === "number") return numbersBehindStrings ? -1 : 1;
     throw new Error(
-      `Unexpected combination of types for sorting: ${typeof a} and ${typeof b}`
+      `Unexpected combination of types for sorting: ${typeof a} and ${typeof b}`,
     );
   }
 
@@ -25,6 +25,6 @@ export function compareSimpleValues(
   if (typeof a === "number" && typeof b === "number") return a - b;
 
   throw new Error(
-    `Unexpected combination of types for sorting: ${typeof a} and ${typeof b}`
+    `Unexpected combination of types for sorting: ${typeof a} and ${typeof b}`,
   );
 }

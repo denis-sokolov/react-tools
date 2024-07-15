@@ -22,7 +22,7 @@ test("ActionArea button has custom styles", (t) => {
   const button = render(
     <ActionArea action={() => {}} className="Q">
       Show
-    </ActionArea>
+    </ActionArea>,
   );
   const className = button.prop("className");
   if (typeof className !== "string") throw new Error();

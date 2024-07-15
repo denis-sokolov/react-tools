@@ -165,7 +165,7 @@ import { is404OurFault } from "@denis-sokolov/react";
 export function NotFound() {
   if (is404OurFault())
     throw new Error(
-      `Detected a broken link to ${location.href} from ${document.referrer}`
+      `Detected a broken link to ${location.href} from ${document.referrer}`,
     );
   return (
     <div>
