@@ -8,7 +8,7 @@ export function useRerender() {
 export function useRerenderEvery(ms: number) {
   const rerender = useRerender();
   useEffect(() => {
-    const i = setInterval(rerender, ms);
-    return () => clearInterval(i);
-  }, [ms, rerender]);
+    const i = setTimeout(rerender, ms);
+    return () => clearTimeout(i);
+  });
 }
