@@ -1,4 +1,5 @@
 import avaTest from "ava";
+
 import { sort } from ".";
 
 function test(name: string, getActual: () => unknown, expected: unknown) {
@@ -9,8 +10,8 @@ test(
   "respect custom locale",
   () =>
     sort(["iii", "yyy", "kkk"], {
-      locale: "lt",
       key: (val) => val,
+      locale: "lt",
     }),
   ["iii", "yyy", "kkk"],
 );

@@ -1,8 +1,8 @@
-import { ReactNode, useEffect, useState } from "react";
+import { type ReactNode, useEffect, useState } from "react";
 
 type Props = {
-  children: ReactNode;
   butNotIf?: boolean;
+  children: ReactNode;
 };
 
 export function OnlyClientSide(props: Props) {

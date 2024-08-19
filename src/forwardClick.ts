@@ -1,4 +1,5 @@
-import type { MouseEvent } from "react";
+import { type MouseEvent } from "react";
+
 import { isClickInInteractiveDescendant } from "./isClickInInteractiveDescendant";
 import { findClosestParentIgnoringPortals, isInteractive } from "./lib";
 

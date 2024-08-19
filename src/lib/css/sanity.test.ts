@@ -1,4 +1,5 @@
 import test from "ava";
+
 import { runTest } from "./runTest";
 
 [
@@ -13,7 +14,7 @@ import { runTest } from "./runTest";
     /^:where\(\.prefix[^{]+\{color:red;font-size:12px\}$/,
   ] as const,
   [
-    { color: "red", "&:hover": { color: "blue" } },
+    { "&:hover": { color: "blue" }, color: "red" },
     /^:where\(\.prefix[^{]+\{color:red\}:where\(\.prefix[^{]+:hover\{color:blue\}$/,
   ] as const,
 ].forEach(function (c, i) {

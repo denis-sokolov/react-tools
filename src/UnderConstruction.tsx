@@ -1,11 +1,12 @@
-import type { ReactNode } from "react";
+import { type ReactNode } from "react";
+
 import { scopedStyles } from "./lib";
 
 const outer = scopedStyles("UnderConstruction", {
-  cursor: "not-allowed",
   "&:active": {
     outline: "2px solid red !important",
   },
+  cursor: "not-allowed",
 });
 
 const inner = scopedStyles("UnderConstruction", {

@@ -1,4 +1,5 @@
-import type { ChangeEvent, FocusEvent } from "react";
+import { type ChangeEvent, type FocusEvent } from "react";
+
 import { useCustomInputWithDraftState } from "./useCustomInputWithDraftState";
 
 type Params<Value> = {
@@ -30,8 +31,8 @@ type El = HTMLInputElement | HTMLTextAreaElement;
 type Result = {
   inputProps: {
     onBlur: (e: FocusEvent<El>) => void;
-    onFocus: (e: FocusEvent<El>) => void;
     onChange: (e: ChangeEvent<El>) => void;
+    onFocus: (e: FocusEvent<El>) => void;
     value: string;
   };
   isFocused: boolean;

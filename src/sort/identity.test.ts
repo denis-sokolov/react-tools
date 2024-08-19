@@ -1,4 +1,5 @@
 import test from "ava";
+
 import { sort } from ".";
 
 test("does not mutate the array", (t) => {

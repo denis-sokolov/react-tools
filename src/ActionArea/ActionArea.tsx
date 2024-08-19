@@ -1,10 +1,11 @@
-import type {
-  AnchorHTMLAttributes,
-  ButtonHTMLAttributes,
-  HTMLAttributes,
-  CSSProperties,
-  ReactNode,
+import {
+  type AnchorHTMLAttributes,
+  type ButtonHTMLAttributes,
+  type CSSProperties,
+  type HTMLAttributes,
+  type ReactNode,
 } from "react";
+
 import { scopedStyles } from "../lib";
 
 export type ActionDisabled = { disabledReason: string };
@@ -55,31 +56,32 @@ export type ActionAreaProps = {
    * Override how the ActionArea renders inactive areas
    */
   renderSpan?: (props: HTMLAttributes<HTMLSpanElement>) => ReactNode;
-  title?: string;
   style?: CSSProperties;
+  title?: string;
 };
 
 const baseStyles = scopedStyles("ActionArea-base", {
+  alignItems: "center",
   background: "none",
   border: "none",
+  color: "inherit",
   cursor: "pointer",
   display: "inline-flex",
-  alignItems: "center",
-  justifyContent: "center",
   fontFamily: "inherit",
   fontSize: "inherit",
+  fontWeight: "inherit",
+  justifyContent: "center",
   margin: 0,
   padding: 0,
-  color: "inherit",
-  fontWeight: "inherit",
   textDecoration: "none",
 });
 
 const disabledStyles = scopedStyles("ActionArea-disabled", {
-  pointerEvents: "none" as const,
   // Must explicitly change the cursor to default. Otherwise, when "pointer-events: none"
   // is applied on click, the cursor will not return to default until the mouse is moved.
   cursor: "default",
+
+  pointerEvents: "none" as const,
 });
 
 /**
@@ -107,9 +109,9 @@ export function ActionArea(props: ActionAreaProps) {
           className: `${baseStyles} ${className}`,
           onClick,
           onMouseDown,
-          type: type || "button",
-          title,
           style,
+          title,
+          type: type || "button",
         })}
       </>
     );
@@ -126,8 +128,8 @@ export function ActionArea(props: ActionAreaProps) {
         {renderSpan({
           children,
           className: `${baseStyles} ${disabledStyles} ${className} ${extraClassName}`,
-          title: opts.title || title,
           style,
+          title: opts.title || title,
         })}
       </>
     );
@@ -149,15 +151,15 @@ export function ActionArea(props: ActionAreaProps) {
     return (
       <>
         {renderLink({
-          className: `${baseStyles} ${className}`,
           children: children,
+          className: `${baseStyles} ${className}`,
           download: download,
           href: url,
-          rel: newWindow ? "noopener" : undefined,
           referrerPolicy: "strict-origin-when-cross-origin",
+          rel: newWindow ? "noopener" : undefined,
+          style: style,
           target: newWindow ? "_blank" : undefined,
           title: title,
-          style: style,
         })}
       </>
     );

@@ -1,4 +1,4 @@
-import type { Options, Simple } from "./types";
+import { type Options, type Simple } from "./types";
 
 export function compareSimpleValues(
   a: Simple,

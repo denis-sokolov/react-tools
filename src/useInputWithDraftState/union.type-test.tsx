@@ -2,22 +2,22 @@ import { useInputWithDraftState } from "./useInputWithDraftState";
 
 export function Component() {
   useInputWithDraftState<string>({
+    onChange: (value) => console.log(value),
     validate: (value) => value.length > 0,
     value: "",
-    onChange: (value) => console.log(value),
   });
 
   useInputWithDraftState<"foo" | "bar">({
-    validate: (value) => value.length > 0,
-    value: "foo",
     onChange: (value) => console.log(value),
+    validate: (value) => value.length > 0,
     validateEmptyField: true,
+    value: "foo",
   });
 
   useInputWithDraftState<"foo" | "">({
+    onChange: (value) => console.log(value),
     validate: (value) => value.length > 0,
     value: "foo",
-    onChange: (value) => console.log(value),
   });
 
   useInputWithDraftState<string | number>({
@@ -27,8 +27,8 @@ export function Component() {
       },
       toString: (value) => String(value),
     },
-    value: 12,
     onChange: (value) => console.log(value),
+    value: 12,
   });
 
   useInputWithDraftState<number | null>({
@@ -38,8 +38,8 @@ export function Component() {
       },
       toString: (value) => String(value),
     },
-    value: null,
     onChange: (value) => console.log(value),
+    value: null,
   });
 
   return <></>;

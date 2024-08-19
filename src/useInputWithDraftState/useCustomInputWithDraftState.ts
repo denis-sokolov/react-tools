@@ -2,9 +2,9 @@ import { useState } from "react";
 
 type Params<Value, Draft> = {
   fromDraft: (draft: Draft) => { value: Value } | "unparsable";
-  toDraft: (value: Value) => Draft;
   onChange?: (value: Value) => void;
   onChangesDone: (value: Value) => void;
+  toDraft: (value: Value) => Draft;
   value: Value;
 };
 
@@ -23,7 +23,7 @@ export function useCustomInputWithDraftState<Value, Draft>(
   const { fromDraft, onChange, onChangesDone, toDraft, value } = params;
 
   const [state, setState] = useState<
-    | { editing: true; draft: Draft }
+    | { draft: Draft; editing: true }
     | { editing: false; invalidDraft?: { draft: Draft } }
   >({
     editing: false,
@@ -37,7 +37,7 @@ export function useCustomInputWithDraftState<Value, Draft>(
         : toDraft(value),
     isEditing: state.editing,
     onChange: (draft) => {
-      setState({ editing: true, draft });
+      setState({ draft, editing: true });
       if (onChange) {
         const v = fromDraft(draft);
         if (v !== "unparsable") onChange(v.value);
@@ -58,8 +58,8 @@ export function useCustomInputWithDraftState<Value, Draft>(
       if (state.editing)
         throw new Error("Called onStartEditing when editing already");
       setState({
-        editing: true,
         draft: state.invalidDraft ? state.invalidDraft.draft : toDraft(value),
+        editing: true,
       });
     },
     showInvalidDraftError: Boolean(

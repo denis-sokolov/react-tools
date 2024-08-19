@@ -6,7 +6,7 @@ import { getLicenseViolations } from "license-checker-webpack-plugin/src/license
 // eslint-disable-next-line @denis-sokolov/no-imports-down
 export { getLicenseName } from "license-checker-webpack-plugin/src/licenseUtils.js";
 
-import type { Dependency } from "../types";
+import { type Dependency } from "../types";
 
 export function getDependenciesWithLicenseViolations(
   allowedLicenses: string,

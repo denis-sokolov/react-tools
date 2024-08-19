@@ -1,10 +1,10 @@
-import type {
-  KeyFunction,
-  OptionsWithKey,
-  OptionsWithRequiredKey,
-  Simple,
-} from "./types";
 import { sortInternal } from "./sort";
+import {
+  type KeyFunction,
+  type OptionsWithKey,
+  type OptionsWithRequiredKey,
+  type Simple,
+} from "./types";
 
 /**
  * Sort an array with convenience features

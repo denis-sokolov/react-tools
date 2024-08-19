@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 
 import { Command } from "commander";
+
 import pkg from "../../package.json";
 
 const program = new Command()
@@ -38,12 +39,13 @@ const override = ((opts.override as string) || "")
       throw new Error(
         "Can not parse --override parameter. It must be a comma-separated list of name:license pairs",
       );
-    return { name, license };
+    return { license, name };
   });
 const skip = ((opts.skip as string) || "").split(",").filter((s) => s);
 
-import { getDependencies } from "./getDependencies";
 import { resolve } from "path";
+
+import { getDependencies } from "./getDependencies";
 import { getDependenciesWithLicenseViolations } from "./lcwp";
 
 async function main() {

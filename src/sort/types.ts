@@ -14,10 +14,10 @@ export type KeyFunction<Item> =
 
 export type Options = {
   collator?: Intl.CollatorOptions;
-  locale?: string | string[];
-  numbersBehindStrings?: boolean;
   firstKeys?: Simple[];
   lastKeys?: Simple[];
+  locale?: string | string[];
+  numbersBehindStrings?: boolean;
 };
 export type OptionsWithKey<Item> = Options & {
   key?: KeyFunction<Item>;

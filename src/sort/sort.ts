@@ -1,12 +1,11 @@
-import type {
-  IndividualKey,
-  Key,
-  Options,
-  OptionsWithRequiredKey,
-  Simple,
-} from "./types";
-
 import { compareSimpleValues } from "./compareSimple";
+import {
+  type IndividualKey,
+  type Key,
+  type Options,
+  type OptionsWithRequiredKey,
+  type Simple,
+} from "./types";
 
 function getKeyFirstIndex(key: IndividualKey, options: Options): number | "no" {
   const { firstKeys } = options;

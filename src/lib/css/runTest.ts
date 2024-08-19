@@ -1,5 +1,5 @@
 import { scopedStyles } from ".";
-import type { StyleObject } from "./types";
+import { type StyleObject } from "./types";
 
 export function runTest(prefix: string, input: StyleObject) {
   const appendedChildren: HTMLElement[] = [];

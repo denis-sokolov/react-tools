@@ -1,5 +1,5 @@
-import { ClickCallback, handleLinkClicks } from "./clicks";
 import { clean } from "./clean";
+import { type ClickCallback, handleLinkClicks } from "./clicks";
 import { navigate } from "./navigate";
 
 function initClean() {

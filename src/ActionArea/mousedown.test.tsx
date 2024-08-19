@@ -1,5 +1,7 @@
 import test from "ava";
+
 import { render } from "../lib-test";
+
 import { ActionArea } from "./ActionArea";
 
 test("ActionArea mousedown", (t) => {

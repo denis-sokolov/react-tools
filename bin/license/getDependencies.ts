@@ -1,8 +1,7 @@
-import type { Dependency } from "./types";
+import findup from "findup-sync";
 
 import { getLicenseName } from "./lcwp";
-
-import findup from "findup-sync";
+import { type Dependency } from "./types";
 
 function getPackageJson(directory: string) {
   const path = `${directory}/package.json`;
@@ -59,8 +58,8 @@ export function getDependencies(directory: string): Dependency[] {
     return {
       author: typeof depPkg.author === "string" ? depPkg.author : undefined,
       directory: depDir,
-      name,
       licenseName: getLicenseName(depPkg),
+      name,
       url: getUrl(name, depPkg),
       version: typeof depPkg.version === "string" ? depPkg.version : undefined,
     };

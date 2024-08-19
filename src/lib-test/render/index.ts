@@ -1,5 +1,5 @@
-import type { ReactElement } from "react";
-import TestRenderer, { ReactTestRenderer } from "react-test-renderer";
+import { type ReactElement } from "react";
+import TestRenderer, { type ReactTestRenderer } from "react-test-renderer";
 
 function wrapper(node: ReactTestRenderer) {
   const tree = node.toJSON();

@@ -1,4 +1,5 @@
 import avaTest from "ava";
+
 import { sort } from ".";
 
 function test(name: string, getActual: () => unknown, expected: unknown) {

@@ -1,4 +1,5 @@
-import { CSSProperties, ReactNode, useEffect, useState } from "react";
+import { type CSSProperties, type ReactNode, useEffect, useState } from "react";
+
 import { useRerender, useRerenderEvery } from "../useRerender";
 
 type Props = {
