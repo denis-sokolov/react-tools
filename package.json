@@ -27,7 +27,7 @@
     "webpack": "^5.93.0"
   },
   "devDependencies": {
-    "@denis-sokolov/eslint-plugin": "^15.1.1",
+    "@denis-sokolov/eslint-plugin": "^16.0.0",
     "@types/license-checker-webpack-plugin": "^0.2.4",
     "@types/react": "^18.3.3",
     "@types/react-test-renderer": "^18.3.0",
