@@ -1,3 +1,7 @@
+# 10.4
+
+- useCrashCaught
+
 # 10.3
 
 - forwardClick: e.handled = true feature to prevent false positives through portals
