@@ -1,4 +1,5 @@
 export * from "./ActionArea";
+export * from "./caught";
 export * from "./ErrorBoundary";
 export * from "./forwardClick";
 export * from "./is404OurFault";
@@ -14,6 +15,7 @@ export * from "./useCatchAsync";
 export * from "./useCheckStableIdentity";
 export * from "./useClickOutside";
 export * from "./useCrash";
+export * from "./useCrashCaught";
 export * from "./useDismissElement";
 export * from "./useInputWithDraftState";
 export * from "./useRerender";

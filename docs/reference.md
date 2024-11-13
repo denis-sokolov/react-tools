@@ -77,6 +77,20 @@ If you need to render links in a particular way, say, because of next.js Link co
 
 See also [react-abstract-button](https://www.npmjs.com/package/react-abstract-button).
 
+## caught
+
+Convert an arbitrary caught value into an Error:
+
+```jsx
+import { caught } from "@denis-sokolov/react";
+
+try {
+  // ...
+} catch (value) {
+  const error = caught(value);
+}
+```
+
 ## ErrorBoundary
 
 Every application needs a good crash screen. For historic reasons in React this needs a class component.
@@ -459,7 +473,11 @@ return (
 );
 ```
 
-Also see useCatchAsync.
+Also see useCatchAsync and useCrashCaught.
+
+## useCrashCaught
+
+Like useCrash, but allows any value. For use in catch blocks.
 
 ## useDismissElement
 
