@@ -4,10 +4,6 @@ import { type StyleObject } from "./types";
 export function runTest(prefix: string, input: StyleObject) {
   const appendedChildren: HTMLElement[] = [];
   const head: Partial<Window["document"]["head"]> = {
-    appendChild: (child) => {
-      appendedChildren.push(child as any);
-      return child;
-    },
     get firstChild() {
       return appendedChildren[0] || null;
     },
@@ -25,7 +21,7 @@ export function runTest(prefix: string, input: StyleObject) {
     },
   };
   const document: Partial<Window["document"]> = {
-    createElement: (tagName: string) => ({ tagName }) as any,
+    createElement: (tagName: string) => ({ innerText: "", tagName }) as any,
     head: head as any,
   };
   const w: Partial<Window> = {

@@ -40,11 +40,21 @@ function prependTo(parent: Element, child: Element) {
   parent.insertBefore(child, parent.firstChild);
 }
 
+const getOurContainer = (function () {
+  const ourContainers = new WeakMap<Window, HTMLStyleElement>();
+  return function (window: Window) {
+    const found = ourContainers.get(window);
+    if (found) return found;
+    const doc = window.document;
+    const container = doc.createElement("style");
+    prependTo(doc.head, container);
+    ourContainers.set(window, container);
+    return container;
+  };
+})();
+
 export function globalCss(window: Window, css: string) {
-  const doc = window.document;
-  const s = doc.createElement("style");
-  s.innerText = css;
-  prependTo(doc.head, s);
+  getOurContainer(window).innerText += css;
 }
 
 export function scopedStyles(
