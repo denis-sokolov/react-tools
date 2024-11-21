@@ -5,7 +5,7 @@ export type ActionSubmit = "submit";
 export type ActionUrl =
   // string & {} is a hack that still accepts strings,
   // but does not swallow the union with "submit"
-  (string & {}) | { newWindow: string };
+  (string & {}) | { newWindow: string } | { replace: string };
 
 export type Action =
   | ActionDisabled

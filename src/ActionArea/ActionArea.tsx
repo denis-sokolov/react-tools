@@ -54,30 +54,51 @@ export function ActionArea(props: ActionAreaProps) {
 
   const link = function (
     url: string,
-    opts: { download?: string; newWindow?: boolean } = {},
+    opts: { download?: string; newWindow?: boolean; replace?: boolean } = {},
   ) {
     const currentPath =
       props.currentPath ||
       (typeof location !== "undefined" ? location.pathname : "");
-    const { download, newWindow } = opts;
-    const renderLink = props.renderLink || ((p) => <a {...p}>{p.children}</a>);
+    const { download, newWindow, replace = false } = opts;
+    const renderLink =
+      props.renderLink ||
+      ((attrs, extra) => (
+        <a
+          {...attrs}
+          onClick={
+            extra.replace
+              ? (e) => {
+                  e.preventDefault();
+                  window.location.replace(attrs.href);
+                }
+              : undefined
+          }
+        >
+          {attrs.children}
+        </a>
+      ));
 
     if (url === currentPath && !download && !newWindow)
       return div({ extraClassName: "current" });
 
     return (
       <>
-        {renderLink({
-          children: children,
-          className: `${baseStyles} ${className}`,
-          download: download,
-          href: url,
-          referrerPolicy: "strict-origin-when-cross-origin",
-          rel: newWindow ? "noopener" : undefined,
-          style: style,
-          target: newWindow ? "_blank" : undefined,
-          title: title,
-        })}
+        {renderLink(
+          {
+            children: children,
+            className: `${baseStyles} ${className}`,
+            download: download,
+            href: url,
+            referrerPolicy: "strict-origin-when-cross-origin",
+            rel: newWindow ? "noopener" : undefined,
+            style: style,
+            target: newWindow ? "_blank" : undefined,
+            title: title,
+          },
+          {
+            replace,
+          },
+        )}
       </>
     );
   };
@@ -99,6 +120,7 @@ export function ActionArea(props: ActionAreaProps) {
     if ("mousedown" in action) return button({ onMouseDown: action.mousedown });
     if ("newWindow" in action)
       return link(action.newWindow, { newWindow: true });
+    if ("replace" in action) return link(action.replace, { replace: true });
     if ("disabledReason" in action)
       return div({ title: action.disabledReason });
   }

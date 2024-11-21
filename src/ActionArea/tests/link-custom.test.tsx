@@ -24,3 +24,18 @@ test("ActionArea custom link rendering with props", (t) => {
 
   t.is(link.text(), "/");
 });
+
+test("ActionArea custom link rendering with replace", (t) => {
+  const link = render(
+    <ActionArea
+      action={{ replace: "/" }}
+      renderLink={(_attrs, { replace }) => (
+        <div>{replace ? "/replace" : "/wrong"}</div>
+      )}
+    >
+      Homepage
+    </ActionArea>,
+  );
+
+  t.is(link.text(), "/replace");
+});

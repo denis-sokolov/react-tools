@@ -14,6 +14,7 @@ export type ActionAreaProps = {
    * - "submit"
    * - string with a URL to make a link
    * - { newWindow: string } to make a link that opens in a new window
+   * - { replace: string } to make a link that replaces the current page in the navigation stack
    * - { download: string, url: string } to make a link that downloads a file with a given filename
    * - () => void to make a click handler
    * - { mousedown: () => void } to make a mousedown handler, but the click handler above is preferred for UX
@@ -46,6 +47,7 @@ export type ActionAreaProps = {
       children: ReactNode;
       href: string;
     },
+    extra: { replace: boolean },
   ) => ReactNode;
   style?: CSSProperties;
   title?: string;
