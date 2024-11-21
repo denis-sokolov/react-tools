@@ -17,9 +17,5 @@ export const baseStyles = scopedStyles("ActionArea-base", {
 });
 
 export const disabledStyles = scopedStyles("ActionArea-disabled", {
-  // Must explicitly change the cursor to default. Otherwise, when "pointer-events: none"
-  // is applied on click, the cursor will not return to default until the mouse is moved.
   cursor: "default",
-
-  pointerEvents: "none" as const,
 });
