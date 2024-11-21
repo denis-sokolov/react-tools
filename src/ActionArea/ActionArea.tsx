@@ -31,16 +31,23 @@ export type ActionAreaProps = {
   /**
    * Override how the ActionArea renders buttons
    */
-  renderButton?: (props: ButtonHTMLAttributes<HTMLButtonElement>) => ReactNode;
+  renderButton?: (
+    props: ButtonHTMLAttributes<HTMLButtonElement> & { children: ReactNode },
+  ) => ReactNode;
   /**
    * Override how the ActionArea renders inactive areas
    */
-  renderDiv?: (props: HTMLAttributes<HTMLDivElement>) => ReactNode;
+  renderDiv?: (
+    props: HTMLAttributes<HTMLDivElement> & { children: ReactNode },
+  ) => ReactNode;
   /**
    * Override how the ActionArea renders links
    */
   renderLink?: (
-    props: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string },
+    props: AnchorHTMLAttributes<HTMLAnchorElement> & {
+      children: ReactNode;
+      href: string;
+    },
   ) => ReactNode;
   style?: CSSProperties;
   title?: string;
