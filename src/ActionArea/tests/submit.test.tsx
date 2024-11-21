@@ -1,8 +1,7 @@
 import test from "ava";
 
-import { render } from "../lib-test";
-
-import { ActionArea } from "./ActionArea";
+import { render } from "../../lib-test";
+import { ActionArea } from "../ActionArea";
 
 test("ActionArea submit", (t) => {
   const button = render(<ActionArea action="submit">Send</ActionArea>);
