@@ -11,7 +11,7 @@ test("ActionArea disabled", (t) => {
     </ActionArea>,
   );
   t.is(area.text(), "Homepage");
-  t.true(area.is("span"));
+  t.true(area.is("div"));
 });
 
 test("ActionArea disabled has base styles", (t) => {

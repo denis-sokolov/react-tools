@@ -49,7 +49,7 @@ test("ActionArea link is marked current", (t) => {
       Homepage
     </ActionArea>,
   );
-  t.true(link.is("span"));
+  t.true(link.is("div"));
   const className = link.prop("className");
   if (typeof className !== "string") throw new Error();
   t.true(className.split(" ").includes("current"));

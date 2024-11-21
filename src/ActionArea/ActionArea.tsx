@@ -47,15 +47,15 @@ export type ActionAreaProps = {
    */
   renderButton?: (props: ButtonHTMLAttributes<HTMLButtonElement>) => ReactNode;
   /**
+   * Override how the ActionArea renders inactive areas
+   */
+  renderDiv?: (props: HTMLAttributes<HTMLDivElement>) => ReactNode;
+  /**
    * Override how the ActionArea renders links
    */
   renderLink?: (
     props: AnchorHTMLAttributes<HTMLAnchorElement> & { href: string },
   ) => ReactNode;
-  /**
-   * Override how the ActionArea renders inactive areas
-   */
-  renderSpan?: (props: HTMLAttributes<HTMLSpanElement>) => ReactNode;
   style?: CSSProperties;
   title?: string;
 };
@@ -117,15 +117,15 @@ export function ActionArea(props: ActionAreaProps) {
     );
   };
 
-  const span = function (
+  const div = function (
     opts: { extraClassName?: string; title?: string } = {},
   ) {
     const { extraClassName = "" } = opts;
-    const renderSpan =
-      props.renderSpan || ((p) => <span {...p}>{p.children}</span>);
+    const renderDiv =
+      props.renderDiv || ((p) => <div {...p}>{p.children}</div>);
     return (
       <>
-        {renderSpan({
+        {renderDiv({
           children,
           className: `${baseStyles} ${disabledStyles} ${className} ${extraClassName}`,
           style,
@@ -146,7 +146,7 @@ export function ActionArea(props: ActionAreaProps) {
     const renderLink = props.renderLink || ((p) => <a {...p}>{p.children}</a>);
 
     if (url === currentPath && !download && !newWindow)
-      return span({ extraClassName: "current" });
+      return div({ extraClassName: "current" });
 
     return (
       <>
@@ -169,7 +169,7 @@ export function ActionArea(props: ActionAreaProps) {
     console.log(
       'action="disabled" is deprecated, please use action={ disabled: "Explanation to the user" }',
     );
-    return span();
+    return div();
   }
   if (action === "submit") return button({ type: "submit" });
 
@@ -183,7 +183,7 @@ export function ActionArea(props: ActionAreaProps) {
     if ("newWindow" in action)
       return link(action.newWindow, { newWindow: true });
     if ("disabledReason" in action)
-      return span({ title: action.disabledReason });
+      return div({ title: action.disabledReason });
   }
 
   console.error("Props for the last ActionArea:", props);
