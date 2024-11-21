@@ -167,7 +167,7 @@ export function ActionArea(props: ActionAreaProps) {
 
   if (action === "disabled") {
     console.log(
-      'action="disabled" is deprecated, please use action={ disabled: "Explanation to the user" }',
+      'action="disabled" is deprecated, please use action={{ disabledReason: "Explanation to the user" }}',
     );
     return div();
   }
