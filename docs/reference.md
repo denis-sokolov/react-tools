@@ -20,9 +20,9 @@ by using one foundation element under them all. Switch from one to another witho
 <ClickableText action={() => setOpen(true)}>More details</ClickableText>
 <ClickableText action={{ newWindow: "https://example.com/" }}>Visit our support channel</ClickableText>
 <ClickableText action={{ replace: "/?sort=date" }}>Sort by date</ClickableText>
-<ClickableText action={{ download: "archive.zip", url: "https://example.com/" }}>Download your data</ClickableText>
+<ClickableText action={{ download: "archive.zip", url: "/export" }}>Download your data</ClickableText>
 <PrimaryButton action="submit">Send email</PrimaryButton>
-<PrimaryButton action={ disabledReason: "Fill all fields to proceed" }>Create</PrimaryButton>
+<PrimaryButton action={{ disabledReason: "Fill all fields to proceed" }}>Create</PrimaryButton>
 ```
 
 ActionArea starts with no styles, so create a few visual components that customize the ActionArea styles:
