@@ -1,3 +1,11 @@
+# 11.0
+
+- Breaking changes in ActionArea:
+  - currentPathAndQuery property, and new functionality around detecting links as current
+  - Inactive ActionArea is now a div and not a span
+  - Error when trying to use cross-origin download links.
+- New Action for ActionArea: replace.
+
 # 10.4
 
 - useCrashCaught
