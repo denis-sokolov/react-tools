@@ -26,7 +26,7 @@ export type ActionAreaProps = {
   /**
    * Override how the ActionArea detects which links are pointing to the current page
    */
-  currentPath?: string;
+  currentPathAndQuery?: string;
   /**
    * Override how the ActionArea renders buttons
    */

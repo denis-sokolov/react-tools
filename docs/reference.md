@@ -59,7 +59,10 @@ const TertiaryButton = (props: { action: Action }) => (
 If you use a custom router, including anything during server-side rendering, provide the current path to ActionArea:
 
 ```jsx
-<ActionArea action="/about" currentPath={myServerRouter.currentPath}>
+<ActionArea
+  action="/about"
+  currentPathAndQuery={myServerRouter.currentPathAndQuery}
+>
   About
 </ActionArea>
 ```

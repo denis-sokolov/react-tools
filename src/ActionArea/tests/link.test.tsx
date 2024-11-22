@@ -44,7 +44,7 @@ test("ActionArea link has base styles", (t) => {
 
 test("ActionArea link is marked current", (t) => {
   const link = render(
-    <ActionArea action="/" currentPath="/">
+    <ActionArea action="/" currentPathAndQuery="/">
       Homepage
     </ActionArea>,
   );
@@ -67,7 +67,7 @@ test("ActionArea link has custom styles", (t) => {
 
 test("ActionArea link takes custom className and works together with current", (t) => {
   const link = render(
-    <ActionArea action="/" className="Q" currentPath="/">
+    <ActionArea action="/" className="Q" currentPathAndQuery="/">
       Homepage
     </ActionArea>,
   );
@@ -79,11 +79,47 @@ test("ActionArea link takes custom className and works together with current", (
 
 test("ActionArea link current has disabled styles", (t) => {
   const link = render(
-    <ActionArea action="/" currentPath="/">
+    <ActionArea action="/" currentPathAndQuery="/">
       Homepage
     </ActionArea>,
   );
   const className = link.prop("className");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-disabled"));
+});
+
+test("ActionArea link with different query params is enabled", (t) => {
+  const link = render(
+    <ActionArea action="/?foo=1" currentPathAndQuery="/">
+      Homepage
+    </ActionArea>,
+  );
+  t.true(link.is("a"));
+});
+
+test("ActionArea link with same query params is disabled", (t) => {
+  const link = render(
+    <ActionArea action="/?foo=1" currentPathAndQuery="/?foo=1">
+      Homepage
+    </ActionArea>,
+  );
+  t.false(link.is("a"));
+});
+
+test("ActionArea link with same query params is disabled even if other parameters are there", (t) => {
+  const link = render(
+    <ActionArea action="/?foo=1" currentPathAndQuery="/?foo=1&bar=2">
+      Homepage
+    </ActionArea>,
+  );
+  t.false(link.is("a"));
+});
+
+test("ActionArea link does not respect multiple search params", (t) => {
+  const link = render(
+    <ActionArea action="/?foo=1" currentPathAndQuery="/?foo=1&foo=2">
+      Homepage
+    </ActionArea>,
+  );
+  t.false(link.is("a"));
 });

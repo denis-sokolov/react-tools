@@ -56,9 +56,11 @@ export function ActionArea(props: ActionAreaProps) {
     url: string,
     opts: { download?: string; newWindow?: boolean; replace?: boolean } = {},
   ) {
-    const currentPath =
-      props.currentPath ||
-      (typeof location !== "undefined" ? location.pathname : "");
+    const currentPathAndQuery =
+      props.currentPathAndQuery ||
+      (typeof location !== "undefined"
+        ? location.pathname + location.search
+        : "");
     const { download, newWindow, replace = false } = opts;
     const renderLink =
       props.renderLink ||
@@ -78,7 +80,22 @@ export function ActionArea(props: ActionAreaProps) {
         </a>
       ));
 
-    if (url === currentPath && !download && !newWindow)
+    const linkPointsToCurrentPage = (() => {
+      const [targetPath = "", targetSearch = ""] = url.split("?");
+      const [currentPath = "", currentSearch = ""] =
+        currentPathAndQuery.split("?");
+      if (targetPath !== currentPath) return false;
+
+      const targetParams = new URLSearchParams(targetSearch);
+      const currentParams = new URLSearchParams(currentSearch);
+      const allKeys: string[] = [];
+      targetParams.forEach((_value, key) => allKeys.push(key));
+      for (const key of allKeys)
+        if (targetParams.get(key) !== currentParams.get(key)) return false;
+
+      return true;
+    })();
+    if (linkPointsToCurrentPage && !download && !newWindow)
       return div({ extraClassName: "current" });
 
     if (download && url.startsWith("http"))
