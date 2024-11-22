@@ -81,6 +81,11 @@ export function ActionArea(props: ActionAreaProps) {
     if (url === currentPath && !download && !newWindow)
       return div({ extraClassName: "current" });
 
+    if (download && url.startsWith("http"))
+      throw Error("download links only work with local, relative links");
+    if (replace && url.startsWith("http"))
+      throw Error("replace links only work with local, relative links");
+
     return (
       <>
         {renderLink(
