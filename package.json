@@ -31,13 +31,13 @@
     "@testing-library/react": "^16.1.0",
     "@types/jsdom": "^21.1.7",
     "@types/license-checker-webpack-plugin": "^0.2.4",
-    "@types/react": "^18.3.12",
+    "@types/react": "^19.0.0",
     "ava": "^6.2.0",
     "eslint": "^8.57.1",
     "fix-es-imports": "^0.1.4",
     "jsdom": "^25.0.1",
     "prettier": "^3.3.3",
-    "react": "^18.3.1",
+    "react": "^19.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.6.3"
   },
@@ -59,7 +59,7 @@
   },
   "name": "@denis-sokolov/react",
   "peerDependencies": {
-    "react": "^18"
+    "react": "^19"
   },
   "prettier": {},
   "repository": "git@github.com:denis-sokolov/react-tools.git",
