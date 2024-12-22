@@ -1,27 +1,17 @@
+import { render as libRender } from "@testing-library/react";
+import { JSDOM } from "jsdom";
 import { type ReactElement } from "react";
-import TestRenderer, { type ReactTestRenderer } from "react-test-renderer";
-
-function wrapper(node: ReactTestRenderer) {
-  const tree = node.toJSON();
-  if (Array.isArray(tree))
-    return {
-      is: () => false,
-      prop: (): unknown => undefined,
-      text: () => "",
-    };
-  return {
-    is: (element: string) => tree?.type === element,
-    prop: (name: string): unknown => tree?.props[name],
-    text: () =>
-      node.root
-        .findAll(() => true)
-        .map((el) =>
-          el.children.filter((child) => typeof child === "string").join(""),
-        )
-        .join(""),
-  };
-}
 
 export function render(input: ReactElement) {
-  return wrapper(TestRenderer.create(input));
+  const dom = new JSDOM();
+  global.window = dom.window as any;
+  global.document = dom.window.document;
+  const result = libRender(input);
+  const area = result.container.firstChild as HTMLElement;
+  return {
+    attr: (name: string): unknown => area.getAttribute(name) ?? undefined,
+    is: (element: string) => area.tagName.toLowerCase() === element,
+    prop: (name: keyof HTMLElement) => area[name] ?? undefined,
+    text: () => area.innerHTML,
+  };
 }

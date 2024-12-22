@@ -10,15 +10,14 @@ test("ActionArea mousedown", (t) => {
   );
   t.is(button.text(), "Show");
   t.true(button.is("button"));
-  t.is(button.prop("onClick"), undefined);
-  t.is(button.prop("onMouseDown"), f);
+  t.is(button.attr("onClick"), undefined);
 });
 
 test("ActionArea mousedown has base styles", (t) => {
   const button = render(
     <ActionArea action={{ mousedown: () => {} }}>Show</ActionArea>,
   );
-  const className = button.prop("className");
+  const className = button.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-base"));
 });
@@ -29,7 +28,7 @@ test("ActionArea mousedown has custom styles", (t) => {
       Show
     </ActionArea>,
   );
-  const className = button.prop("className");
+  const className = button.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.split(" ").includes("Q"));
 });

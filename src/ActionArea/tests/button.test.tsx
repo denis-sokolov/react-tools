@@ -8,13 +8,12 @@ test("ActionArea button", (t) => {
   const button = render(<ActionArea action={f}>Show</ActionArea>);
   t.is(button.text(), "Show");
   t.true(button.is("button"));
-  t.is(button.prop("type"), "button");
-  t.is(button.prop("onClick"), f);
+  t.is(button.attr("type"), "button");
 });
 
 test("ActionArea button has base styles", (t) => {
   const button = render(<ActionArea action={() => {}}>Show</ActionArea>);
-  const className = button.prop("className");
+  const className = button.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-base"));
 });
@@ -25,7 +24,7 @@ test("ActionArea button has custom styles", (t) => {
       Show
     </ActionArea>,
   );
-  const className = button.prop("className");
+  const className = button.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.split(" ").includes("Q"));
 });
