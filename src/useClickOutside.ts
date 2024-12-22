@@ -1,6 +1,4 @@
-import { useEffect, useRef } from "react";
-
-import { useCallback } from "./useCallback";
+import { useCallback, useEffect, useRef } from "react";
 
 type RefFunction = (el: HTMLElement | null) => void;
 type ClickOutsideControls = RefFunction & {

@@ -10,7 +10,6 @@ export * from "./smartOutline";
 export * from "./sort";
 export * from "./Spinner";
 export * from "./UnderConstruction";
-export * from "./useCallback";
 export * from "./useCatchAsync";
 export * from "./useCheckStableIdentity";
 export * from "./useClickOutside";

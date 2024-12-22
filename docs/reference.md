@@ -409,14 +409,6 @@ return <button onClick={catchAsync(async function() {
 
 Also see useCrash.
 
-## useCallback
-
-React’s useCallback has no semantic guarantee to preserve the identity of the function, and that is [unclear in the documentation](https://github.com/reactjs/reactjs.org/issues/2334).
-
-If you pass callbacks to children components that have side-effects, those side-effects may run more often than expected. In particular, a component may re-fetch data from the server and reset the UI to a loading state unexpectedly.
-
-useCallback in this module has the semantic guarantee to not change identity.
-
 ## useCheckStableIdentity
 
 Debugging why components rerender may be difficult. Use this hook to help understand which values preserve their identity and which don’t:
