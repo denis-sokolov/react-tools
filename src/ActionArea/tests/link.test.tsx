@@ -7,7 +7,7 @@ test("ActionArea link", (t) => {
   const link = render(<ActionArea action="/">Homepage</ActionArea>);
   t.is(link.text(), "Homepage");
   t.true(link.is("a"));
-  t.is(link.prop("href"), "/");
+  t.is(link.attr("href"), "/");
 });
 
 test("ActionArea link in newWindow", (t) => {
@@ -16,9 +16,9 @@ test("ActionArea link in newWindow", (t) => {
   );
   t.is(link.text(), "Homepage");
   t.true(link.is("a"));
-  t.is(link.prop("href"), "/");
-  t.is(link.prop("target"), "_blank");
-  const rel = link.prop("rel") || "";
+  t.is(link.attr("href"), "/");
+  t.is(link.attr("target"), "_blank");
+  const rel = link.attr("rel") || "";
   if (typeof rel !== "string")
     throw new Error(`Unexpected rel type ${typeof rel}`);
   const rels = rel.split(" ");
@@ -31,13 +31,13 @@ test("ActionArea download link", (t) => {
   );
   t.is(link.text(), "Homepage");
   t.true(link.is("a"));
-  t.is(link.prop("href"), "/");
-  t.is(link.prop("download"), "name");
+  t.is(link.attr("href"), "/");
+  t.is(link.attr("download"), "name");
 });
 
 test("ActionArea link has base styles", (t) => {
   const link = render(<ActionArea action="/">Homepage</ActionArea>);
-  const className = link.prop("className");
+  const className = link.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-base"));
 });
@@ -49,7 +49,7 @@ test("ActionArea link is marked current", (t) => {
     </ActionArea>,
   );
   t.true(link.is("div"));
-  const className = link.prop("className");
+  const className = link.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.split(" ").includes("current"));
 });
@@ -60,7 +60,7 @@ test("ActionArea link has custom styles", (t) => {
       Homepage
     </ActionArea>,
   );
-  const className = link.prop("className");
+  const className = link.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.split(" ").includes("Q"));
 });
@@ -71,7 +71,7 @@ test("ActionArea link takes custom className and works together with current", (
       Homepage
     </ActionArea>,
   );
-  const className = link.prop("className");
+  const className = link.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.split(" ").includes("Q"));
   t.true(className.split(" ").includes("current"));
@@ -83,7 +83,7 @@ test("ActionArea link current has disabled styles", (t) => {
       Homepage
     </ActionArea>,
   );
-  const className = link.prop("className");
+  const className = link.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-disabled"));
 });

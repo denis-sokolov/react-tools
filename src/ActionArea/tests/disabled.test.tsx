@@ -19,7 +19,7 @@ test("ActionArea disabled has base styles", (t) => {
       Homepage
     </ActionArea>,
   );
-  const className = area.prop("className");
+  const className = area.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-base"));
 });
@@ -30,7 +30,7 @@ test("ActionArea disabled has disabled styles", (t) => {
       Homepage
     </ActionArea>,
   );
-  const className = area.prop("className");
+  const className = area.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.includes("-disabled"));
 });
@@ -41,7 +41,7 @@ test("ActionArea disabled has custom styles", (t) => {
       Show
     </ActionArea>,
   );
-  const className = area.prop("className");
+  const className = area.attr("class");
   if (typeof className !== "string") throw new Error();
   t.true(className.split(" ").includes("Q"));
 });
@@ -50,5 +50,5 @@ test("ActionArea disabled sets the title", (t) => {
   const area = render(
     <ActionArea action={{ disabledReason: "Foo" }}>Homepage</ActionArea>,
   );
-  t.is(area.prop("title"), "Foo");
+  t.is(area.attr("title"), "Foo");
 });

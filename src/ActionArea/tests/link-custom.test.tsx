@@ -12,7 +12,7 @@ test("ActionArea custom link rendering", (t) => {
 
   t.not(link.text(), "Homepage");
   t.false(link.is("a"));
-  t.not(link.prop("href"), "/");
+  t.not(link.attr("href"), "/");
 });
 
 test("ActionArea custom link rendering with props", (t) => {
