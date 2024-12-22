@@ -1,5 +1,6 @@
+import { useCallback } from "react";
+
 import { caught } from "./caught";
-import { useCallback } from "./useCallback";
 import { useCrash } from "./useCrash";
 
 export function useCrashCaught() {

@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-import { useCallback } from "./useCallback";
+import { useCallback, useState } from "react";
 
 /**
  * Create a function that crashes in the context of the current component, for use in async context
