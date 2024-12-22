@@ -1,3 +1,9 @@
+# 12.0
+
+- Breaking changes:
+  - useCallback removed
+  - React 19 required
+
 # 11.1
 
 - ActionArea detects current ancestor links and adds current-ancestor class name
