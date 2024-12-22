@@ -1,3 +1,9 @@
+# 12.0
+
+- Breaking changes:
+  - useCallback removed
+  - React 19 required
+
 # 11.0
 
 - Breaking changes in ActionArea:
