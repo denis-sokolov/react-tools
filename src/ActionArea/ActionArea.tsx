@@ -103,12 +103,21 @@ export function ActionArea(props: ActionAreaProps) {
     if (replace && url.startsWith("http"))
       throw Error("replace links only work with local, relative links");
 
+    const linkPointsToAncestor = (() => {
+      const [targetPath = ""] = url.split("?");
+      const [currentPath = ""] = currentPathAndQuery.split("?");
+      if (currentPath === targetPath) return false;
+      if (targetPath === "/") return true;
+      if (!currentPath.startsWith(targetPath + "/")) return false;
+      return true;
+    })();
+
     return (
       <>
         {renderLink(
           {
             children: children,
-            className: `${baseStyles} ${className}`,
+            className: `${baseStyles} ${className} ${linkPointsToAncestor ? "current-ancestor" : ""}`,
             download: download,
             href: url,
             referrerPolicy: "strict-origin-when-cross-origin",

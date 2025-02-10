@@ -40,6 +40,7 @@ const ClickableText = (props) => (
 // .myPrimaryButtonStyles { border: 1px solid blue }
 // .myPrimaryButtonStyles:hover { border-color: red }
 // .myPrimaryButtonStyles.current { border-color: gray }
+// .myPrimaryButtonStyles.current-ancestor { border-color: gray }
 const PrimaryButton = (props) => (
   <ActionArea className="myPrimaryButtonStyles" {...props} />
 );

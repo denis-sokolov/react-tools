@@ -54,6 +54,53 @@ test("ActionArea link is marked current", (t) => {
   t.true(className.split(" ").includes("current"));
 });
 
+test("ActionArea link is marked current-ancestor", (t) => {
+  const link = render(
+    <ActionArea action="/about" currentPathAndQuery="/about/team">
+      About team
+    </ActionArea>,
+  );
+  t.true(link.is("a"));
+  const className = link.prop("className");
+  if (typeof className !== "string") throw new Error();
+  t.true(className.split(" ").includes("current-ancestor"));
+});
+
+test("ActionArea link is not marked current-ancestor when it’s the same", (t) => {
+  const link = render(
+    <ActionArea action="/about" currentPathAndQuery="/about">
+      About team
+    </ActionArea>,
+  );
+  const className = link.prop("className");
+  if (typeof className !== "string") throw new Error();
+  t.false(className.split(" ").includes("current-ancestor"));
+});
+
+test("ActionArea link is not marked current-ancestor when prefixed name", (t) => {
+  const link = render(
+    <ActionArea action="/a" currentPathAndQuery="/about">
+      About team
+    </ActionArea>,
+  );
+  t.true(link.is("a"));
+  const className = link.prop("className");
+  if (typeof className !== "string") throw new Error();
+  t.false(className.split(" ").includes("current-ancestor"));
+});
+
+test("ActionArea link is marked current-ancestor when top level", (t) => {
+  const link = render(
+    <ActionArea action="/" currentPathAndQuery="/about">
+      About team
+    </ActionArea>,
+  );
+  t.true(link.is("a"));
+  const className = link.prop("className");
+  if (typeof className !== "string") throw new Error();
+  t.true(className.split(" ").includes("current-ancestor"));
+});
+
 test("ActionArea link has custom styles", (t) => {
   const link = render(
     <ActionArea action="/" className="Q">
