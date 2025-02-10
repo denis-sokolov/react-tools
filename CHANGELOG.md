@@ -1,3 +1,7 @@
+# 11.1
+
+- ActionArea detects current ancestor links and adds current-ancestor class name
+
 # 11.0
 
 - Breaking changes in ActionArea:
