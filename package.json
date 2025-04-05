@@ -65,5 +65,5 @@
   "sideEffects": false,
   "type": "module",
   "types": "dist/esm/index.js",
-  "version": "11.1.0"
+  "version": "11.1.1"
 }
