@@ -1,3 +1,7 @@
+# 13.0
+
+- Breaking change: ActionArea no longer centers by default, check whether all your buttons look correct
+
 # 12.0
 
 - Breaking changes:
