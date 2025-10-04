@@ -10,7 +10,7 @@ export const baseStyles = scopedStyles("ActionArea-base", {
   fontFamily: "inherit",
   fontSize: "inherit",
   fontWeight: "inherit",
-  justifyContent: "center",
+  justifyContent: "start",
   margin: 0,
   padding: 0,
   textDecoration: "none",
