@@ -7,26 +7,24 @@ import {
   type Simple,
 } from "./types";
 
-function getKeyFirstIndex(key: IndividualKey, options: Options): number | "no" {
-  const { firstKeys } = options;
-  if (typeof key === "object") return key.first ?? "no";
-  if (!firstKeys) return "no";
-  const val = firstKeys.indexOf(key);
-  if (val === -1) return "no";
-  return val;
-}
+export function sortInternal<Item>(
+  input: readonly Item[],
+  options: OptionsWithRequiredKey<Item>,
+): Item[] {
+  const result = input.slice(0);
+  const { key } = options;
 
-function getKeyLastIndex(key: IndividualKey, options: Options): number | "no" {
-  const { lastKeys } = options;
-  if (typeof key === "object") return key.last ?? "no";
-  if (!lastKeys) return "no";
-  const val = lastKeys.indexOf(key);
-  if (val === -1) return "no";
-  return lastKeys.length - val;
-}
+  if (hasSharedValues(options.firstKeys ?? [], options.lastKeys ?? []))
+    throw new Error(
+      "firstKeys and lastKeys has some shared values. I don’t know how to make them both first and last at the same time",
+    );
 
-function isArrayOrTuple(x: unknown): x is readonly [...unknown[]] {
-  return Array.isArray(x);
+  result.sort((leftData, rightData) => {
+    const leftKey = key(leftData);
+    const rightKey = key(rightData);
+    return compareKeys(leftKey, rightKey, options);
+  });
+  return result;
 }
 
 function compareKeys(a: Key, b: Key, options: Options): number {
@@ -66,27 +64,29 @@ function compareKeys(a: Key, b: Key, options: Options): number {
   return compareSimpleValues(a, b, options);
 }
 
+function getKeyFirstIndex(key: IndividualKey, options: Options): "no" | number {
+  const { firstKeys } = options;
+  if (typeof key === "object") return key.first ?? "no";
+  if (!firstKeys) return "no";
+  const val = firstKeys.indexOf(key);
+  if (val === -1) return "no";
+  return val;
+}
+
+function getKeyLastIndex(key: IndividualKey, options: Options): "no" | number {
+  const { lastKeys } = options;
+  if (typeof key === "object") return key.last ?? "no";
+  if (!lastKeys) return "no";
+  const val = lastKeys.indexOf(key);
+  if (val === -1) return "no";
+  return lastKeys.length - val;
+}
+
 function hasSharedValues(a: Simple[], b: Simple[]) {
   const aSet = new Set(a);
   return b.some((val) => aSet.has(val));
 }
 
-export function sortInternal<Item>(
-  input: readonly Item[],
-  options: OptionsWithRequiredKey<Item>,
-): Item[] {
-  const result = input.slice(0);
-  const { key } = options;
-
-  if (hasSharedValues(options.firstKeys ?? [], options.lastKeys ?? []))
-    throw new Error(
-      "firstKeys and lastKeys has some shared values. I don’t know how to make them both first and last at the same time",
-    );
-
-  result.sort((leftData, rightData) => {
-    const leftKey = key(leftData);
-    const rightKey = key(rightData);
-    return compareKeys(leftKey, rightKey, options);
-  });
-  return result;
+function isArrayOrTuple(x: unknown): x is readonly [...unknown[]] {
+  return Array.isArray(x);
 }

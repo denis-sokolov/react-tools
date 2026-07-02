@@ -7,20 +7,20 @@ export function Component() {
     value: "",
   });
 
-  useInputWithDraftState<"foo" | "bar">({
+  useInputWithDraftState<"bar" | "foo">({
     onChange: (value) => console.log(value),
     validate: (value) => value.length > 0,
     validateEmptyField: true,
     value: "foo",
   });
 
-  useInputWithDraftState<"foo" | "">({
+  useInputWithDraftState<"" | "foo">({
     onChange: (value) => console.log(value),
     validate: (value) => value.length > 0,
     value: "foo",
   });
 
-  useInputWithDraftState<string | number>({
+  useInputWithDraftState<number | string>({
     convert: {
       fromString: (str) => {
         return { value: str.length > 1 ? 1 : "foo" };
@@ -31,7 +31,7 @@ export function Component() {
     value: 12,
   });
 
-  useInputWithDraftState<number | null>({
+  useInputWithDraftState<null | number>({
     convert: {
       fromString: (str) => {
         return { value: str.length > 1 ? 1 : null };

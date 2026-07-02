@@ -3,35 +3,6 @@ import findup from "findup-sync";
 import { getLicenseName } from "./lcwp";
 import { type Dependency } from "./types";
 
-function getPackageJson(directory: string) {
-  const path = `${directory}/package.json`;
-
-  let contents: unknown;
-  try {
-    contents = require(path);
-  } catch (err) {
-    throw new Error(`Could not open ${path}`);
-  }
-
-  if (typeof contents !== "object" || !contents)
-    throw new Error(`Invalid format of ${path}`);
-
-  return contents as { [k: string]: unknown };
-}
-
-function getUrl(name: string, pkg: { [k: string]: unknown }) {
-  const home = pkg.homepage;
-  if (typeof home === "string" && home) return home;
-
-  const repo = pkg.repository;
-  if (typeof repo === "string") {
-    const m = repo.match(/^git@github.com:(.+).git$/);
-    if (m) return `https://github.com/${m[1]}`;
-  }
-
-  return `https://www.npmjs.com/package/${name}`;
-}
-
 export function getDependencies(directory: string): Dependency[] {
   const client = getPackageJson(directory);
   const names = Object.keys(
@@ -64,4 +35,33 @@ export function getDependencies(directory: string): Dependency[] {
       version: typeof depPkg.version === "string" ? depPkg.version : undefined,
     };
   });
+}
+
+function getPackageJson(directory: string) {
+  const path = `${directory}/package.json`;
+
+  let contents: unknown;
+  try {
+    contents = require(path);
+  } catch (err) {
+    throw new Error(`Could not open ${path}`);
+  }
+
+  if (typeof contents !== "object" || !contents)
+    throw new Error(`Invalid format of ${path}`);
+
+  return contents as { [k: string]: unknown };
+}
+
+function getUrl(name: string, pkg: { [k: string]: unknown }) {
+  const home = pkg.homepage;
+  if (typeof home === "string" && home) return home;
+
+  const repo = pkg.repository;
+  if (typeof repo === "string") {
+    const m = repo.match(/^git@github.com:(.+).git$/);
+    if (m) return `https://github.com/${m[1]}`;
+  }
+
+  return `https://www.npmjs.com/package/${name}`;
 }

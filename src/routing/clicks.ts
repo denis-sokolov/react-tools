@@ -7,14 +7,6 @@ export type ClickCallback = (params: {
   url: URL;
 }) => void;
 
-function findLink(
-  el: EventTarget | HTMLElement | null,
-): HTMLLinkElement | undefined {
-  if (!el || !("tagName" in el)) return undefined;
-  if (el.tagName === "A") return el as HTMLLinkElement;
-  return findLink(el.parentElement);
-}
-
 export function handleLinkClicks(f: ClickCallback) {
   const handler = function (e: MouseEvent) {
     if (e.button !== 0) return;
@@ -43,4 +35,12 @@ export function handleLinkClicks(f: ClickCallback) {
   };
   document.addEventListener("click", handler);
   return () => document.removeEventListener("click", handler);
+}
+
+function findLink(
+  el: EventTarget | HTMLElement | null,
+): HTMLLinkElement | undefined {
+  if (!el || !("tagName" in el)) return undefined;
+  if (el.tagName === "A") return el as HTMLLinkElement;
+  return findLink(el.parentElement);
 }

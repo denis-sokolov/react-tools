@@ -1,4 +1,4 @@
-import { Component, type ComponentType, type ReactNode } from "react";
+import { type ComponentType, type ReactNode, Component } from "react";
 
 type Props = {
   children: ReactNode;
@@ -10,10 +10,6 @@ type Props = {
 );
 
 export class ErrorBoundary extends Component<Props> {
-  reset = () => {
-    this.setState({ error: undefined });
-  };
-
   state = { error: undefined as Error | undefined };
 
   componentDidCatch(error: Error, details: { componentStack: string }) {
@@ -45,4 +41,8 @@ export class ErrorBoundary extends Component<Props> {
     }
     return this.props.children;
   }
+
+  reset = () => {
+    this.setState({ error: undefined });
+  };
 }

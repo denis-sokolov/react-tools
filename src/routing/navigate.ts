@@ -1,9 +1,5 @@
 import { computeUrl } from "./computeUrl";
 
-function detectReplace(url: URL) {
-  return location.href === url.href;
-}
-
 export function navigate(
   pathOrUrl: string | URL,
   options: { replace?: boolean } = {},
@@ -22,4 +18,8 @@ export function navigate(
   else window.history.pushState(null, "", urlWithoutOrigin);
 
   window.dispatchEvent(new PopStateEvent("popstate"));
+}
+
+function detectReplace(url: URL) {
+  return location.href === url.href;
 }

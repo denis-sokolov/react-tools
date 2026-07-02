@@ -5,7 +5,7 @@ let counter = 0;
 type StyleObject =
   | CSSProperties
   | (CSSProperties & {
-      [k: string]: string | number | CSSProperties;
+      [k: string]: CSSProperties | number | string;
     });
 
 function objectToString(selector: string, obj: StyleObject) {
@@ -64,7 +64,7 @@ export function scopedStyles(
 ) {
   counter += 1;
   const name = `${prefix}-${counter}uVdOIRB`;
-  const w: Window | undefined =
+  const w: undefined | Window =
     win || (typeof window === "undefined" ? undefined : window);
   if (typeof w !== "undefined") {
     // :where for 0 specificity

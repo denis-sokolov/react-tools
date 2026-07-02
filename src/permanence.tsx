@@ -1,6 +1,6 @@
 import {
-  createContext,
   type ReactNode,
+  createContext,
   useContext,
   useLayoutEffect,
   useState,
@@ -10,7 +10,7 @@ import {
  * Allow deeply nested children to render at the custom location in the tree to preserve component state even if children components change
  */
 export function makePermanence() {
-  const context = createContext<((node: ReactNode) => void) | "no-parent">(
+  const context = createContext<"no-parent" | ((node: ReactNode) => void)>(
     "no-parent",
   );
   return [

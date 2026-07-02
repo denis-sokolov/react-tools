@@ -5,11 +5,11 @@ import { baseStyles, disabledStyles } from "./styles";
  * An area that acts as a button or link, and is devoid of styling
  */
 export function ActionArea(props: ActionAreaProps) {
-  const { children, title, style } = props;
+  const { children, style, title } = props;
   const className = props.className || "";
 
   // Make sure we handle a common error well
-  const action = props.action as typeof props.action | null | undefined;
+  const action = props.action as null | typeof props.action | undefined;
 
   const button = function (opts: {
     onClick?: () => void;

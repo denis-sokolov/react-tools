@@ -2,31 +2,35 @@ import { type ChangeEvent, type FocusEvent } from "react";
 
 import { useCustomInputWithDraftState } from "./useCustomInputWithDraftState";
 
-type Params<Value> = {
-  value: Value;
-} & (
-  | { onChange: (value: Value) => void; onChangesDone?: (value: Value) => void }
-  | { onChange?: (value: Value) => void; onChangesDone: (value: Value) => void }
-) &
-  // Wrapped in array to prevent union distribution
-  ([Value] extends [string]
-    ? {
-        clean?: (value: string) => string;
-        convert?: never;
-        validate?: (value: string) => boolean;
-      } & (Value | "" extends Value // If Value can only be some string literals, then we’re not allowed to return an empty string and must enforce validateEmptyField feature // If Value is allowed to be an empty string, validating empty field is optional and not recommended
-        ? { validateEmptyField?: boolean }
-        : { validateEmptyField: true })
-    : {
-        clean?: never;
-        convert: {
-          fromString: (s: string) => { value: Value } | "unparsable";
-          toString: (v: Value) => string;
-        };
-        validate?: never;
-      });
-
 type El = HTMLInputElement | HTMLTextAreaElement;
+
+type Params<Value> = ([Value] extends [string]
+  ? ("" | Value extends Value // If Value can only be some string literals, then we’re not allowed to return an empty string and must enforce validateEmptyField feature // If Value is allowed to be an empty string, validating empty field is optional and not recommended
+      ? { validateEmptyField?: boolean }
+      : { validateEmptyField: true }) & {
+      clean?: (value: string) => string;
+      convert?: never;
+      validate?: (value: string) => boolean;
+    }
+  : {
+      clean?: never;
+      convert: {
+        fromString: (s: string) => "unparsable" | { value: Value };
+        toString: (v: Value) => string;
+      };
+      validate?: never;
+    }) & {
+  value: Value;
+} & ( // Wrapped in array to prevent union distribution
+    | {
+        onChange: (value: Value) => void;
+        onChangesDone?: (value: Value) => void;
+      }
+    | {
+        onChange?: (value: Value) => void;
+        onChangesDone: (value: Value) => void;
+      }
+  );
 
 type Result = {
   inputProps: {
@@ -62,10 +66,10 @@ export function useInputWithDraftState<Value>(params: Params<Value>): Result {
   const {
     draftToDisplay,
     isEditing,
-    showInvalidDraftError,
     onChange,
     onDoneEditing,
     onStartEditing,
+    showInvalidDraftError,
   } = useCustomInputWithDraftState<Value, string>({
     fromDraft: convert.fromString,
     onChange: params.onChange ?? (() => {}),

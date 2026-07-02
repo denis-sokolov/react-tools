@@ -2,16 +2,6 @@ import { clean } from "./clean";
 import { type ClickCallback, handleLinkClicks } from "./clicks";
 import { navigate } from "./navigate";
 
-function initClean() {
-  function cleanIfNeeded() {
-    const hrefWithoutOrigin = location.href.substr(location.origin.length);
-    if (hrefWithoutOrigin !== clean(hrefWithoutOrigin))
-      navigate(clean(hrefWithoutOrigin), { replace: true });
-  }
-  cleanIfNeeded();
-  window.addEventListener("popstate", cleanIfNeeded);
-}
-
 export function initRouting(
   options: {
     handleCleaning?: boolean;
@@ -36,6 +26,16 @@ export function initRouting(
           },
     );
   if (handleScrolling) initScrolling();
+}
+
+function initClean() {
+  function cleanIfNeeded() {
+    const hrefWithoutOrigin = location.href.substr(location.origin.length);
+    if (hrefWithoutOrigin !== clean(hrefWithoutOrigin))
+      navigate(clean(hrefWithoutOrigin), { replace: true });
+  }
+  cleanIfNeeded();
+  window.addEventListener("popstate", cleanIfNeeded);
 }
 
 function initScrolling() {

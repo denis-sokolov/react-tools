@@ -1,9 +1,9 @@
 import { useCallback, useEffect, useRef } from "react";
 
-type RefFunction = (el: HTMLElement | null) => void;
 type ClickOutsideControls = RefFunction & {
   additionalArea: (name: string) => (el: HTMLElement | null) => void;
 };
+type RefFunction = (el: HTMLElement | null) => void;
 
 /**
  * Detect clicks outside of the element

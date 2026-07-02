@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 type Params<Value, Draft> = {
-  fromDraft: (draft: Draft) => { value: Value } | "unparsable";
+  fromDraft: (draft: Draft) => "unparsable" | { value: Value };
   onChange?: (value: Value) => void;
   onChangesDone: (value: Value) => void;
   toDraft: (value: Value) => Draft;
