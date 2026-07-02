@@ -4,7 +4,7 @@
     "build": "bash build.sh",
     "format": "prettier --write .",
     "format-verify": "prettier --check .",
-    "lint": "eslint .",
+    "lint": "eslint --fix .",
     "prepublishOnly": "npm run verify && npm run build",
     "start": "ava --watch",
     "start-building": "rm -rf dist && NODE_ENV=production tsc --watch",
@@ -26,7 +26,7 @@
     "webpack": "^5.96.1"
   },
   "devDependencies": {
-    "@denis-sokolov/eslint-plugin": "^16.0.0",
+    "@denis-sokolov/eslint-plugin": "^18.0.0",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.1.0",
     "@types/jsdom": "^21.1.7",
