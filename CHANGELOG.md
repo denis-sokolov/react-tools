@@ -1,3 +1,9 @@
+# 14.0
+
+- Breaking changes:
+  - require React 19.3
+  - OnlyClientSide removed (use browser() from react-dom)
+
 # 13.0
 
 - Breaking change: ActionArea no longer centers by default, check whether all your buttons look correct
