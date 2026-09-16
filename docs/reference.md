@@ -230,20 +230,6 @@ If some packages’ licenses are detected incorrectly, use `--override package:M
 
 If some packages are internal or are not used in the output, use `--skip @our/private-tools,snowpack,typescript`.
 
-## OnlyClientSide
-
-Render something only client-side, avoiding a hydration mismatch warning if the value can’t be generated on the server.
-
-```jsx
-<OnlyClientSide>
-  <p>Current page: {location.href}</p>
-</OnlyClientSide>
-
-<OnlyClientSide butNotIf={iKnowValueIsStaticThisTime}>
-  <p>{value}</p>
-</OnlyClientSide>
-```
-
 ## Permanence
 
 By default, when a component in the tree changes, React destroys the entire sub-tree and recreates it from scracth to avoid unexpectedly reusing some state. If you do want to reuse the state, whether for performance or UX reasons, use `makePermanence`. In the example below Intro component will not be destroyed and re-created, because it is moved to be rendered as a child of App.
